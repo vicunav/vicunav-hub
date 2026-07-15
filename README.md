@@ -1,26 +1,86 @@
-# Plantilla de repositorio de GitHub
+# vicunav-hub
 
-Este repositorio es un punto de partida reutilizable para nuevos repositorios de GitHub. Crear un repositorio a partir de esta plantilla copia sus archivos y estructura de directorios en un repositorio nuevo e independiente, sin tratarlo como un fork.
+`vicunav-hub` documenta la arquitectura y las decisiones del ecosistema Vicunav: un
+conjunto modular de temas y plugins de WordPress para construir soluciones verticales
+sin acoplar la presentación, la lógica de negocio ni los pagos.
 
-## Crear un repositorio a partir de esta plantilla
+Cada paquete vive en su propio repositorio, con historial, versión y README
+independientes. Los paquetes se comunican mediante contratos y hooks públicos; ningún
+plugin lee directamente la base de datos de otro.
 
-1. Abre este repositorio de plantilla en GitHub.
-2. Selecciona **Use this template** y luego **Create a new repository**.
-3. Elige el propietario, el nombre del repositorio, la descripción y la visibilidad.
-4. Selecciona **Create repository**.
-5. Clona el nuevo repositorio, incluidos sus submódulos:
+## Arquitectura del ecosistema
 
-   ```bash
-   git clone --recurse-submodules https://github.com/OWNER/REPOSITORY.git
-   cd REPOSITORY
-   ```
+```mermaid
+flowchart TB
+    subgraph foundation["1. Fundación"]
+        theme["vicunav-theme-core<br/>Presentación compartida"]
+        plugin["vicunav-plugin-core<br/>Capacidades base"]
+    end
 
-Si el repositorio se clonó sin submódulos, inicialízalos después:
+    subgraph payments["2. Motor de pagos"]
+        payment["vicunav-pagos<br/>Pagos independientes"]
+    end
 
-```bash
-git submodule update --init --recursive
+    subgraph verticals["3. Verticales"]
+        hotel["vicunav-hotel<br/>Reservas"]
+        restaurant["vicunav-restaurante<br/>Pedidos"]
+    end
+
+    subgraph demos["4. Demos"]
+        demo_hotel["vicunav-demo-hotel"]
+        demo_restaurant["vicunav-demo-restaurante"]
+    end
+
+    plugin --> payment
+    theme --> hotel
+    theme --> restaurant
+    plugin --> hotel
+    plugin --> restaurant
+    payment -->|hooks públicos| hotel
+    payment -->|hooks públicos| restaurant
+    hotel --> demo_hotel
+    restaurant --> demo_restaurant
 ```
 
-Después de crear el repositorio, reemplaza este README con documentación específica del proyecto y configura las herramientas, los permisos y las protecciones de ramas que requiera el nuevo proyecto.
+Las capas separaron responsabilidades concretas:
 
-Para obtener más información, consulta la guía de GitHub para [crear un repositorio a partir de una plantilla](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+1. **Fundación:** `vicunav-theme-core` aportó patrones, tokens y templates de
+   presentación; `vicunav-plugin-core` concentró capacidades base compartidas. La lógica
+   de negocio no vivió en el theme.
+2. **Motor de pagos:** `vicunav-pagos` procesó pagos sin conocer reservas ni pedidos. Los
+   verticales lo declararon mediante `Requires Plugins` y reaccionaron a sus hooks
+   públicos. Un proyecto sin transacciones pudo omitirlo.
+3. **Verticales:** `vicunav-hotel` y `vicunav-restaurante` encapsularon respectivamente
+   reservas y pedidos, sin leer datos internos de otros plugins.
+4. **Demos:** `vicunav-demo-hotel` y `vicunav-demo-restaurante` integraron las capas en
+   sitios públicos de referencia.
+
+Los repositorios de estándares, plantilla y documentación sostuvieron el desarrollo del
+ecosistema, pero no formaron parte de sus capas de ejecución.
+
+## Repositorios
+
+| Repositorio | Propósito | Estado |
+| --- | --- | --- |
+| [`vicunav-standards`](https://github.com/vicunav/vicunav-standards) | Estándares técnicos compartidos del ecosistema. | Disponible |
+| [`vicunav-repo-template`](https://github.com/vicunav/vicunav-repo-template) | Plantilla base para inicializar repositorios. | Disponible |
+| [`vicunav-hub`](https://github.com/vicunav/vicunav-hub) | Documentación de arquitectura y decisiones del ecosistema. | Disponible |
+| `vicunav-theme-core` | Patrones, tokens y templates de presentación compartidos. | Pendiente |
+| `vicunav-plugin-core` | Capacidades base compartidas por los plugins. | Pendiente |
+| `vicunav-pagos` | Motor de pagos independiente de los verticales. | Pendiente |
+| `vicunav-hotel` | Lógica del vertical hotelero y sus reservas. | Pendiente |
+| `vicunav-restaurante` | Lógica del vertical de restaurante y sus pedidos. | Pendiente |
+| `vicunav-demo-hotel` | Demostración pública del vertical hotelero. | Pendiente |
+| `vicunav-demo-restaurante` | Demostración pública del vertical de restaurante. | Pendiente |
+
+## Decisiones de arquitectura
+
+- [ADR 0001: Separación entre theme y plugins](docs/adr/0001-separacion-theme-plugins.md)
+- [ADR 0002: Pagos como motor independiente](docs/adr/0002-pagos-motor-independiente.md)
+- [ADR 0003: Contratos frontera y eventos](docs/adr/0003-contratos-y-eventos.md)
+- [ADR 0004: Estructura de repositorios](docs/adr/0004-estructura-de-repos.md)
+
+## Licencia
+
+La documentación de este repositorio se distribuye bajo
+[Creative Commons Attribution 4.0 International](LICENSE).
