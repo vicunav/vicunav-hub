@@ -8,10 +8,10 @@ plugin.
 
 ## Decisión
 
-Se definieron tres contratos frontera: `theme-core`, `plugin-core` y pagos. Cada contrato
-debía documentarse antes de escribir el código que dependiera de él. Sus documentos se
-referenciaron provisionalmente por nombre y sus enlaces se completarían cuando
-existieran los repositorios correspondientes:
+Se definieron tres contratos frontera: `vicunav-theme-core`, `vicunav-plugin-core` y
+`vicunav-pagos`. Cada contrato debía documentarse antes de escribir el código que
+dependiera de él. Sus documentos se referenciaron provisionalmente por nombre y sus
+enlaces se completarían cuando existieran los repositorios correspondientes:
 
 - `vicunav-theme-core-contract.md`
 - `vicunav-plugin-core-contract.md`
