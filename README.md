@@ -38,6 +38,8 @@ flowchart TB
     plugin --> restaurant
     payment -->|hooks públicos| hotel
     payment -->|hooks públicos| restaurant
+    theme --> demo_hotel
+    theme --> demo_restaurant
     hotel --> demo_hotel
     restaurant --> demo_restaurant
 ```
