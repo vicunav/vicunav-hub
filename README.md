@@ -81,6 +81,7 @@ ecosistema, pero no formaron parte de sus capas de ejecución.
 - [ADR 0002: Pagos como motor independiente](docs/adr/0002-pagos-motor-independiente.md)
 - [ADR 0003: Contratos frontera y eventos](docs/adr/0003-contratos-y-eventos.md)
 - [ADR 0004: Estructura de repositorios](docs/adr/0004-estructura-de-repos.md)
+- [ADR 0005: ACF genuino solo para campos](docs/adr/0005-acf-genuino-solo-campos.md)
 
 ## Licencia
 
