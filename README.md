@@ -1,29 +1,29 @@
 # vicunav-hub
 
-`vicunav-hub` documenta la arquitectura y las decisiones del ecosistema Vicunav: un
-conjunto modular de temas y plugins de WordPress para construir soluciones verticales
-sin acoplar la presentación, la lógica de negocio ni los pagos.
+`vicunav-hub` documents the architecture and decisions of the Vicunav ecosystem: a
+modular set of WordPress themes and plugins for building vertical solutions without
+coupling presentation, business logic, or payments.
 
-Cada paquete vive en su propio repositorio, con historial, versión y README
-independientes. Los paquetes se comunican mediante contratos y hooks públicos; ningún
-plugin lee directamente la base de datos de otro.
+Each package lives in its own repository, with independent history, version, and README.
+Packages communicate through public contracts and hooks; no plugin reads another's
+database directly.
 
-## Arquitectura del ecosistema
+## Ecosystem architecture
 
 ```mermaid
 flowchart TB
-    subgraph foundation["1. Fundación"]
-        theme["vicunav-theme-core<br/>Presentación compartida"]
-        plugin["vicunav-plugin-core<br/>Capacidades base"]
+    subgraph foundation["1. Foundation"]
+        theme["vicunav-theme-core<br/>Shared presentation"]
+        plugin["vicunav-plugin-core<br/>Base capabilities"]
     end
 
-    subgraph payments["2. Motor de pagos"]
-        payment["vicunav-pagos<br/>Pagos independientes"]
+    subgraph payments["2. Payment engine"]
+        payment["vicunav-pagos<br/>Independent payments"]
     end
 
-    subgraph verticals["3. Verticales"]
-        hotel["vicunav-hotel<br/>Reservas"]
-        restaurant["vicunav-restaurante<br/>Pedidos"]
+    subgraph verticals["3. Verticals"]
+        hotel["vicunav-hotel<br/>Bookings"]
+        restaurant["vicunav-restaurante<br/>Orders"]
     end
 
     subgraph demos["4. Demos"]
@@ -36,55 +36,55 @@ flowchart TB
     theme --> restaurant
     plugin --> hotel
     plugin --> restaurant
-    payment -->|hooks públicos| hotel
-    payment -->|hooks públicos| restaurant
+    payment -->|public hooks| hotel
+    payment -->|public hooks| restaurant
     theme --> demo_hotel
     theme --> demo_restaurant
     hotel --> demo_hotel
     restaurant --> demo_restaurant
 ```
 
-Las capas separaron responsabilidades concretas:
+The layers separate concrete responsibilities:
 
-1. **Fundación:** `vicunav-theme-core` aportó patrones, tokens y templates de
-   presentación; `vicunav-plugin-core` concentró capacidades base compartidas. La lógica
-   de negocio no vivió en el theme.
-2. **Motor de pagos:** `vicunav-pagos` procesó pagos sin conocer reservas ni pedidos. Los
-   verticales lo declararon mediante `Requires Plugins` y reaccionaron a sus hooks
-   públicos. Un proyecto sin transacciones pudo omitirlo.
-3. **Verticales:** `vicunav-hotel` y `vicunav-restaurante` encapsularon respectivamente
-   reservas y pedidos, sin leer datos internos de otros plugins.
-4. **Demos:** `vicunav-demo-hotel` y `vicunav-demo-restaurante` integraron las capas en
-   sitios públicos de referencia.
+1. **Foundation:** `vicunav-theme-core` provides presentation patterns, tokens, and
+   templates; `vicunav-plugin-core` concentrates shared base capabilities. Business
+   logic does not live in the theme.
+2. **Payment engine:** `vicunav-pagos` processes payments without knowing about
+   bookings or orders. Verticals declare it through `Requires Plugins` and react to its
+   public hooks. A project without transactions can omit it.
+3. **Verticals:** `vicunav-hotel` and `vicunav-restaurante` encapsulate bookings and
+   orders respectively, without reading another plugin's internal data.
+4. **Demos:** `vicunav-demo-hotel` and `vicunav-demo-restaurante` integrate the layers
+   into public reference sites.
 
-Los repositorios de estándares, plantilla y documentación sostuvieron el desarrollo del
-ecosistema, pero no formaron parte de sus capas de ejecución.
+The standards, template, and documentation repositories support the ecosystem's
+development, but are not part of its execution layers.
 
-## Repositorios
+## Repositories
 
-| Repositorio | Propósito | Estado |
+| Repository | Purpose | Status |
 | --- | --- | --- |
-| [`vicunav-standards`](https://github.com/vicunav/vicunav-standards) | Estándares técnicos compartidos del ecosistema. | Disponible |
-| [`vicunav-repo-template`](https://github.com/vicunav/vicunav-repo-template) | Plantilla base para inicializar repositorios. | Disponible |
-| [`vicunav-hub`](https://github.com/vicunav/vicunav-hub) | Documentación de arquitectura y decisiones del ecosistema. | Disponible |
-| `vicunav-theme-core` | Patrones, tokens y templates de presentación compartidos. | Pendiente |
-| `vicunav-plugin-core` | Capacidades base compartidas por los plugins. | Pendiente |
-| `vicunav-pagos` | Motor de pagos independiente de los verticales. | Pendiente |
-| `vicunav-hotel` | Lógica del vertical hotelero y sus reservas. | Pendiente |
-| `vicunav-restaurante` | Lógica del vertical de restaurante y sus pedidos. | Pendiente |
-| `vicunav-demo-hotel` | Demostración pública del vertical hotelero. | Pendiente |
-| `vicunav-demo-restaurante` | Demostración pública del vertical de restaurante. | Pendiente |
+| [`vicunav-standards`](https://github.com/vicunav/vicunav-standards) | Shared technical standards for the ecosystem. | Available |
+| [`vicunav-repo-template`](https://github.com/vicunav/vicunav-repo-template) | Base template to bootstrap new repositories. | Available |
+| [`vicunav-hub`](https://github.com/vicunav/vicunav-hub) | Architecture and decision documentation for the ecosystem. | Available |
+| [`vicunav-theme-core`](https://github.com/vicunav/vicunav-theme-core) | Shared presentation patterns, tokens, and templates. | In progress |
+| `vicunav-plugin-core` | Base capabilities shared by the plugins. | Pending |
+| `vicunav-pagos` | Payment engine independent of the verticals. | Pending |
+| `vicunav-hotel` | Hotel vertical logic and its bookings. | Pending |
+| `vicunav-restaurante` | Restaurant vertical logic and its orders. | Pending |
+| `vicunav-demo-hotel` | Public demo of the hotel vertical. | Pending |
+| `vicunav-demo-restaurante` | Public demo of the restaurant vertical. | Pending |
 
-## Decisiones de arquitectura
+## Architecture decisions
 
-- [ADR 0001: Separación entre theme y plugins](docs/adr/0001-separacion-theme-plugins.md)
-- [ADR 0002: Pagos como motor independiente](docs/adr/0002-pagos-motor-independiente.md)
-- [ADR 0003: Contratos frontera y eventos](docs/adr/0003-contratos-y-eventos.md)
-- [ADR 0004: Estructura de repositorios](docs/adr/0004-estructura-de-repos.md)
-- [ADR 0005: ACF genuino solo para campos](docs/adr/0005-acf-genuino-solo-campos.md)
-- [ADR 0006: Restaurante primero](docs/adr/0006-restaurante-primero.md)
+- [ADR 0001: Separation between theme and plugins](docs/adr/0001-separacion-theme-plugins.md)
+- [ADR 0002: Payments as an independent engine](docs/adr/0002-pagos-motor-independiente.md)
+- [ADR 0003: Boundary contracts and events](docs/adr/0003-contratos-y-eventos.md)
+- [ADR 0004: Repository structure](docs/adr/0004-estructura-de-repos.md)
+- [ADR 0005: Genuine ACF for fields only](docs/adr/0005-acf-genuino-solo-campos.md)
+- [ADR 0006: Restaurant first](docs/adr/0006-restaurante-primero.md)
 
-## Licencia
+## License
 
-La documentación de este repositorio se distribuye bajo
+The documentation in this repository is distributed under
 [Creative Commons Attribution 4.0 International](LICENSE).
