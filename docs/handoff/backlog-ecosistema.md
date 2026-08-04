@@ -1,117 +1,110 @@
 # Backlog multirrepositorio de Vicunav
 
+Actualizado: 2026-08-04.
+
 ## Propósito
 
-Este archivo indexa el desarrollo restante y conserva el contexto que cruza
-repositorios. Cuando exista un issue en GitHub, ese issue es la fuente de su estado de
-ejecución; aquí solo se mantiene el orden, las dependencias y el enlace.
+Este archivo ordena únicamente el trabajo pendiente que cruza repositorios. Cuando
+exista un issue en GitHub, el issue será la fuente de su estado, alcance y aceptación.
+Los identificadores de esta tabla son referencias de planificación, no números de
+issue.
 
-## Reglas de atomicidad
+## Trabajo completado
 
-- Una entrada pertenece a un repositorio y produce un issue, una rama, un PR y un
-  squash-merge.
-- No agrupar cambios solo porque se solicitaron en la misma conversación.
-- Cada criterio de aceptación debe ser observable y cada validación debe existir.
-- Dependencias entre repositorios se expresan con enlaces, no mezclando alcances.
-- Antes de crear una entrada, buscar issues abiertos y cerrados para evitar duplicados
-  (verificado: 0 issues/PRs abiertos en los 4 repos existentes al momento de este
-  traspaso — no hay duplicados que evitar todavía).
-- Usar `por crear` únicamente cuando el repositorio o los permisos todavía no permitan
-  abrir el issue.
+| Repositorio | Resultado vigente |
+| --- | --- |
+| `vicunav-standards` | Siete estándares compartidos publicados; sin issues abiertos |
+| `vicunav-repo-template` | Template utilizable con submódulo, AGENTS, contribución, issue atómico y CI |
+| `vicunav-hub` | Seis ADRs, gobierno, estado y backlog consolidados |
+| `vicunav-theme-core` | Base 0.1.0 completa; issues 1 al 29 cerrados y sin PRs abiertos |
 
-## Índice priorizado
+Las antiguas tareas para diferenciar `vicunav-secondary` y corregir el CPT de
+`plantillas-verticales.md` ya están resueltas en los issues 27 y 29 de
+`vicunav-theme-core`.
 
-| Orden | Repositorio | Issue | Título | Estado | Depende de |
-| --- | --- | --- | --- | --- | --- |
-| 1 | `vicunav-theme-core` | Por crear | Corregir color `vicunav-secondary` duplicado | Sin bloqueos | Ninguna |
-| 2 | `vicunav-theme-core` | Por crear | Corregir CPT inventado en `plantillas-verticales.md` | Sin bloqueos | Ninguna |
-| 3 | *(org, decisión de usuario)* | N/A | Resolver política de idioma (revertir a español o ratificar bilingüe) | Bloqueado por decisión del usuario | Pregunta abierta #2 del estado |
-| 4 | `vicunav-plugin-core` | Por crear (repo no existe) | Bootstrap del repo desde el template | Sin bloqueos técnicos | 1 y 2 recomendado primero, no obligatorio |
-| 5 | `vicunav-plugin-core` | Por crear | Clase abstracta `Vicu\Core\PostType` | Depende de 4 |
-| 6 | `vicunav-plugin-core` | Por crear | CPT `vicu_faq` | Depende de 5 |
-| 7 | `vicunav-plugin-core` | Por crear | CPT `vicu_testimonial` | Depende de 5 |
-| 8 | `vicunav-plugin-core` | Por crear | `Vicu\Core\Settings` (usar claves ya fijadas: `phone`, `address`, `business_hours`) | Depende de 4 |
-| 9 | `vicunav-plugin-core` | Por crear | Menú "Vicunav" + `Settings::register_tab()` | Depende de 8 |
-| 10 | `vicunav-plugin-core` | Por crear | Helpers de seguridad | Depende de 4 |
-| 11 | `vicunav-plugin-core` | Por crear | Scaffolding REST (`vicu/v1`) | Depende de 4 |
-| 12 | `vicunav-pagos` | Por crear (repo no existe) | Bootstrap + CPT `vicu_payment_req` | Depende de 5, 10, 11 |
-| 13 | `vicunav-pagos` | Por crear | Máquina de estados + eventos | Depende de 12 |
-| 14 | `vicunav-restaurante` | Por crear (repo no existe) | Bootstrap + CPTs `vicu_menu_item`/`vicu_order` | Depende de 5, 13 |
-| 15 | `vicunav-hotel` | N/A | Spec interno de hotel | Diferido a propósito (ADR 0006) — no crear todavía |
+## Orden de ejecución
 
-Detalle completo de las tareas 4-14 (criterios de aceptación, validación exacta,
-riesgos): ya redactado en los documentos de planeación
-(`vicunav-plugin-core-issues.md`, `vicunav-pagos-contract.md`,
-`vicunav-restaurante-spec.md`) — Codex debe leerlos y convertirlos a issues reales de
-GitHub uno por uno, no inventar contenido nuevo para ellos.
+| Orden | ID | Repositorio | Trabajo | Depende de | Estado |
+| ---: | --- | --- | --- | --- | --- |
+| 1 | CORE-01 | `vicunav-plugin-core` | Crear el repositorio desde `vicunav-repo-template` | Ninguna | Siguiente |
+| 2 | CORE-02 | `vicunav-plugin-core` | Versionar contrato público y bootstrap técnico con pruebas | CORE-01 | Por crear |
+| 3 | CORE-03 | `vicunav-plugin-core` | Implementar `Vicu\Core\PostType` | CORE-02 | Por crear |
+| 4 | CORE-04 | `vicunav-plugin-core` | Registrar CPT `vicu_faq` | CORE-03 | Por crear |
+| 5 | CORE-05 | `vicunav-plugin-core` | Registrar CPT `vicu_testimonial` | CORE-03 | Por crear |
+| 6 | CORE-06 | `vicunav-plugin-core` | Implementar `Vicu\Core\Settings` | CORE-02 | Por crear |
+| 7 | CORE-07 | `vicunav-plugin-core` | Crear menú Vicunav y `Settings::register_tab()` | CORE-06 | Por crear |
+| 8 | CORE-08 | `vicunav-plugin-core` | Implementar helpers de seguridad | CORE-02 | Por crear |
+| 9 | CORE-09 | `vicunav-plugin-core` | Crear base REST bajo `vicu/v1` | CORE-02 | Por crear |
+| 10 | PAGOS-01 | `vicunav-pagos` | Crear repo, contrato y CPT `vicu_payment_req` | CORE-03, CORE-08, CORE-09 | Por crear |
+| 11 | PAGOS-02 | `vicunav-pagos` | Implementar estados, expiración y eventos públicos | PAGOS-01 | Por crear |
+| 12 | PAGOS-03 | `vicunav-pagos` | Implementar proveedor manual v1 | PAGOS-02 | Por crear |
+| 13 | REST-01 | `vicunav-restaurante` | Escribir spec durable y descomponerlo en issues | CORE-02, PAGOS-02 | Por crear |
+| 14 | REST-02 | `vicunav-restaurante` | Crear repo e implementar menú y pedidos | REST-01 | Por descomponer |
+| 15 | DEMO-REST-01 | `vicunav-demo-restaurante` | Versionar la composición del demo LocalWP | REST-02, PAGOS-03 | Por descomponer |
+| 16 | HOTEL-01 | `vicunav-hotel` | Escribir spec del vertical hotelero | DEMO-REST-01 | Diferido por ADR 0006 |
+| 17 | DEMO-HOTEL-01 | `vicunav-demo-hotel` | Crear la demo del vertical hotelero | HOTEL-01 | Diferido |
 
-## Ficha obligatoria — entradas 1 y 2 (las únicas sin bloqueos ahora mismo)
+## Siguiente issue: CORE-01
 
-### vicunav/vicunav-theme-core#N — Corregir color `vicunav-secondary` duplicado
+### Objetivo
 
-- Estado: por crear
-- Objetivo: que `vicunav-secondary` tenga un valor hexadecimal distinto de
-  `vicunav-neutral-700` en `theme.json`.
-- Motivo: ambos son actualmente `#475569` — el mismo pixel — lo cual anula el
-  propósito de tener un color secundario de marca distinguible de la escala neutral.
-- Dependencias: ninguna.
-- Fuente del requisito: revisión de Claude sobre el resultado real del lote de
-  issues 2-11 de `vicunav-theme-core`, nunca aplicada por Codex.
-- ADR o contrato aplicable: contrato de `theme-core`, sección de tokens.
-- Riesgos: ninguno, es placeholder.
+Crear el repositorio público `vicunav-plugin-core` desde
+`vicunav-repo-template`, sin introducir todavía lógica de negocio ni contratos
+incompletos.
 
-#### Alcance
+### Alcance
 
-- Cambiar el valor hex de `vicunav-secondary` en `theme.json` a cualquier valor
-  placeholder visualmente distinto de los 12 colores existentes.
+- Crear el repositorio bajo la organización Vicunav usando el template actual.
+- Clonarlo en `~/Documents/Codex/vicunav/vicunav-plugin-core`.
+- Sustituir los placeholders de `README.md` y `AGENTS.md` por el propósito real.
+- Conservar `CONTRIBUTING.md`, las plantillas de GitHub y el workflow de lint.
+- Inicializar `docs/standards/` en el commit vigente de `vicunav-standards`.
+- Confirmar la configuración de squash-merge y protección de `main` antes del primer
+  cambio funcional.
 
-#### Fuera de alcance
+### Fuera de alcance
 
-- Definir la paleta de marca final (eso ocurre en la sesión de diseño externa).
+- Registrar CPTs.
+- Implementar ajustes, endpoints REST o helpers.
+- Crear el repositorio de pagos.
+- Definir interfaces no confirmadas por el contrato actual.
 
-#### Criterios de aceptación
+### Criterios de aceptación
 
-- [ ] `vicunav-secondary` no coincide en valor hex con ningún otro slug de la paleta.
-- [ ] El README sigue marcando explícitamente que los colores son placeholder.
+- [ ] El repo existe en `github.com/vicunav/vicunav-plugin-core` y es público.
+- [ ] No quedan placeholders del template.
+- [ ] El README público está en inglés y explica el propósito del plugin.
+- [ ] La documentación interna está en español.
+- [ ] El submódulo de estándares apunta a su versión vigente.
+- [ ] La rama `main` solo admite squash-merge mediante pull request.
+- [ ] El working tree queda limpio después del merge.
 
-#### Validación
+### Validación
 
-- Inspección directa de `theme.json` comparando los 12 valores hex.
+- Inspeccionar la estructura local y la página pública del repositorio.
+- Ejecutar `git submodule status` y comprobar el commit esperado.
+- Buscar `{{` y `}}` en los archivos versionados; el resultado debe ser cero.
+- Confirmar en GitHub que no esté permitido hacer merge commits hacia `main`.
 
----
+## Pendientes que todavía requieren especificación
 
-### vicunav/vicunav-theme-core#N — Corregir CPT inventado en `plantillas-verticales.md`
+- El contrato de `vicunav-plugin-core` debe formalizar las firmas públicas antes de
+  implementar CORE-03 a CORE-09.
+- El contrato de pagos debe cerrar persistencia, transiciones, payloads de hooks,
+  expiración e idempotencia antes de PAGOS-02.
+- El dominio de restaurante todavía no tiene un spec durable versionado. REST-01 debe
+  definir estados del pedido, totales, disponibilidad, permisos, endpoints y pruebas
+  antes de crear issues de implementación.
+- La paleta final de marca sigue pendiente, pero no bloquea `plugin-core` ni pagos.
 
-- Estado: por crear
-- Objetivo: que el documento use un CPT real del ecosistema como ejemplo.
-- Motivo: usa `vicu_restaurant`, que no existe en ningún contrato ni spec; el real es
-  `vicu_menu_item` (spec de `vicunav-restaurante`).
-- Dependencias: ninguna.
-- Fuente del requisito: misma revisión que la entrada anterior, tampoco aplicada.
-- ADR o contrato aplicable: `naming.md` de `vicunav-standards` (cero nombres
-  inventados en documentación pública).
-- Riesgos: ninguno, es solo documentación.
+## Reglas de mantenimiento
 
-#### Alcance
-
-- Reemplazar todas las apariciones de `vicu_restaurant` por `vicu_menu_item` en el
-  documento: nombre de plantilla, código de ejemplo y texto.
-
-#### Fuera de alcance
-
-- Registrar la plantilla real (`vicunav-restaurante` no existe todavía).
-
-#### Criterios de aceptación
-
-- [ ] Cero apariciones de `vicu_restaurant` en el archivo.
-- [ ] El ejemplo sigue siendo técnicamente coherente con `register_block_template()`.
-
-#### Validación
-
-- `grep -c vicu_restaurant docs/plantillas-verticales.md` debe devolver `0`.
-
-## Trabajo descartado o sustituido
-
-- Orquestación Claude Code + Codex CLI (skill `codex-delegate`): explorada,
-  abandonada por decisión del usuario antes de usarse en producción. No hay ningún
-  issue ni código de esto en ningún repo — no hay nada que revertir.
+- Una entrada pertenece a un repositorio y se convierte en un issue, una rama, un PR y
+  un squash-merge.
+- No mezclar cambios de varios repositorios en el mismo commit.
+- Eliminar del backlog el detalle de una tarea cuando su issue se cierre; conservar
+  solo el resultado relevante en el estado canónico.
+- Añadir trabajo nuevo únicamente cuando tenga propietario, dependencia y aceptación
+  observables.
+- Actualizar este archivo y el estado al finalizar cada fase, no después de cada commit
+  interno.

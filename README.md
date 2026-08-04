@@ -66,14 +66,26 @@ development, but are not part of its execution layers.
 | --- | --- | --- |
 | [`vicunav-standards`](https://github.com/vicunav/vicunav-standards) | Shared technical standards for the ecosystem. | Available |
 | [`vicunav-repo-template`](https://github.com/vicunav/vicunav-repo-template) | Base template to bootstrap new repositories. | Available |
-| [`vicunav-hub`](https://github.com/vicunav/vicunav-hub) | Architecture and decision documentation for the ecosystem. | Available |
-| [`vicunav-theme-core`](https://github.com/vicunav/vicunav-theme-core) | Shared presentation patterns, tokens, and templates. | In progress |
-| `vicunav-plugin-core` | Base capabilities shared by the plugins. | Pending |
+| [`vicunav-hub`](https://github.com/vicunav/vicunav-hub) | Architecture, decisions, current state, and roadmap. | Active |
+| [`vicunav-theme-core`](https://github.com/vicunav/vicunav-theme-core) | Shared presentation patterns, tokens, and templates. | Foundation complete |
+| `vicunav-plugin-core` | Base capabilities shared by the plugins. | Next repository |
 | `vicunav-pagos` | Payment engine independent of the verticals. | Pending |
-| `vicunav-hotel` | Hotel vertical logic and its bookings. | Pending |
 | `vicunav-restaurante` | Restaurant vertical logic and its orders. | Pending |
-| `vicunav-demo-hotel` | Public demo of the hotel vertical. | Pending |
+| `vicunav-hotel` | Hotel vertical logic and its bookings. | Deferred by ADR 0006 |
 | `vicunav-demo-restaurante` | Public demo of the restaurant vertical. | Pending |
+| `vicunav-demo-hotel` | Public demo of the hotel vertical. | Pending |
+
+The next executable step is to create `vicunav-plugin-core` from the repository
+template. The [current state](docs/handoff/estado-ecosistema.md) explains what is
+already implemented, while the [ecosystem backlog](docs/handoff/backlog-ecosistema.md)
+defines the remaining order and dependencies.
+
+## Related projects outside the ecosystem
+
+[`vicunav-gutenberg`](https://github.com/vicunav/vicunav-gutenberg) migrates the
+current `vicunav.com` site from Elementor to Gutenberg FSE and serves as a practical
+test bed for refining that migration workflow. It is managed independently and is not
+one of the packages, verticals, or demos governed by this hub.
 
 ## Architecture decisions
 
@@ -84,12 +96,12 @@ development, but are not part of its execution layers.
 - [ADR 0005: Genuine ACF for fields only](docs/adr/0005-acf-genuino-solo-campos.md)
 - [ADR 0006: Restaurant first](docs/adr/0006-restaurante-primero.md)
 
-## Operación y continuidad
+## Governance and roadmap
 
-- [Estado canónico del ecosistema](docs/handoff/estado-ecosistema.md)
-- [Backlog multirrepositorio](docs/handoff/backlog-ecosistema.md)
-- [Prompt de cierre y traspaso para Claude](docs/handoff/prompt-cierre-claude.md)
-- [Política de modelos, tokens y Qwen](docs/ia/modelos-tokens-qwen.md)
+- [Decision and propagation workflow](docs/gobernanza.md)
+- [Canonical ecosystem state](docs/handoff/estado-ecosistema.md)
+- [Multi-repository backlog](docs/handoff/backlog-ecosistema.md)
+- [Model, token, and Qwen policy](docs/ia/modelos-tokens-qwen.md)
 
 ## License
 
