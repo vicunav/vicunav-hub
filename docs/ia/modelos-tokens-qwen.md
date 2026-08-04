@@ -47,17 +47,34 @@ No se repite el mismo aviso en cada mensaje: esa repetición también consume to
 
 ## MCP `qwen-bridge`
 
-### Estado verificado el 2026-08-03
+### Naturaleza global y disponibilidad
+
+- `qwen-bridge` es una herramienta global de Codex para ahorrar tokens en tareas
+  mecánicas, repetitivas y objetivamente verificables. No es un agente responsable de
+  un repositorio, una dependencia del producto ni una capacidad que cada proyecto deba
+  configurar para funcionar.
+- El modelo corre mediante Ollama en otra laptop. Esa laptop puede estar apagada o no
+  disponible, por lo que Qwen se usa como una optimización oportunista y nunca como un
+  requisito para completar una tarea.
+- Codex conserva la responsabilidad de delimitar el trabajo, revisar el resultado y
+  ejecutar las validaciones aplicables. Si Qwen no está disponible, continúa con el
+  modelo principal.
+- Las allowlists de escritura pueden restringirse por proyecto como control de
+  seguridad. Esas allowlists no convierten a Qwen en una configuración funcional ni en
+  parte de la arquitectura de ese repositorio.
+
+### Estado técnico verificado el 2026-08-03
 
 - El servidor está registrado globalmente y expone `ask_qwen_review`,
   `ask_qwen_apply` y `qwen_stats`.
 - Usa Ollama mediante un endpoint privado fuera de esta Mac con
   `qwen2.5-coder:7b`; no se publica la dirección de infraestructura.
-- La prueba de disponibilidad devolvió `fetch failed`; el host remoto estaba apagado
-  o inaccesible. No se hicieron reintentos.
+- Una prueba anterior devolvió `fetch failed`, resultado esperable cuando la laptop
+  remota está apagada o inaccesible. No se hicieron reintentos.
 - La escritura directa se deniega si el proyecto no define
   `QWEN_APPLY_ALLOWED_PATHS`. En `vicunav-gutenberg` existe una allowlist limitada a
-  borradores y evidencia generada; `vicunav-theme-core` no la habilita.
+  borradores y evidencia generada; esto es solo una frontera de seguridad para
+  `ask_qwen_apply`.
 - El registro consultado acumulaba 11 llamadas: cuatro archivos escritos, cuatro
   fallos de ruta/validación y tres borradores. El ahorro estimado de escritura directa
   era de unos 153 tokens; los borradores no garantizan ahorro porque el modelo
@@ -65,7 +82,8 @@ No se repite el mismo aviso en cada mensaje: esa repetición también consume to
 
 ### Uso autorizado
 
-- `ask_qwen_review`: borradores pequeños y verificables que necesitan inspección.
+- `ask_qwen_review`: borradores pequeños y verificables que necesitan inspección y
+  cuyo coste de revisión sea menor que redactarlos con el modelo principal.
 - `ask_qwen_apply`: lotes mecánicos dentro de una allowlist de áreas no ejecutables,
   con validador objetivo y revisión posterior del diff.
 - Si Qwen falla una vez por conexión, Codex sigue directamente y no vuelve a probarlo
@@ -94,4 +112,3 @@ los validadores y la escritura atómica.
 - [Guía oficial de GPT-5.6](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-5.6)
 - [Estado canónico del ecosistema](../handoff/estado-ecosistema.md)
 - [Backlog multirrepositorio](../handoff/backlog-ecosistema.md)
-- [Prompt de cierre para Claude](../handoff/prompt-cierre-claude.md)
