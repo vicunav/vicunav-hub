@@ -84,6 +84,13 @@ development, but are not part of its execution layers.
 - [ADR 0005: Genuine ACF for fields only](docs/adr/0005-acf-genuino-solo-campos.md)
 - [ADR 0006: Restaurant first](docs/adr/0006-restaurante-primero.md)
 
+## Operación y continuidad
+
+- [Estado canónico del ecosistema](docs/handoff/estado-ecosistema.md)
+- [Backlog multirrepositorio](docs/handoff/backlog-ecosistema.md)
+- [Prompt de cierre y traspaso para Claude](docs/handoff/prompt-cierre-claude.md)
+- [Política de modelos, tokens y Qwen](docs/ia/modelos-tokens-qwen.md)
+
 ## License
 
 The documentation in this repository is distributed under
