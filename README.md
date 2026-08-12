@@ -74,17 +74,18 @@ development, but are not part of its execution layers.
 | [`vicunav-hub`](https://github.com/vicunav/vicunav-hub) | Architecture, decisions, current state, and roadmap. | Active |
 | [`vicunav-theme-core`](https://github.com/vicunav/vicunav-theme-core) | Shared presentation patterns, tokens, and templates. | Foundation complete |
 | [`vicunav-plugin-core`](https://github.com/vicunav/vicunav-plugin-core) | Shared content, settings, security, and REST capabilities. | Foundation complete |
-| `vicunav-pagos` | Payment engine independent of the verticals. | Pending |
+| [`vicunav-pagos`](https://github.com/vicunav/vicunav-pagos) | Payment engine independent of the verticals. | Initial foundation complete |
 | `vicunav-restaurante` | Restaurant vertical logic and its orders. | Pending |
 | `vicunav-hotel` | Hotel vertical logic and its bookings. | Deferred by ADR 0006 |
 | `vicunav-demo-restaurante` | Public demo of the restaurant vertical. | Pending |
 | `vicunav-demo-hotel` | Public demo of the hotel vertical. | Pending |
 | `vicunav-demo-informativo` | Professional, non-transactional reference demo built on the shared theme. | Planned; Dra. Fortul is the private reference implementation |
 
-The next executable step is to create `vicunav-pagos` and version its public contract.
-The [current state](docs/handoff/estado-ecosistema.md) explains what is already
-implemented, while the [ecosystem backlog](docs/handoff/backlog-ecosistema.md) defines
-the remaining order and dependencies.
+The next executable step is to implement the payment state machine, expiration,
+idempotency, and public lifecycle events in `vicunav-pagos`. The
+[current state](docs/handoff/estado-ecosistema.md) explains what is already implemented,
+while the [ecosystem backlog](docs/handoff/backlog-ecosistema.md) defines the remaining
+order and dependencies.
 
 ## Related projects outside the ecosystem
 

@@ -16,9 +16,9 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
 
 ## Resumen actual
 
-- Los cinco repositorios públicos existentes del ecosistema están disponibles:
+- Los seis repositorios públicos existentes del ecosistema están disponibles:
   `vicunav-hub`, `vicunav-standards`, `vicunav-repo-template`,
-  `vicunav-theme-core` y `vicunav-plugin-core`.
+  `vicunav-theme-core`, `vicunav-plugin-core` y `vicunav-pagos`.
 - El repositorio privado de Dra. Fortul funciona como implementación de referencia
   local del futuro `vicunav-demo-informativo`; todavía no pertenece a la organización
   ni debe publicarse sin una decisión separada.
@@ -26,11 +26,12 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
   cerrados, incluidas las correcciones del color secundario y del CPT usado en la
   documentación de plantillas verticales.
 - La fase fundacional CORE-01 a CORE-09 de `vicunav-plugin-core` está terminada. El
-  plugin 0.1.0 implementa el contrato público 1.0.0 y no tiene issues ni pull requests
-  abiertos.
-- El siguiente repositorio que debe crearse es `vicunav-pagos`.
-- `vicunav-pagos`, `vicunav-restaurante`, `vicunav-hotel` y los tres repositorios
-  canónicos de demo todavía no existen en la organización.
+  plugin 0.1.0 implementa el contrato público 1.0.0, tiene publicada la release
+  `v0.1.0` y no tiene issues ni pull requests abiertos.
+- PAGOS-01 está terminado. `vicunav-pagos` 0.1.0 aporta bootstrap, contrato público,
+  CPT privado, metadatos, capabilities, REST administrativo protegido y pruebas.
+- `vicunav-restaurante`, `vicunav-hotel` y los tres repositorios canónicos de demo
+  todavía no existen en la organización.
 - `vicunav-gutenberg` pertenece a la organización Vicunav, pero es una migración
   independiente de `vicunav.com` y no forma parte de este ecosistema modular.
 
@@ -39,8 +40,9 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
 1. **Foundation:** `vicunav-theme-core` aporta presentación compartida y
    `vicunav-plugin-core` aporta contenido estructurado, ajustes, seguridad y REST. La
    lógica de negocio no vive en el theme.
-2. **Pagos:** `vicunav-pagos` será un motor opcional, independiente de reservas y
-   pedidos.
+2. **Pagos:** `vicunav-pagos` es un motor opcional, independiente de reservas y
+   pedidos. Su base está implementada; la máquina de estados y el proveedor manual
+   siguen pendientes.
 3. **Verticales:** `vicunav-restaurante` y `vicunav-hotel` serán propietarios de sus
    respectivos dominios y se comunicarán mediante contratos y hooks públicos.
 4. **Demos:** `vicunav-demo-informativo` validará la base sin capas transaccionales;
@@ -60,8 +62,8 @@ y contratos públicos.
 | `vicunav-repo-template` | Completo | Plantilla base, guía de agentes, contribución, issue atómico, CI y submódulo de estándares | Usarlo para crear los repositorios restantes |
 | `vicunav-hub` | Activo | Arquitectura, ADRs, gobierno, estado y backlog | Mantenerlo sincronizado al cerrar cada etapa |
 | `vicunav-theme-core` | Base 0.1.0 completa | Tokens, templates, partes, patrones y contrato de integración | Sustituir la identidad visual placeholder cuando exista la paleta final |
-| `vicunav-plugin-core` | Base 0.1.0 completa | Contrato 1.0.0, CPT compartidos, ajustes, administración, seguridad, REST y pruebas | Publicar `v0.1.0` cuando se autorice el primer release |
-| `vicunav-pagos` | No existe | Solicitudes de pago, estados, proveedor manual y eventos | Crear repositorio, contrato y CPT `vicu_payment_req` |
+| `vicunav-plugin-core` | Base 0.1.0 publicada | Release `v0.1.0`, contrato 1.0.0, CPT compartidos, ajustes, administración, seguridad, REST y pruebas | Añadir en el futuro una matriz runtime para WordPress 6.6 y PHP 8.1 |
+| `vicunav-pagos` | Base 0.1.0 completa | Contrato 0.1.0, CPT privado, referencia externa, monto, moneda, capabilities, REST protegido y pruebas | Ejecutar PAGOS-02: estados, idempotencia, expiración y eventos |
 | `vicunav-restaurante` | No existe | Menú, pedidos y reacción a eventos de pagos | Escribir el spec durable después de `plugin-core` y pagos |
 | `vicunav-hotel` | Diferido | Reservas y disponibilidad | Mantener diferido hasta completar restaurante, según ADR 0006 |
 | `vicunav-demo-restaurante` | Sitio local, sin repo | Integración real de theme, core, pagos y restaurante | Crear el repo cuando existan los paquetes que debe componer |
@@ -104,15 +106,20 @@ El contrato vigente está en
 
 ### `vicunav-pagos`
 
-- CPT `vicu_payment_req`.
-- Estados `pendiente`, `comprobante_subido`, `confirmado`, `rechazado` y `expirado`.
-- Proveedor manual en v1. La integración Mercantil queda para una versión posterior.
-- Referencia externa polimórfica para no conocer reservas ni pedidos.
-- Hooks `vicu_pagos_creado`, `vicu_pagos_confirmado`,
-  `vicu_pagos_rechazado` y `vicu_pagos_expirado`.
+- Contrato público 0.1.0 y plugin 0.1.0.
+- CPT privado `vicu_payment_req` con capabilities dedicadas.
+- Referencia externa polimórfica mediante tipo e identificador opaco.
+- Monto entero en unidad menor y moneda ISO 4217.
+- Colección REST administrativa protegida; no es una API de negocio entre plugins.
+- Estados `pendiente`, `comprobante_subido`, `confirmado`, `rechazado` y `expirado`
+  reservados para PAGOS-02.
+- Hooks `vicu_pagos_creado`, `vicu_pagos_confirmado`, `vicu_pagos_rechazado` y
+  `vicu_pagos_expirado` reservados y todavía no emitidos.
+- Proveedor manual reservado para PAGOS-03. La integración Mercantil queda para una
+  versión posterior.
 
-El contrato de pagos debe versionarse en su repositorio antes de que un vertical lo
-consuma.
+El contrato vigente está en
+[`docs/contrato-publico.md`](https://github.com/vicunav/vicunav-pagos/blob/main/docs/contrato-publico.md).
 
 ## Decisiones vigentes
 
@@ -143,8 +150,9 @@ consuma.
 
 ## Qué falta
 
-1. Crear `vicunav-pagos` y cerrar su contrato antes de escribir los verticales.
-2. Implementar estados, eventos y proveedor manual de pagos.
+1. Implementar estados, transiciones atómicas, idempotencia, expiración y eventos de
+   pagos en PAGOS-02.
+2. Implementar el proveedor manual de pagos en PAGOS-03.
 3. Redactar un spec durable de restaurante y convertirlo en issues atómicos.
 4. Implementar restaurante y publicar su demo.
 5. Sustituir la paleta placeholder del theme cuando termine la decisión de marca.
@@ -155,7 +163,7 @@ consuma.
    el repositorio público `vicunav-demo-informativo`.
 9. Añadir una matriz runtime específica para WordPress 6.6 y PHP 8.1 a
    `vicunav-plugin-core`; la cobertura actual usa versiones más recientes y no bloquea
-   `PAGOS-01`.
+   `PAGOS-02`.
 
 La única siguiente acción ejecutable está detallada en el
 [`backlog`](backlog-ecosistema.md).
