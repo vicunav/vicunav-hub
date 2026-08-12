@@ -17,7 +17,8 @@ issue.
 | `vicunav-repo-template` | Template utilizable con submódulo, AGENTS, contribución, issue atómico y CI |
 | `vicunav-hub` | Siete ADRs, gobierno, estado y backlog consolidados |
 | `vicunav-theme-core` | Base 0.1.0 completa; issues 1 al 29 cerrados y sin PRs abiertos |
-| `vicunav-plugin-core` | Fase fundacional CORE-01 a CORE-09 completa; contrato 1.0.0 y plugin 0.1.0 verificados |
+| `vicunav-plugin-core` | Fase fundacional CORE-01 a CORE-09 completa; contrato 1.0.0, plugin 0.1.0 y release `v0.1.0` publicados |
+| `vicunav-pagos` | PAGOS-01 completo; repo público, contrato 0.1.0, CPT `vicu_payment_req`, metadatos, capabilities, REST protegido, pruebas y CI |
 | Referencia privada de `vicunav-demo-informativo` | Dra. Fortul conserva estrategia y contenido; WordPress local quedó limpio y consume `vicunav-theme-core` |
 
 Las antiguas tareas para diferenciar `vicunav-secondary` y corregir el CPT de
@@ -28,18 +29,17 @@ Las antiguas tareas para diferenciar `vicunav-secondary` y corregir el CPT de
 
 | Orden | ID | Repositorio | Trabajo | Depende de | Estado |
 | ---: | --- | --- | --- | --- | --- |
-| 1 | PAGOS-01 | `vicunav-pagos` | Crear repositorio, contrato y CPT `vicu_payment_req` | CORE-03, CORE-08, CORE-09 | Siguiente |
-| 2 | PAGOS-02 | `vicunav-pagos` | Implementar estados, expiración y eventos públicos | PAGOS-01 | Por crear |
-| 3 | PAGOS-03 | `vicunav-pagos` | Implementar proveedor manual v1 | PAGOS-02 | Por crear |
-| 4 | REST-01 | `vicunav-restaurante` | Escribir spec durable y descomponerlo en issues | CORE-02, PAGOS-02 | Por crear |
-| 5 | REST-02 | `vicunav-restaurante` | Crear repo e implementar menú y pedidos | REST-01 | Por descomponer |
-| 6 | DEMO-REST-01 | `vicunav-demo-restaurante` | Versionar la composición del demo LocalWP | REST-02, PAGOS-03 | Por descomponer |
-| 7 | HOTEL-01 | `vicunav-hotel` | Escribir spec del vertical hotelero | DEMO-REST-01 | Diferido por ADR 0006 |
-| 8 | DEMO-HOTEL-01 | `vicunav-demo-hotel` | Crear la demo del vertical hotelero | HOTEL-01 | Diferido |
+| 1 | PAGOS-02 | `vicunav-pagos` | Implementar estados, idempotencia, expiración y eventos públicos | PAGOS-01 | Siguiente |
+| 2 | PAGOS-03 | `vicunav-pagos` | Implementar proveedor manual v1 | PAGOS-02 | Por crear |
+| 3 | REST-01 | `vicunav-restaurante` | Escribir spec durable y descomponerlo en issues | CORE-02, PAGOS-02 | Por crear |
+| 4 | REST-02 | `vicunav-restaurante` | Crear repo e implementar menú y pedidos | REST-01 | Por descomponer |
+| 5 | DEMO-REST-01 | `vicunav-demo-restaurante` | Versionar la composición del demo LocalWP | REST-02, PAGOS-03 | Por descomponer |
+| 6 | HOTEL-01 | `vicunav-hotel` | Escribir spec del vertical hotelero | DEMO-REST-01 | Diferido por ADR 0006 |
+| 7 | DEMO-HOTEL-01 | `vicunav-demo-hotel` | Crear la demo del vertical hotelero | HOTEL-01 | Diferido |
 
 ## Pista paralela de diseño
 
-Esta pista no bloquea PAGOS-01. Comienza cuando cada paquete visual haya sido aprobado
+Esta pista no bloquea PAGOS-02. Comienza cuando cada paquete visual haya sido aprobado
 y adjuntado a su repositorio o proyecto de referencia.
 
 | ID | Repositorio | Trabajo | Depende de | Estado |
@@ -50,55 +50,61 @@ y adjuntado a su repositorio o proyecto de referencia.
 | DESIGN-REST-01 | Varios | Auditar el diseño aprobado de restaurante y separar presentación, plugin core, pagos, dominio y composición | Handoff aprobado | Esperando diseño |
 | DESIGN-HOTEL-01 | Varios | Auditar el diseño aprobado de hotel y separar presentación, plugin core, pagos, dominio y composición | Handoff aprobado | Esperando diseño |
 
-## Siguiente issue: PAGOS-01
+## Siguiente issue: PAGOS-02
 
 ### Objetivo
 
-Crear el repositorio público `vicunav-pagos`, versionar su contrato inicial e
-implementar el CPT `vicu_payment_req` sobre las capacidades publicadas por
-`vicunav-plugin-core`.
+Implementar el ciclo de vida de las solicitudes de pago sobre la base publicada por
+PAGOS-01, con creación idempotente, transiciones atómicas, expiración determinista y
+eventos públicos emitidos después de persistir cada cambio.
 
 ### Alcance
 
-- Crear el repositorio bajo la organización Vicunav usando el template vigente.
-- Clonarlo en `~/Documents/Codex/vicunav/vicunav-pagos`.
-- Definir el contrato del CPT `vicu_payment_req` y su referencia externa polimórfica.
-- Definir las fronteras con `vicunav-plugin-core` y los futuros verticales.
-- Incorporar bootstrap, pruebas y CI reproducibles antes de implementar transiciones.
-- Registrar el CPT con capabilities y exposición REST coherentes con el contrato.
+- Versionar la persistencia de estados y las reglas de transición ya reservadas.
+- Publicar un servicio de creación idempotente basado en la referencia externa.
+- Definir el error contractual para una colisión de clave con datos incompatibles.
+- Persistir transiciones de forma atómica y rechazar cambios inválidos o concurrentes.
+- Implementar expiración repetible sin duplicar efectos.
+- Versionar el payload de los hooks de creación, confirmación, rechazo y expiración.
+- Emitir cada hook únicamente después de confirmar la persistencia.
+- Mantener el REST administrativo protegido y la frontera entre plugins en servicios
+  y eventos públicos.
 
 ### Fuera de alcance
 
-- Implementar la máquina de estados completa.
-- Implementar expiración o idempotencia operativa.
-- Implementar eventos de confirmación, rechazo o expiración.
 - Implementar el proveedor manual o la integración Mercantil.
 - Implementar lógica de pedidos o reservas.
+- Implementar checkout, subida de comprobantes o interfaz visual de un vertical.
+- Modificar `vicunav-plugin-core` salvo que aparezca un bloqueo contractual separado.
 
 ### Criterios de aceptación
 
-- [ ] El repo existe en `github.com/vicunav/vicunav-pagos` y es público.
-- [ ] No quedan placeholders del template.
-- [ ] El README público está en inglés y explica responsabilidades y límites.
-- [ ] La documentación interna está en español.
-- [ ] El submódulo de estándares apunta a su versión vigente.
-- [ ] El contrato documenta persistencia, referencia externa, permisos y REST.
-- [ ] `vicu_payment_req` se registra y cuenta con pruebas.
-- [ ] El plugin se activa y desactiva sin errores en WordPress.
-- [ ] La rama `main` solo admite squash-merge mediante pull request.
-- [ ] El working tree queda limpio después del merge.
+- [ ] Repetir una creación con la misma referencia y los mismos datos devuelve la
+  misma solicitud sin duplicarla.
+- [ ] Reutilizar la referencia con datos incompatibles produce un error explícito sin
+  mutación parcial.
+- [ ] Una transición permitida persiste el estado una sola vez y emite un único evento
+  con payload versionado.
+- [ ] Una transición inválida, terminal o concurrente no modifica estado ni emite
+  eventos.
+- [ ] La expiración puede reintentarse sin duplicar efectos.
+- [ ] Los consumidores no necesitan leer post meta ni clases internas.
+- [ ] Roles sin capabilities siguen sin acceder a la colección REST administrativa.
+- [ ] El contrato, README, pruebas y versión del plugin describen la misma superficie.
+- [ ] El plugin se activa y desactiva sin errores en WordPress real.
+- [ ] CI pasa y el working tree queda limpio después del squash-merge.
 
 ### Validación
 
-- Ejecutar lint, WPCS, PHPCompatibilityWP y pruebas automatizadas.
-- Verificar activación real y registro del CPT en WordPress.
-- Validar REST y permisos contra el contrato aprobado.
-- Inspeccionar la estructura local, el submódulo y la configuración pública del repo.
+- Ejecutar lint, WPCS, PHPCompatibilityWP y la suite completa.
+- Cubrir cada transición, estados terminales, colisiones, reintentos y orden de eventos.
+- Verificar activación real y un flujo E2E de creación y transición en WordPress.
+- Validar que los fallos no dejen persistencia parcial ni hooks duplicados.
 
 ## Pendientes que todavía requieren especificación
 
-- El contrato de pagos debe cerrar persistencia, transiciones, payloads de hooks,
-  expiración e idempotencia antes de PAGOS-02.
+- PAGOS-02 debe cerrar persistencia, transiciones, payloads de hooks, expiración e
+  idempotencia antes de que un vertical consuma pagos.
 - El dominio de restaurante todavía no tiene un spec durable versionado. REST-01 debe
   definir estados del pedido, totales, disponibilidad, permisos, endpoints y pruebas
   antes de crear issues de implementación.
