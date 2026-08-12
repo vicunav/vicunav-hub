@@ -31,3 +31,7 @@ caracteres de los post types de WordPress.
 Cada repositorio obtuvo su propio historial, versión y README. Esta distribución exigía
 más disciplina de mantenimiento a cambio de una separación y una presentación más
 claras.
+
+La incorporación posterior de `vicunav-demo-informativo` amplía este mapa sin cambiar
+la separación original. Su alcance y relación con la implementación privada de Dra.
+Fortul se definen en el [ADR 0007](0007-demo-informativo-theme-base.md).
