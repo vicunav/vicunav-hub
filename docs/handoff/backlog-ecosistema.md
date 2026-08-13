@@ -1,6 +1,6 @@
 # Backlog multirrepositorio de Vicunav
 
-Actualizado: 2026-08-12.
+Actualizado: 2026-08-13.
 
 ## Propósito
 
@@ -15,7 +15,8 @@ issue.
 | --- | --- |
 | `vicunav-standards` | Siete estándares compartidos publicados; sin issues abiertos |
 | `vicunav-repo-template` | Template utilizable con submódulo, AGENTS, contribución, issue atómico y CI |
-| `vicunav-hub` | Siete ADRs, gobierno, estado y backlog consolidados |
+| `vicunav-hub` | Ocho ADRs, gobierno, estado y backlog consolidados |
+| `vicunav-transform-claude-to-gutenberg` | Skill 0.1.0 público con auditor de proyectos frontend, validador FSE, pruebas, CI y flujo seguro para LocalWP |
 | `vicunav-theme-core` | Base 0.1.0 completa; issues 1 al 29 cerrados y sin PRs abiertos |
 | `vicunav-plugin-core` | Fase fundacional CORE-01 a CORE-09 completa; contrato 1.0.0, plugin 0.1.0 y release `v0.1.0` publicados |
 | `vicunav-pagos` | PAGOS-01 completo; repo público, contrato 0.1.0, CPT `vicu_payment_req`, metadatos, capabilities, REST protegido, pruebas y CI |
@@ -40,7 +41,9 @@ Las antiguas tareas para diferenciar `vicunav-secondary` y corregir el CPT de
 ## Pista paralela de diseño
 
 Esta pista no bloquea PAGOS-02. Comienza cuando cada paquete visual haya sido aprobado
-y adjuntado a su repositorio o proyecto de referencia.
+y adjuntado a su repositorio o proyecto de referencia. Las auditorías de prototipos se
+ejecutan con `transform-claude-to-gutenberg`, sin convertir el skill en una dependencia
+de los repositorios resultantes.
 
 | ID | Repositorio | Trabajo | Depende de | Estado |
 | --- | --- | --- | --- | --- |

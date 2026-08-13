@@ -1,6 +1,6 @@
 # Estado canónico del ecosistema Vicunav
 
-Actualizado: 2026-08-12.
+Actualizado: 2026-08-13.
 
 ## Cómo usar este documento
 
@@ -16,9 +16,10 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
 
 ## Resumen actual
 
-- Los seis repositorios públicos existentes del ecosistema están disponibles:
+- Los siete repositorios públicos existentes del ecosistema están disponibles:
   `vicunav-hub`, `vicunav-standards`, `vicunav-repo-template`,
-  `vicunav-theme-core`, `vicunav-plugin-core` y `vicunav-pagos`.
+  `vicunav-transform-claude-to-gutenberg`, `vicunav-theme-core`,
+  `vicunav-plugin-core` y `vicunav-pagos`.
 - El repositorio privado de Dra. Fortul funciona como implementación de referencia
   local del futuro `vicunav-demo-informativo`; todavía no pertenece a la organización
   ni debe publicarse sin una decisión separada.
@@ -34,6 +35,9 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
   todavía no existen en la organización.
 - `vicunav-gutenberg` pertenece a la organización Vicunav, pero es una migración
   independiente de `vicunav.com` y no forma parte de este ecosistema modular.
+- `vicunav-transform-claude-to-gutenberg` publica el skill y los validadores que
+  traducen prototipos aprobados a block themes FSE. Es tooling de desarrollo y no una
+  dependencia de runtime.
 
 ## Arquitectura vigente
 
@@ -61,6 +65,7 @@ y contratos públicos.
 | `vicunav-standards` | Completo | Seguridad, nombres, Git, accesibilidad, compatibilidad, pruebas e idioma | Mantener las normas cuando una decisión transversal cambie |
 | `vicunav-repo-template` | Completo | Plantilla base, guía de agentes, contribución, issue atómico, CI y submódulo de estándares | Usarlo para crear los repositorios restantes |
 | `vicunav-hub` | Activo | Arquitectura, ADRs, gobierno, estado y backlog | Mantenerlo sincronizado al cerrar cada etapa |
+| `vicunav-transform-claude-to-gutenberg` | Base 0.1.0 publicada | Skill portable, auditor de proyectos frontend, validador FSE, referencias de LocalWP y QA, pruebas y CI | Usarlo cuando exista un diseño aprobado y refinarlo con evidencia de migraciones reales |
 | `vicunav-theme-core` | Base 0.1.0 completa | Tokens, templates, partes, patrones y contrato de integración | Sustituir la identidad visual placeholder cuando exista la paleta final |
 | `vicunav-plugin-core` | Base 0.1.0 publicada | Release `v0.1.0`, contrato 1.0.0, CPT compartidos, ajustes, administración, seguridad, REST y pruebas | Añadir en el futuro una matriz runtime para WordPress 6.6 y PHP 8.1 |
 | `vicunav-pagos` | Base 0.1.0 completa | Contrato 0.1.0, CPT privado, referencia externa, monto, moneda, capabilities, REST protegido y pruebas | Ejecutar PAGOS-02: estados, idempotencia, expiración y eventos |
@@ -131,6 +136,8 @@ El contrato vigente está en
 - Restaurante se construye antes que hotel: ADR 0006.
 - Dra. Fortul valida `vicunav-theme-core` como referencia del demo informativo: ADR
   0007.
+- El skill de Claude Code a Gutenberg vive en un repositorio de tooling separado y no
+  forma parte del runtime: ADR 0008.
 - Los README y superficies públicas se escriben en inglés; la documentación interna y
   los comentarios de código se escriben en español.
 - Qwen es una herramienta global y opcional para trabajo mecánico verificable. No es
@@ -139,6 +146,8 @@ El contrato vigente está en
 ## Entorno local
 
 - Raíz de repositorios: `~/Documents/Codex/vicunav/`.
+- `vicunav-transform-claude-to-gutenberg` es la fuente local canónica del skill y su
+  directorio se enlaza al inventario personal de Codex mediante symlink.
 - LocalWP: `vicunav-demo-restaurante.local`, usado para verificar el theme y los
   paquetes futuros.
 - `vicunav-theme-core` está enlazado al sitio LocalWP mediante symlink.
