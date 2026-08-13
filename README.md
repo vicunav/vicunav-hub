@@ -62,8 +62,8 @@ The layers separate concrete responsibilities:
    `vicunav-demo-restaurante` integrate the foundation with their corresponding
    verticals. A demo composes only the layers it needs.
 
-The standards, template, and documentation repositories support the ecosystem's
-development, but are not part of its execution layers.
+The standards, template, documentation, and migration-tooling repositories support
+the ecosystem's development, but are not part of its execution layers.
 
 ## Repositories
 
@@ -72,6 +72,7 @@ development, but are not part of its execution layers.
 | [`vicunav-standards`](https://github.com/vicunav/vicunav-standards) | Shared technical standards for the ecosystem. | Available |
 | [`vicunav-repo-template`](https://github.com/vicunav/vicunav-repo-template) | Base template to bootstrap new repositories. | Available |
 | [`vicunav-hub`](https://github.com/vicunav/vicunav-hub) | Architecture, decisions, current state, and roadmap. | Active |
+| [`vicunav-transform-claude-to-gutenberg`](https://github.com/vicunav/vicunav-transform-claude-to-gutenberg) | Agent skill for translating approved Claude Code prototypes into native Gutenberg FSE themes. | Available |
 | [`vicunav-theme-core`](https://github.com/vicunav/vicunav-theme-core) | Shared presentation patterns, tokens, and templates. | Foundation complete |
 | [`vicunav-plugin-core`](https://github.com/vicunav/vicunav-plugin-core) | Shared content, settings, security, and REST capabilities. | Foundation complete |
 | [`vicunav-pagos`](https://github.com/vicunav/vicunav-pagos) | Payment engine independent of the verticals. | Initial foundation complete |
@@ -86,6 +87,14 @@ idempotency, and public lifecycle events in `vicunav-pagos`. The
 [current state](docs/handoff/estado-ecosistema.md) explains what is already implemented,
 while the [ecosystem backlog](docs/handoff/backlog-ecosistema.md) defines the remaining
 order and dependencies.
+
+## Development tooling
+
+[`vicunav-transform-claude-to-gutenberg`](https://github.com/vicunav/vicunav-transform-claude-to-gutenberg)
+provides a reusable Agent Skill and deterministic validators for moving an approved
+React, Next.js, Vite, HTML, or CSS prototype into an editable WordPress block theme.
+It supports the design tracks for the demos without becoming a runtime dependency of
+their themes, plugins, or published sites.
 
 ## Related projects outside the ecosystem
 
@@ -103,6 +112,7 @@ one of the packages, verticals, or demos governed by this hub.
 - [ADR 0005: Genuine ACF for fields only](docs/adr/0005-acf-genuino-solo-campos.md)
 - [ADR 0006: Restaurant first](docs/adr/0006-restaurante-primero.md)
 - [ADR 0007: Informational demo on the shared foundation](docs/adr/0007-demo-informativo-theme-base.md)
+- [ADR 0008: Claude Code to Gutenberg migration skill](docs/adr/0008-skill-claude-gutenberg.md)
 
 ## Governance and roadmap
 
