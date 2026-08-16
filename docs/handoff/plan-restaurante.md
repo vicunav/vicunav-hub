@@ -208,7 +208,15 @@ CI. El resultado es el plugin 0.7.0 con schema 4, zonas, descuentos, propinas,
 revisión de pricing, compare-and-swap y totales autoritativos con redondeo en unidad
 menor, sin carrito ni contenido de demo.
 
-`REST-02H` es la siguiente unidad del camino principal: implementar sesiones seguras,
-carritos y líneas persistentes, expiración, REST, CSRF e idempotencia por revisión.
+REST-02H quedó completado: el
+[issue 15](https://github.com/vicunav/vicunav-restaurante/issues/15) se cerró mediante
+el [PR 16](https://github.com/vicunav/vicunav-restaurante/pull/16), después de pasar
+CI. El resultado es el plugin 0.8.0 con schema 5, sesiones hasheadas, ownership
+anónimo o autenticado, líneas de menú y pizza, expiración, REST privado, CSRF,
+compare-and-swap y recálculo completo, sin pedidos ni contenido de demo.
+
+`REST-02I` es la siguiente unidad del camino principal: implementar checkout
+transaccional, snapshots inmutables, `vicu_order`, máquina de estados, eventos y
+wp-admin de pedidos.
 `THEME-REST-01` permanece como pista paralela independiente, pero no reemplaza el orden
 del runtime.
