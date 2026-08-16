@@ -39,8 +39,9 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
   demo en issues atómicos. No se implementó WordPress ni se modificó LocalWP.
 - REST-02A creó `vicunav-restaurante` desde la plantilla canónica. REST-02B publicó el
   contrato 1.0.0 y REST-02C elevó el plugin a 0.3.0 con capabilities, instalación
-  idempotente y un ledger InnoDB versionado. Todavía no contiene datos ni lógica de
-  dominio y no se instaló en LocalWP.
+  idempotente y un ledger InnoDB versionado. REST-02D publicó el plugin 0.4.0 con menú
+  estructurado, administración nativa, IDs opacos y REST cacheable. No contiene datos
+  Bonasera y no se instaló en LocalWP.
 - `vicunav-hotel` y los tres repositorios canónicos de demo todavía no existen en la
   organización.
 - `vicunav-gutenberg` pertenece a la organización Vicunav, pero es una migración
@@ -81,7 +82,7 @@ y contratos públicos.
 | `vicunav-theme-core` | Base 0.1.0 completa | Tokens, templates, partes, patrones y contrato de integración | Sustituir la identidad visual placeholder cuando exista la paleta final |
 | `vicunav-plugin-core` | Base 0.1.0 publicada | Release `v0.1.0`, contrato 1.0.0, CPT compartidos, ajustes, administración, seguridad, REST y pruebas | Añadir en el futuro una matriz runtime para WordPress 6.6 y PHP 8.1 |
 | `vicunav-pagos` | Motor 0.3.0 completo | Contrato 0.3.0, CPT y REST protegidos, persistencia InnoDB versionada, servicios idempotentes, proveedor manual v1, máquina de estados atómica, expiración y hooks con payload 1.0.0 | Mantener su contrato; integrar consumidores mediante servicios y eventos públicos |
-| `vicunav-restaurante` | Base 0.3.0 y contrato 1.0.0; REST-02A a REST-02C completos | Plugin instalable con autoload, comprobación de dependencias, capabilities y migraciones fundacionales; será propietario de menú, ingredientes, pizzas, carrito, pedidos, totales, delivery, reservas y reacción idempotente a pagos, sin WooCommerce | Ejecutar REST-02D: menú estructurado y lecturas REST cacheables |
+| `vicunav-restaurante` | Menú 0.4.0 y contrato 1.0.0; REST-02A a REST-02D completos | Plugin con instalación versionada, `vicu_menu_item`, categorías, meta operativo, wp-admin y REST público cacheable; será propietario de ingredientes, pizzas, carrito, pedidos, totales, delivery, reservas y reacción idempotente a pagos, sin WooCommerce | Ejecutar REST-02E: ingredientes, opciones de pizza y disponibilidad revisada |
 | `vicunav-hotel` | Diferido | Reservas y disponibilidad | Mantener diferido hasta completar restaurante, según ADR 0006 |
 | `vicunav-demo-restaurante` | Sitio local detenido, sin repo | Contenido Bonasera y composición FSE sobre theme, core, pagos y restaurante | Crear el repo en DEMO-REST-01A cuando REST-02R y THEME-REST-03 terminen |
 | `vicunav-demo-hotel` | No existe | Demostración del vertical hotelero | Esperar la implementación de hotel |
@@ -125,6 +126,11 @@ El detalle versionado del contrato está en
   [PR 6](https://github.com/vicunav/vicunav-restaurante/pull/6). Publica plugin 0.3.0,
   capabilities exclusivas, un ledger InnoDB versionado y una instalación idempotente
   con compensación de fallos, sin crear tablas ni registros de dominio.
+- REST-02D fusionado mediante el
+  [issue 7](https://github.com/vicunav/vicunav-restaurante/issues/7) y el
+  [PR 8](https://github.com/vicunav/vicunav-restaurante/pull/8). Publica plugin 0.4.0,
+  `vicu_menu_item`, categorías, meta contractual, administración nativa, IDs públicos
+  opacos y lecturas REST con revisión, object cache y `ETag`, sin contenido Bonasera.
 - Propietario futuro de menú, disponibilidad, pizza builder, carrito, pedidos, pricing,
   delivery, reservas, bloques dinámicos y administración del vertical.
 - Dinero en unidad menor, totales calculados en servidor, estados y escrituras con
@@ -217,7 +223,7 @@ El contrato vigente está en
 
 ## Qué falta
 
-1. Ejecutar REST-02D a REST-02R en `vicunav-restaurante` según el
+1. Ejecutar REST-02E a REST-02R en `vicunav-restaurante` según el
    [plan atómico](plan-restaurante.md).
 2. Ejecutar THEME-REST-01 a THEME-REST-03 sin sustituir defaults globales del theme.
 3. Crear y validar el demo mediante DEMO-REST-01A a DEMO-REST-01D.
@@ -230,5 +236,5 @@ El contrato vigente está en
    `vicunav-plugin-core`; la cobertura actual usa versiones más recientes y no bloquea
    `REST-01`.
 
-La siguiente acción del camino principal es REST-02D. THEME-REST-01 puede avanzar como
+La siguiente acción del camino principal es REST-02E. THEME-REST-01 puede avanzar como
 pista paralela. Ambas están detalladas en el [`backlog`](backlog-ecosistema.md).

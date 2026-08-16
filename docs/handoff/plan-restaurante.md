@@ -181,6 +181,13 @@ el [PR 6](https://github.com/vicunav/vicunav-restaurante/pull/6), después de pa
 El resultado es el plugin 0.3.0 con capabilities, ledger InnoDB, migraciones
 versionadas e instalación idempotente, todavía sin datos de dominio.
 
-`REST-02D` es la siguiente unidad del camino principal: implementar el menú
-estructurado, su administración y lecturas REST cacheables. `THEME-REST-01` permanece
-como pista paralela independiente, pero no reemplaza el orden del runtime.
+REST-02D quedó completado: el
+[issue 7](https://github.com/vicunav/vicunav-restaurante/issues/7) se cerró mediante
+el [PR 8](https://github.com/vicunav/vicunav-restaurante/pull/8), después de pasar CI.
+El resultado es el plugin 0.4.0 con menú estructurado, administración nativa, IDs
+opacos y REST cacheable, sin ingredientes ni contenido de demo.
+
+`REST-02E` es la siguiente unidad del camino principal: implementar el catálogo
+canónico de ingredientes, opciones de pizza y disponibilidad revisada.
+`THEME-REST-01` permanece como pista paralela independiente, pero no reemplaza el orden
+del runtime.
