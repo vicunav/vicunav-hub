@@ -47,7 +47,9 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
   entrega, descuentos, propinas y totales autoritativos con revisión. No contiene
   datos Bonasera y no se instaló en LocalWP. REST-02H publicó el plugin 0.8.0 con
   sesiones hasheadas, carrito persistente, ownership, CSRF, compare-and-swap,
-  expiración y recálculo completo.
+  expiración y recálculo completo. REST-02I publicó el plugin 0.9.0 y schema 6 con
+  checkout transaccional, snapshots inmutables, pedidos idempotentes, estados,
+  eventos y proyección administrativa.
 - `vicunav-hotel` y los tres repositorios canónicos de demo todavía no existen en la
   organización.
 - `vicunav-gutenberg` pertenece a la organización Vicunav, pero es una migración
@@ -88,7 +90,7 @@ y contratos públicos.
 | `vicunav-theme-core` | Base 0.1.0 completa | Tokens, templates, partes, patrones y contrato de integración | Sustituir la identidad visual placeholder cuando exista la paleta final |
 | `vicunav-plugin-core` | Base 0.1.0 publicada | Release `v0.1.0`, contrato 1.0.0, CPT compartidos, ajustes, administración, seguridad, REST y pruebas | Añadir en el futuro una matriz runtime para WordPress 6.6 y PHP 8.1 |
 | `vicunav-pagos` | Motor 0.3.0 completo | Contrato 0.3.0, CPT y REST protegidos, persistencia InnoDB versionada, servicios idempotentes, proveedor manual v1, máquina de estados atómica, expiración y hooks con payload 1.0.0 | Mantener su contrato; integrar consumidores mediante servicios y eventos públicos |
-| `vicunav-restaurante` | Carrito seguro 0.8.0 y contrato 1.0.0; REST-02A a REST-02H completos | Plugin con comercio base, sesiones seguras, ownership, líneas, expiración, REST privado, CAS y totales autoritativos; será propietario de pedidos, reservas y reacción idempotente a pagos, sin WooCommerce | Ejecutar REST-02I: checkout transaccional, pedido y estados |
+| `vicunav-restaurante` | Pedidos 0.9.0 y contrato 1.0.0; REST-02A a REST-02I completos | Plugin con comercio base, carrito, checkout, snapshots, pedidos, eventos y estado operativo; será propietario de reservas y reacción idempotente a pagos, sin WooCommerce | Ejecutar REST-02J: integración pública con pagos |
 | `vicunav-hotel` | Diferido | Reservas y disponibilidad | Mantener diferido hasta completar restaurante, según ADR 0006 |
 | `vicunav-demo-restaurante` | Sitio local detenido, sin repo | Contenido Bonasera y composición FSE sobre theme, core, pagos y restaurante | Crear el repo en DEMO-REST-01A cuando REST-02R y THEME-REST-03 terminen |
 | `vicunav-demo-hotel` | No existe | Demostración del vertical hotelero | Esperar la implementación de hotel |
@@ -161,9 +163,15 @@ El detalle versionado del contrato está en
   0.8.0, schema 5, sesiones anónimas con secretos hasheados, asociación autenticada
   sin merge silencioso, carritos y líneas InnoDB, CSRF y origen, revisión monotónica,
   expiración y recálculo autoritativo; todavía sin pedidos.
-- Propietario de menú, ingredientes y disponibilidad; será propietario de pizza
-  builder, carrito, pedidos, pricing, delivery, reservas, bloques dinámicos y
-  administración del vertical.
+- REST-02I fusionado mediante el
+  [issue 17](https://github.com/vicunav/vicunav-restaurante/issues/17) y el
+  [PR 18](https://github.com/vicunav/vicunav-restaurante/pull/18), después de pasar
+  CI. Publica plugin 0.9.0 y schema 6 con checkout transaccional, idempotencia
+  hasheada, snapshots inmutables, ownership privado, máquina de estados, eventos y
+  proyección reconstruible en wp-admin; todavía sin solicitudes ni eventos de pago.
+- Propietario de menú, ingredientes, disponibilidad, pizza builder, carrito, pedidos,
+  pricing, delivery y administración operativa; todavía debe incorporar reservas,
+  integración efectiva con pagos y bloques dinámicos.
 - Dinero en unidad menor, totales calculados en servidor, estados y escrituras con
   revisión e idempotencia.
 - Integración con `vicunav-pagos` mediante `external_type = vicu_order`, ID externo
@@ -254,7 +262,7 @@ El contrato vigente está en
 
 ## Qué falta
 
-1. Ejecutar REST-02I a REST-02R en `vicunav-restaurante` según el
+1. Ejecutar REST-02J a REST-02R en `vicunav-restaurante` según el
    [plan atómico](plan-restaurante.md).
 2. Ejecutar THEME-REST-01 a THEME-REST-03 sin sustituir defaults globales del theme.
 3. Crear y validar el demo mediante DEMO-REST-01A a DEMO-REST-01D.
@@ -267,5 +275,6 @@ El contrato vigente está en
    `vicunav-plugin-core`; la cobertura actual usa versiones más recientes y no bloquea
    `REST-01`.
 
-La siguiente acción del camino principal es REST-02I. THEME-REST-01 puede avanzar como
-pista paralela. Ambas están detalladas en el [`backlog`](backlog-ecosistema.md).
+La siguiente acción del camino principal es REST-02J. La pista del theme permanece
+planificada para el checkpoint posterior a REST-02R. Ambas están detalladas en el
+[`backlog`](backlog-ecosistema.md).
