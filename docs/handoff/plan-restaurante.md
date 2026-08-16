@@ -215,8 +215,15 @@ CI. El resultado es el plugin 0.8.0 con schema 5, sesiones hasheadas, ownership
 anónimo o autenticado, líneas de menú y pizza, expiración, REST privado, CSRF,
 compare-and-swap y recálculo completo, sin pedidos ni contenido de demo.
 
-`REST-02I` es la siguiente unidad del camino principal: implementar checkout
-transaccional, snapshots inmutables, `vicu_order`, máquina de estados, eventos y
-wp-admin de pedidos.
-`THEME-REST-01` permanece como pista paralela independiente, pero no reemplaza el orden
-del runtime.
+REST-02I quedó completado: el
+[issue 17](https://github.com/vicunav/vicunav-restaurante/issues/17) se cerró mediante
+el [PR 18](https://github.com/vicunav/vicunav-restaurante/pull/18), después de pasar
+CI. El resultado es el plugin 0.9.0 con schema 6, checkout transaccional, snapshots
+inmutables, conversión idempotente del carrito, ownership privado, máquina de estados,
+eventos append-only y proyección administrativa reconstruible, sin integración
+operativa con pagos ni contenido de demo.
+
+`REST-02J` es la siguiente unidad del camino principal: crear o recuperar la solicitud
+de pago mediante el contrato público, entregar evidencia textual, consumir eventos
+versionados y reconciliar divergencias. `THEME-REST-01` permanece planificado para el
+checkpoint posterior a REST-02R y no reemplaza el orden del runtime.
