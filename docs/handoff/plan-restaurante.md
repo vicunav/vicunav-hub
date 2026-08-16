@@ -201,7 +201,14 @@ CI. El resultado es el plugin 0.6.0 con `pizza_configuration` v1, quote autorita
 moneda propia, máximo global de seis toppings, zonas exclusivas y precio completo por
 mitad, sin carrito ni totales de pedido.
 
-`REST-02G` es la siguiente unidad del camino principal: implementar zonas, descuentos,
-propinas y el servicio puro de totales con redondeo en unidad menor.
+REST-02G quedó completado: el
+[issue 13](https://github.com/vicunav/vicunav-restaurante/issues/13) se cerró mediante
+el [PR 14](https://github.com/vicunav/vicunav-restaurante/pull/14), después de pasar
+CI. El resultado es el plugin 0.7.0 con schema 4, zonas, descuentos, propinas,
+revisión de pricing, compare-and-swap y totales autoritativos con redondeo en unidad
+menor, sin carrito ni contenido de demo.
+
+`REST-02H` es la siguiente unidad del camino principal: implementar sesiones seguras,
+carritos y líneas persistentes, expiración, REST, CSRF e idempotencia por revisión.
 `THEME-REST-01` permanece como pista paralela independiente, pero no reemplaza el orden
 del runtime.
