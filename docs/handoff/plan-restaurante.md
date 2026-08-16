@@ -175,7 +175,12 @@ CI y los contratos reales de core 1.0.0 y pagos 0.3.0. El resultado es el plugin
 contrato 1.0.0, autoload, comprobación de dependencias y hook de carga, todavía sin
 lógica de dominio.
 
-`REST-02C` es la siguiente unidad del camino principal: implementar capabilities,
-migraciones InnoDB versionadas e instalación idempotente sin crear todavía datos de
-dominio. `THEME-REST-01` puede ejecutarse como pista paralela independiente, pero no
-reemplaza el orden del runtime.
+REST-02C quedó completado: el
+[issue 5](https://github.com/vicunav/vicunav-restaurante/issues/5) se cerró mediante
+el [PR 6](https://github.com/vicunav/vicunav-restaurante/pull/6), después de pasar CI.
+El resultado es el plugin 0.3.0 con capabilities, ledger InnoDB, migraciones
+versionadas e instalación idempotente, todavía sin datos de dominio.
+
+`REST-02D` es la siguiente unidad del camino principal: implementar el menú
+estructurado, su administración y lecturas REST cacheables. `THEME-REST-01` permanece
+como pista paralela independiente, pero no reemplaza el orden del runtime.
