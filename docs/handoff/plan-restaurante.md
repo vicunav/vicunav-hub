@@ -194,7 +194,14 @@ CI. El resultado es el plugin 0.5.0 con schema 3, catálogo canónico de ingredi
 opciones de pizza, relaciones transaccionales, compare-and-swap, una sola revisión de
 disponibilidad y dos lecturas REST con `ETag`, sin pricing ni contenido de demo.
 
-`REST-02F` es la siguiente unidad del camino principal: implementar validación y
-cálculo autoritativo de precios para pizzas y el endpoint `pizza/quote`.
+REST-02F quedó completado: el
+[issue 11](https://github.com/vicunav/vicunav-restaurante/issues/11) se cerró mediante
+el [PR 12](https://github.com/vicunav/vicunav-restaurante/pull/12), después de pasar
+CI. El resultado es el plugin 0.6.0 con `pizza_configuration` v1, quote autoritativo,
+moneda propia, máximo global de seis toppings, zonas exclusivas y precio completo por
+mitad, sin carrito ni totales de pedido.
+
+`REST-02G` es la siguiente unidad del camino principal: implementar zonas, descuentos,
+propinas y el servicio puro de totales con redondeo en unidad menor.
 `THEME-REST-01` permanece como pista paralela independiente, pero no reemplaza el orden
 del runtime.

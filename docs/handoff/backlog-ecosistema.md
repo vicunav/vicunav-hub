@@ -20,7 +20,7 @@ issue.
 | `vicunav-theme-core` | Base 0.1.0 completa; issues 1 al 29 cerrados y sin PRs abiertos |
 | `vicunav-plugin-core` | Fase fundacional CORE-01 a CORE-09 completa; contrato 1.0.0, plugin 0.1.0 y release `v0.1.0` publicados |
 | `vicunav-pagos` | PAGOS-01 a PAGOS-03 completos; plugin y contrato 0.3.0 con persistencia transaccional, proveedor manual idempotente, estados, expiración, eventos versionados, pruebas, E2E real y CI |
-| `vicunav-restaurante` | REST-02A a REST-02E completos; plugin 0.5.0, contrato público 1.0.0, menú, ingredientes, opciones, relaciones y disponibilidad transaccional con REST cacheable, sin contenido de demo |
+| `vicunav-restaurante` | REST-02A a REST-02F completos; plugin 0.6.0, contrato 1.0.0, menú, catálogo, disponibilidad y quote autoritativo de pizzas con revisión, sin contenido de demo |
 | Referencia de diseño Bonasera | DESIGN-REST-01 auditó el commit `1e1f62787e088c0ca9701500e764802499d1b253`, sus siete pantallas, reglas, contratos propuestos, tokens y defectos; REST-01 incorporó el resultado sin aceptar su mapeo legacy a WooCommerce |
 | Referencia privada de `vicunav-demo-informativo` | Dra. Fortul conserva estrategia y contenido; WordPress local quedó limpio y consume `vicunav-theme-core` |
 
@@ -32,7 +32,7 @@ Las antiguas tareas para diferenciar `vicunav-secondary` y corregir el CPT de
 
 | Orden | ID | Repositorio | Trabajo | Depende de | Estado |
 | ---: | --- | --- | --- | --- | --- |
-| 1 | REST-02F a REST-02R | `vicunav-restaurante` | Implementar pricing, comercio, reservas, bloques y validación en 13 issues dependientes | REST-02D, REST-02E | REST-02F siguiente |
+| 1 | REST-02G a REST-02R | `vicunav-restaurante` | Implementar totales, comercio, reservas, bloques y validación en 12 issues dependientes | REST-02F | REST-02G siguiente |
 | 2 | DEMO-REST-01A a DEMO-REST-01D | `vicunav-demo-restaurante` | Crear repo, contenido licenciado, composición FSE y QA del demo | REST-02R, THEME-REST-03 | Planificado |
 | 3 | HOTEL-01 | `vicunav-hotel` | Escribir spec del vertical hotelero | DEMO-REST-01D | Diferido por ADR 0006 |
 | 4 | DEMO-HOTEL-01 | `vicunav-demo-hotel` | Crear la demo del vertical hotelero | HOTEL-01 | Diferido |
@@ -60,9 +60,10 @@ en una dependencia de los repositorios resultantes.
 ## Pendientes y riesgos
 
 - REST-01 ya fijó el dominio sin WooCommerce, estados, totales, disponibilidad,
-  permisos, endpoints y pruebas. REST-02A a REST-02E crearon el scaffold, el contrato
-  de carga, la base de instalación, el menú y el catálogo operativo; faltan pricing y
-  las demás reglas transaccionales, que no se marcaron como completadas.
+  permisos, endpoints y pruebas. REST-02A a REST-02F crearon el scaffold, el contrato
+  de carga, la base de instalación, el menú, el catálogo y el pricing de pizzas;
+  faltan totales y las demás reglas transaccionales, que no se marcaron como
+  completadas.
 - La paleta global final de Vicunav sigue pendiente, pero no bloquea `plugin-core`,
   pagos ni la variación Bonasera aislada.
 - Los diseños de restaurante, hotel y Dra. Fortul pueden descubrir funcionalidades,
