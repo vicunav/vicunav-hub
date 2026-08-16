@@ -15,6 +15,8 @@ trabajo pendiente se mantienen en `docs/handoff/`.
 | [0005](0005-acf-genuino-solo-campos.md) | Usar ACF genuino únicamente para campos editoriales |
 | [0006](0006-restaurante-primero.md) | Construir restaurante antes que hotel |
 | [0007](0007-demo-informativo-theme-base.md) | Validar el theme base con un demo informativo |
+| [0008](0008-skill-claude-gutenberg.md) | Mantener el skill de migración fuera del runtime |
+| [0009](0009-restaurante-sin-woocommerce.md) | Implementar comercio de restaurante sin WooCommerce |
 
 ## Cuándo crear otro ADR
 
