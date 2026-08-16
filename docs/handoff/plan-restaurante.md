@@ -187,7 +187,14 @@ el [PR 8](https://github.com/vicunav/vicunav-restaurante/pull/8), después de pa
 El resultado es el plugin 0.4.0 con menú estructurado, administración nativa, IDs
 opacos y REST cacheable, sin ingredientes ni contenido de demo.
 
-`REST-02E` es la siguiente unidad del camino principal: implementar el catálogo
-canónico de ingredientes, opciones de pizza y disponibilidad revisada.
+REST-02E quedó completado: el
+[issue 9](https://github.com/vicunav/vicunav-restaurante/issues/9) se cerró mediante
+el [PR 10](https://github.com/vicunav/vicunav-restaurante/pull/10), después de pasar
+CI. El resultado es el plugin 0.5.0 con schema 3, catálogo canónico de ingredientes,
+opciones de pizza, relaciones transaccionales, compare-and-swap, una sola revisión de
+disponibilidad y dos lecturas REST con `ETag`, sin pricing ni contenido de demo.
+
+`REST-02F` es la siguiente unidad del camino principal: implementar validación y
+cálculo autoritativo de precios para pizzas y el endpoint `pizza/quote`.
 `THEME-REST-01` permanece como pista paralela independiente, pero no reemplaza el orden
 del runtime.
