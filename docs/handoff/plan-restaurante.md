@@ -168,7 +168,14 @@ el [PR 2](https://github.com/vicunav/vicunav-restaurante/pull/2), fusionado por 
 después de pasar CI. El resultado es un plugin 0.1.0 instalable y vacío, con toolchain
 y protección de `main`, sin lógica de dominio.
 
-`REST-02B` es la siguiente unidad del camino principal: publicar el contrato 1.0.0,
-completar el bootstrap contractual y comprobar las dependencias sobre
-`vicunav-plugin-core` mayor 1 y `vicunav-pagos` 0.3.0. `THEME-REST-01` puede ejecutarse
-como pista paralela independiente, pero no reemplaza el orden del runtime.
+REST-02B también quedó completado: el
+[issue 3](https://github.com/vicunav/vicunav-restaurante/issues/3) se cerró mediante
+el [PR 4](https://github.com/vicunav/vicunav-restaurante/pull/4), después de validar
+CI y los contratos reales de core 1.0.0 y pagos 0.3.0. El resultado es el plugin 0.2.0,
+contrato 1.0.0, autoload, comprobación de dependencias y hook de carga, todavía sin
+lógica de dominio.
+
+`REST-02C` es la siguiente unidad del camino principal: implementar capabilities,
+migraciones InnoDB versionadas e instalación idempotente sin crear todavía datos de
+dominio. `THEME-REST-01` puede ejecutarse como pista paralela independiente, pero no
+reemplaza el orden del runtime.
