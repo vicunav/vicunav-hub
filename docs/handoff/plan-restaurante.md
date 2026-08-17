@@ -248,7 +248,15 @@ configuración versionada sin importes, ownership opaco, compare-and-swap, enlac
 rotables almacenados por hash y quote autoritativo al compartir, sin bloques,
 contenido Bonasera ni cambios en LocalWP.
 
-`REST-02M` es la siguiente unidad del camino principal: implementar el bloque dinámico
-de menú y filtros con sus estados de disponibilidad, vacío, carga y error.
+REST-02M quedó completado: el
+[issue 25](https://github.com/vicunav/vicunav-restaurante/issues/25) se cerró mediante
+el [PR 26](https://github.com/vicunav/vicunav-restaurante/pull/26), después de pasar
+CI. El resultado es el plugin 0.13.0 con `vicunav/restaurante-menu`, API 3, render
+dinámico, preview de editor, fallback sin JavaScript, refresh REST progresivo, filtros,
+estados de carga, error, vacío y disponibilidad, assets condicionales y pruebas PHP y
+JavaScript, sin contenido Bonasera ni cambios en LocalWP.
+
+`REST-02N` es la siguiente unidad del camino principal: implementar el constructor de
+pizzas con quote autoritativo y add-to-cart sobre los contratos existentes.
 `THEME-REST-01` permanece planificado para el checkpoint posterior a REST-02R y no
 reemplaza el orden del runtime.
