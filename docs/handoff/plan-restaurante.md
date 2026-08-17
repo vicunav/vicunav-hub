@@ -256,7 +256,16 @@ dinámico, preview de editor, fallback sin JavaScript, refresh REST progresivo, 
 estados de carga, error, vacío y disponibilidad, assets condicionales y pruebas PHP y
 JavaScript, sin contenido Bonasera ni cambios en LocalWP.
 
-`REST-02N` es la siguiente unidad del camino principal: implementar el constructor de
-pizzas con quote autoritativo y add-to-cart sobre los contratos existentes.
+REST-02N quedó completado: el
+[issue 27](https://github.com/vicunav/vicunav-restaurante/issues/27) se cerró mediante
+el [PR 28](https://github.com/vicunav/vicunav-restaurante/pull/28), después de pasar
+CI. El resultado es el plugin 0.14.0 con `vicunav/restaurante-pizza-builder`, API 3,
+render dinámico, Interactivity API, catálogo vivo, zonas exclusivas, máximo global de
+seis toppings, quote autoritativo y alta segura en el carrito con revisión y
+nonce/CSRF, sin vistas de checkout, contenido Bonasera ni cambios en LocalWP.
+
+`REST-02O` es la siguiente unidad del camino principal: implementar los bloques
+coordinados de carrito, checkout manual y estado de pedido sobre los contratos
+existentes.
 `THEME-REST-01` permanece planificado para el checkpoint posterior a REST-02R y no
 reemplaza el orden del runtime.
