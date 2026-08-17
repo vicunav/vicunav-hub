@@ -240,7 +240,15 @@ cancelación idempotentes, ownership por cuenta o token, estados, REST privado y
 proyección administrativa reconstruible, sin contenido Bonasera ni cambios en
 LocalWP.
 
-`REST-02L` es la siguiente unidad del camino principal: implementar pizzas guardadas
-con ownership, schema versionado, CRUD REST y enlaces compartibles seguros.
+REST-02L quedó completado: el
+[issue 23](https://github.com/vicunav/vicunav-restaurante/issues/23) se cerró mediante
+el [PR 24](https://github.com/vicunav/vicunav-restaurante/pull/24), después de pasar
+CI. El resultado es el plugin 0.12.0 con schema 9, pizzas guardadas de cuenta,
+configuración versionada sin importes, ownership opaco, compare-and-swap, enlaces
+rotables almacenados por hash y quote autoritativo al compartir, sin bloques,
+contenido Bonasera ni cambios en LocalWP.
+
+`REST-02M` es la siguiente unidad del camino principal: implementar el bloque dinámico
+de menú y filtros con sus estados de disponibilidad, vacío, carga y error.
 `THEME-REST-01` permanece planificado para el checkpoint posterior a REST-02R y no
 reemplaza el orden del runtime.
