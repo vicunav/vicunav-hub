@@ -223,7 +223,15 @@ inmutables, conversión idempotente del carrito, ownership privado, máquina de 
 eventos append-only y proyección administrativa reconstruible, sin integración
 operativa con pagos ni contenido de demo.
 
-`REST-02J` es la siguiente unidad del camino principal: crear o recuperar la solicitud
-de pago mediante el contrato público, entregar evidencia textual, consumir eventos
-versionados y reconciliar divergencias. `THEME-REST-01` permanece planificado para el
-checkpoint posterior a REST-02R y no reemplaza el orden del runtime.
+REST-02J quedó completado: el
+[issue 19](https://github.com/vicunav/vicunav-restaurante/issues/19) se cerró mediante
+el [PR 20](https://github.com/vicunav/vicunav-restaurante/pull/20), después de pasar
+CI. El resultado es el plugin 0.10.0 con schema 7, solicitudes recuperables mediante
+el contrato público, evidencia textual privada, proveedor manual real, hooks 1.0.0,
+reconciliación de eventos perdidos y salud administrativa, sin leer persistencia de
+pagos ni incorporar archivos o bancos.
+
+`REST-02K` es la siguiente unidad del camino principal: implementar horarios,
+excepciones, capacidad por intervalo, reservas y cancelación concurrentes, privacidad,
+REST y wp-admin. `THEME-REST-01` permanece planificado para el checkpoint posterior a
+REST-02R y no reemplaza el orden del runtime.
