@@ -231,7 +231,16 @@ el contrato público, evidencia textual privada, proveedor manual real, hooks 1.
 reconciliación de eventos perdidos y salud administrativa, sin leer persistencia de
 pagos ni incorporar archivos o bancos.
 
-`REST-02K` es la siguiente unidad del camino principal: implementar horarios,
-excepciones, capacidad por intervalo, reservas y cancelación concurrentes, privacidad,
-REST y wp-admin. `THEME-REST-01` permanece planificado para el checkpoint posterior a
-REST-02R y no reemplaza el orden del runtime.
+REST-02K quedó completado: el
+[issue 21](https://github.com/vicunav/vicunav-restaurante/issues/21) se cerró mediante
+el [PR 22](https://github.com/vicunav/vicunav-restaurante/pull/22), después de pasar
+CI. El resultado es el plugin 0.11.0 con schema 8, horarios IANA, excepciones,
+disponibilidad por todos los intervalos solapados, capacidad transaccional, creación y
+cancelación idempotentes, ownership por cuenta o token, estados, REST privado y
+proyección administrativa reconstruible, sin contenido Bonasera ni cambios en
+LocalWP.
+
+`REST-02L` es la siguiente unidad del camino principal: implementar pizzas guardadas
+con ownership, schema versionado, CRUD REST y enlaces compartibles seguros.
+`THEME-REST-01` permanece planificado para el checkpoint posterior a REST-02R y no
+reemplaza el orden del runtime.

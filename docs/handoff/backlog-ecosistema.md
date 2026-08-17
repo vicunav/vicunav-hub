@@ -20,7 +20,7 @@ issue.
 | `vicunav-theme-core` | Base 0.1.0 completa; issues 1 al 29 cerrados y sin PRs abiertos |
 | `vicunav-plugin-core` | Fase fundacional CORE-01 a CORE-09 completa; contrato 1.0.0, plugin 0.1.0 y release `v0.1.0` publicados |
 | `vicunav-pagos` | PAGOS-01 a PAGOS-03 completos; plugin y contrato 0.3.0 con persistencia transaccional, proveedor manual idempotente, estados, expiración, eventos versionados, pruebas, E2E real y CI |
-| `vicunav-restaurante` | REST-02A a REST-02J completos; plugin 0.10.0, contrato 1.0.0, pedidos e integración pública idempotente con pagos, sin reservas ni contenido de demo |
+| `vicunav-restaurante` | REST-02A a REST-02K completos; plugin 0.11.0, contrato 1.0.0, pedidos, pagos y reservas concurrentes, sin pizzas guardadas, bloques ni contenido de demo |
 | Referencia de diseño Bonasera | DESIGN-REST-01 auditó el commit `1e1f62787e088c0ca9701500e764802499d1b253`, sus siete pantallas, reglas, contratos propuestos, tokens y defectos; REST-01 incorporó el resultado sin aceptar su mapeo legacy a WooCommerce |
 | Referencia privada de `vicunav-demo-informativo` | Dra. Fortul conserva estrategia y contenido; WordPress local quedó limpio y consume `vicunav-theme-core` |
 
@@ -32,7 +32,7 @@ Las antiguas tareas para diferenciar `vicunav-secondary` y corregir el CPT de
 
 | Orden | ID | Repositorio | Trabajo | Depende de | Estado |
 | ---: | --- | --- | --- | --- | --- |
-| 1 | REST-02K a REST-02R | `vicunav-restaurante` | Implementar reservas, cuenta, bloques y validación en 8 issues dependientes | REST-02J | REST-02K siguiente |
+| 1 | REST-02L a REST-02R | `vicunav-restaurante` | Implementar pizzas guardadas, bloques y validación en 7 issues dependientes | REST-02K | REST-02L siguiente |
 | 2 | DEMO-REST-01A a DEMO-REST-01D | `vicunav-demo-restaurante` | Crear repo, contenido licenciado, composición FSE y QA del demo | REST-02R, THEME-REST-03 | Planificado |
 | 3 | HOTEL-01 | `vicunav-hotel` | Escribir spec del vertical hotelero | DEMO-REST-01D | Diferido por ADR 0006 |
 | 4 | DEMO-HOTEL-01 | `vicunav-demo-hotel` | Crear la demo del vertical hotelero | HOTEL-01 | Diferido |
