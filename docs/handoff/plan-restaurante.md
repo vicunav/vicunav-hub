@@ -1,6 +1,6 @@
 # Plan atómico de restaurante
 
-Actualizado: 2026-08-16.
+Actualizado: 2026-08-20.
 
 ## Propósito
 
@@ -289,8 +289,15 @@ login, colección privada, renombrado, eliminación confirmada, enlaces rotables
 revalidación antes de añadir al carrito y guardado desde el builder, sin datos de
 cuenta en SSR, contenido Bonasera ni cambios en LocalWP.
 
-`REST-02R` es la siguiente y última unidad del runtime antes del checkpoint: ejecutar
-E2E, accesibilidad, privacidad, rendimiento y matriz de compatibilidad, y publicar la
-release candidata 1.0.0 solo si todos los gates pasan.
-`THEME-REST-01` permanece planificado para el checkpoint posterior a REST-02R y no
-reemplaza el orden del runtime.
+REST-02R quedó completado: el
+[issue 35](https://github.com/vicunav/vicunav-restaurante/issues/35) se cerró mediante
+el [PR 36](https://github.com/vicunav/vicunav-restaurante/pull/36), después de pasar
+la matriz WordPress 6.6/PHP 8.1 y WordPress 6.9/PHP 8.4. El squash
+`a687e76f6ab0bf3de0e75cb7a392fb775be16e7a` publica plugin 1.0.0, privacidad nativa,
+fixture y evidencia E2E, sin modificar LocalWP. La prerelease verificable es
+[`v1.0.0-rc.1`](https://github.com/vicunav/vicunav-restaurante/releases/tag/v1.0.0-rc.1).
+
+Checkpoint: REST-02A a REST-02R están completos. La siguiente unidad ejecutable es
+THEME-REST-01; después siguen THEME-REST-02, THEME-REST-03 y, solo entonces,
+DEMO-REST-01A a DEMO-REST-01D. Este checkpoint no marca ninguna de esas unidades
+visuales como iniciada o completada.
