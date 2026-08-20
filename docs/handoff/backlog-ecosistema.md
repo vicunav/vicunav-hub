@@ -32,7 +32,7 @@ Las antiguas tareas para diferenciar `vicunav-secondary` y corregir el CPT de
 
 | Orden | ID | Repositorio | Trabajo | Depende de | Estado |
 | ---: | --- | --- | --- | --- | --- |
-| 1 | REST-02O a REST-02R | `vicunav-restaurante` | Implementar tres unidades de bloques y la validación de release en 4 issues dependientes | REST-02N | REST-02O siguiente |
+| 1 | REST-02P a REST-02R | `vicunav-restaurante` | Implementar reservas, cuenta y la validación de release en 3 issues dependientes | REST-02O | REST-02P siguiente |
 | 2 | DEMO-REST-01A a DEMO-REST-01D | `vicunav-demo-restaurante` | Crear repo, contenido licenciado, composición FSE y QA del demo | REST-02R, THEME-REST-03 | Planificado |
 | 3 | HOTEL-01 | `vicunav-hotel` | Escribir spec del vertical hotelero | DEMO-REST-01D | Diferido por ADR 0006 |
 | 4 | DEMO-HOTEL-01 | `vicunav-demo-hotel` | Crear la demo del vertical hotelero | HOTEL-01 | Diferido |
@@ -61,9 +61,10 @@ en una dependencia de los repositorios resultantes.
 
 - REST-01 fijó el dominio sin WooCommerce, estados, totales, disponibilidad, permisos,
   endpoints y pruebas. REST-02A a REST-02L implementaron el dominio backend y
-  REST-02M añadió el bloque de menú y REST-02N el constructor de pizzas. Permanecen
-  pendientes los bloques REST-02O a REST-02Q y el gate integral REST-02R; no se
-  marcan como completados antes de sus issues propios.
+  REST-02M añadió el bloque de menú, REST-02N el constructor de pizzas y REST-02O
+  carrito, checkout manual y estado de pedido. Permanecen pendientes los bloques
+  REST-02P y REST-02Q y el gate integral REST-02R; no se marcan como completados antes
+  de sus issues propios.
 - La paleta global final de Vicunav sigue pendiente, pero no bloquea `plugin-core`,
   pagos ni la variación Bonasera aislada.
 - Los diseños de restaurante, hotel y Dra. Fortul pueden descubrir funcionalidades,
