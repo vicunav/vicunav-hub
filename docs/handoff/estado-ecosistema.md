@@ -29,10 +29,12 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
 - La fase fundacional CORE-01 a CORE-09 de `vicunav-plugin-core` está terminada. El
   plugin 0.1.0 implementa el contrato público 1.0.0, tiene publicada la release
   `v0.1.0` y no tiene issues ni pull requests abiertos.
-- PAGOS-01 a PAGOS-03 están terminados. `vicunav-pagos` 0.3.0 aporta contrato público
+- PAGOS-01 a PAGOS-03 están terminados. `vicunav-pagos` 0.3.1 aporta contrato público
   0.3.0, persistencia transaccional, creación y entregas manuales idempotentes,
   estados, concurrencia, expiración y eventos versionados, además del CPT y REST
-  administrativos protegidos.
+  administrativos protegidos. El parche 0.3.1 normaliza el booleano persistido del
+  proveedor manual después de cruzar el límite de caché de `wp_options`; el contrato
+  0.3.0 no cambió.
 - DESIGN-REST-01 auditó el prototipo Bonasera en el commit
   `1e1f62787e088c0ca9701500e764802499d1b253`. REST-01 incorporó esa evidencia en un
   spec durable, decidió comercio propio sin WooCommerce y descompuso runtime, theme y
@@ -97,7 +99,7 @@ y contratos públicos.
 | `vicunav-transform-claude-to-gutenberg` | Base 0.1.0 publicada | Skill portable, auditor de proyectos frontend, validador FSE, referencias de LocalWP y QA, pruebas y CI | Usarlo cuando exista un diseño aprobado y refinarlo con evidencia de migraciones reales |
 | `vicunav-theme-core` | Base 0.1.0 completa | Tokens, templates, partes, patrones y contrato de integración | Sustituir la identidad visual placeholder cuando exista la paleta final |
 | `vicunav-plugin-core` | Base 0.1.0 publicada | Release `v0.1.0`, contrato 1.0.0, CPT compartidos, ajustes, administración, seguridad, REST y pruebas | Añadir en el futuro una matriz runtime para WordPress 6.6 y PHP 8.1 |
-| `vicunav-pagos` | Motor 0.3.0 completo | Contrato 0.3.0, CPT y REST protegidos, persistencia InnoDB versionada, servicios idempotentes, proveedor manual v1, máquina de estados atómica, expiración y hooks con payload 1.0.0 | Mantener su contrato; integrar consumidores mediante servicios y eventos públicos |
+| `vicunav-pagos` | Motor 0.3.1 completo | Contrato 0.3.0, CPT y REST protegidos, persistencia InnoDB versionada, servicios idempotentes, proveedor manual v1 con lectura persistida corregida, máquina de estados atómica, expiración y hooks con payload 1.0.0 | Mantener su contrato; integrar consumidores mediante servicios y eventos públicos |
 | `vicunav-restaurante` | Superficies públicas 0.17.0 y contrato 1.0.0; REST-02A a REST-02Q completos | Plugin con dominio backend y bloques de menú, builder, comercio, reservas y pizzas guardadas completos; todavía sin gate integral ni release 1.0.0, y sin WooCommerce | Ejecutar REST-02R: validación integral y release candidata |
 | `vicunav-hotel` | Diferido | Reservas y disponibilidad | Mantener diferido hasta completar restaurante, según ADR 0006 |
 | `vicunav-demo-restaurante` | Sitio local detenido, sin repo | Contenido Bonasera y composición FSE sobre theme, core, pagos y restaurante | Crear el repo en DEMO-REST-01A cuando REST-02R y THEME-REST-03 terminen |
@@ -255,7 +257,7 @@ El contrato vigente está en
 
 ### `vicunav-pagos`
 
-- Contrato público 0.3.0 y plugin 0.3.0.
+- Contrato público 0.3.0 y plugin 0.3.1.
 - CPT privado `vicu_payment_req` con capabilities dedicadas.
 - Referencia externa polimórfica mediante tipo e identificador opaco.
 - Monto entero en unidad menor y moneda ISO 4217.
