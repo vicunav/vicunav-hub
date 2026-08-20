@@ -32,7 +32,7 @@ Las antiguas tareas para diferenciar `vicunav-secondary` y corregir el CPT de
 
 | Orden | ID | Repositorio | Trabajo | Depende de | Estado |
 | ---: | --- | --- | --- | --- | --- |
-| 1 | REST-02Q a REST-02R | `vicunav-restaurante` | Implementar cuenta y la validación de release en 2 issues dependientes | REST-02P | REST-02Q siguiente |
+| 1 | REST-02R | `vicunav-restaurante` | Ejecutar E2E, accesibilidad, privacidad, rendimiento, matriz y release candidata 1.0.0 | REST-02Q | Siguiente |
 | 2 | DEMO-REST-01A a DEMO-REST-01D | `vicunav-demo-restaurante` | Crear repo, contenido licenciado, composición FSE y QA del demo | REST-02R, THEME-REST-03 | Planificado |
 | 3 | HOTEL-01 | `vicunav-hotel` | Escribir spec del vertical hotelero | DEMO-REST-01D | Diferido por ADR 0006 |
 | 4 | DEMO-HOTEL-01 | `vicunav-demo-hotel` | Crear la demo del vertical hotelero | HOTEL-01 | Diferido |
@@ -63,8 +63,8 @@ en una dependencia de los repositorios resultantes.
   endpoints y pruebas. REST-02A a REST-02L implementaron el dominio backend y
   REST-02M añadió el bloque de menú, REST-02N el constructor de pizzas y REST-02O
   carrito, checkout manual y estado de pedido; REST-02P incorporó reservas públicas.
-  Permanecen pendientes el bloque REST-02Q y el gate integral REST-02R; no se marcan
-  como completados antes de sus issues propios.
+  REST-02Q completó pizzas guardadas de cuenta. Permanece pendiente únicamente el gate
+  integral REST-02R; no se marca como completado antes de su issue propio.
 - La paleta global final de Vicunav sigue pendiente, pero no bloquea `plugin-core`,
   pagos ni la variación Bonasera aislada.
 - Los diseños de restaurante, hotel y Dra. Fortul pueden descubrir funcionalidades,

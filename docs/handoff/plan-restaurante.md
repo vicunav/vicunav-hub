@@ -281,7 +281,16 @@ seguro, disponibilidad autoritativa, creación idempotente, alternativas cercana
 confirmación, recuperación privada y cancelación por revisión, sin tokens en URL o
 markup, contenido Bonasera ni cambios en LocalWP.
 
-`REST-02Q` es la siguiente unidad del camino principal: implementar el bloque de
-pizzas guardadas para cuenta autenticada sobre los contratos existentes.
+REST-02Q quedó completado: el
+[issue 33](https://github.com/vicunav/vicunav-restaurante/issues/33) se cerró mediante
+el [PR 34](https://github.com/vicunav/vicunav-restaurante/pull/34), después de pasar
+CI. El resultado es el plugin 0.17.0 con `vicunav/restaurante-saved-pizzas`, estado de
+login, colección privada, renombrado, eliminación confirmada, enlaces rotables,
+revalidación antes de añadir al carrito y guardado desde el builder, sin datos de
+cuenta en SSR, contenido Bonasera ni cambios en LocalWP.
+
+`REST-02R` es la siguiente y última unidad del runtime antes del checkpoint: ejecutar
+E2E, accesibilidad, privacidad, rendimiento y matriz de compatibilidad, y publicar la
+release candidata 1.0.0 solo si todos los gates pasan.
 `THEME-REST-01` permanece planificado para el checkpoint posterior a REST-02R y no
 reemplaza el orden del runtime.
