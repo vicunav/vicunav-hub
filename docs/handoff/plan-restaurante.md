@@ -273,8 +273,15 @@ store y estilos compartidos, mutaciones por revisión, checkout idempotente, pro
 manual real y token invitado fuera de URL y markup, sin reservas públicas, contenido
 Bonasera ni cambios en LocalWP.
 
-`REST-02P` es la siguiente unidad del camino principal: implementar el bloque de
-reservas con disponibilidad, alternativas, confirmación y cancelación sobre los
-contratos existentes.
+REST-02P quedó completado: el
+[issue 31](https://github.com/vicunav/vicunav-restaurante/issues/31) se cerró mediante
+el [PR 32](https://github.com/vicunav/vicunav-restaurante/pull/32), después de pasar
+CI. El resultado es el plugin 0.16.0 con `vicunav/restaurante-reservations`, SSR
+seguro, disponibilidad autoritativa, creación idempotente, alternativas cercanas,
+confirmación, recuperación privada y cancelación por revisión, sin tokens en URL o
+markup, contenido Bonasera ni cambios en LocalWP.
+
+`REST-02Q` es la siguiente unidad del camino principal: implementar el bloque de
+pizzas guardadas para cuenta autenticada sobre los contratos existentes.
 `THEME-REST-01` permanece planificado para el checkpoint posterior a REST-02R y no
 reemplaza el orden del runtime.
