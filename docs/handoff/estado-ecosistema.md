@@ -89,6 +89,13 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
   de composición ya existe, fija revisiones exactas de sus cuatro dependencias y
   aporta una instalación LocalWP idempotente por symlinks. El squash vigente es
   `b1942cb3138669bd475e43dab4aceb0828be21ab`.
+- DEMO-REST-01B se cerró mediante el
+  [issue 3](https://github.com/vicunav/vicunav-demo-restaurante/issues/3) y el
+  [PR 4](https://github.com/vicunav/vicunav-demo-restaurante/pull/4). El squash
+  `32b4e211179b68ec6df136812bd2ad5c7cf84a1a` versiona copy y datos Bonasera
+  clasificados como ficticios, nueve imágenes WebP locales con licencias verificadas,
+  y registra como no entregados el video hero y los dos mapas. Todavía no aplica ese
+  contenido a WordPress.
 - `vicunav-hotel`, `vicunav-demo-hotel` y `vicunav-demo-informativo` todavía no
   existen como repositorios públicos canónicos en la organización.
 - `vicunav-gutenberg` pertenece a la organización Vicunav, pero es una migración
@@ -131,7 +138,7 @@ y contratos públicos.
 | `vicunav-pagos` | Motor 0.3.1 completo | Contrato 0.3.0, CPT y REST protegidos, persistencia InnoDB versionada, servicios idempotentes, proveedor manual v1 con lectura persistida corregida, máquina de estados atómica, expiración y hooks con payload 1.0.0 | Mantener su contrato; integrar consumidores mediante servicios y eventos públicos |
 | `vicunav-restaurante` | Candidata 1.0.0; REST-02A a REST-02R completos | Dominio backend, siete bloques, privacidad nativa, matriz WordPress/PHP y prerelease `v1.0.0-rc.1`, sin WooCommerce ni contenido Bonasera | Mantener el contrato; consumirlo desde DEMO-REST-01C |
 | `vicunav-hotel` | Diferido | Reservas y disponibilidad | Mantener diferido hasta completar restaurante, según ADR 0006 |
-| `vicunav-demo-restaurante` | DEMO-REST-01A completo | Repositorio público, manifiesto con revisiones exactas e instalación LocalWP idempotente; todavía sin copy, media ni composición Bonasera | Versionar copy, inventario y media licenciada en DEMO-REST-01B |
+| `vicunav-demo-restaurante` | DEMO-REST-01A y 01B completos | Repositorio público, instalación idempotente, copy y datos ficticios, nueve imágenes licenciadas e inventario de ausencias; todavía sin páginas ni composición Bonasera | Crear páginas y composición FSE en DEMO-REST-01C |
 | `vicunav-demo-hotel` | No existe | Demostración del vertical hotelero | Esperar la implementación de hotel |
 | `vicunav-demo-informativo` | Referencia privada en LocalWP | Sitio profesional no transaccional sobre `vicunav-theme-core`; contenido y estrategia de Dra. Fortul | Recibir el HTML aprobado, auditarlo y clasificar trabajo por repositorio |
 
@@ -352,7 +359,7 @@ El contrato vigente está en
 - `vicunav-demo-restaurante.local` permaneció detenido y sin cambios durante REST-01.
   Se inició después para QA de THEME-REST-01 a 03 y conserva la variación Bonasera
   seleccionada. Ya consume el ensamblaje reproducible de DEMO-REST-01A; todavía no
-  tiene copy, media ni composición Bonasera.
+  aplica el contenido, media ni composición Bonasera versionados en DEMO-REST-01B.
 - LocalWP: `drafortul.local`, referencia privada del demo informativo. Consume
   `vicunav-theme-core` mediante symlink y quedó sin contenido de ejemplo ni theme
   propio el 2026-08-06.
@@ -361,7 +368,7 @@ El contrato vigente está en
 
 ## Qué falta
 
-1. Completar el demo mediante DEMO-REST-01B a DEMO-REST-01D.
+1. Completar el demo mediante DEMO-REST-01C y DEMO-REST-01D.
 2. Diseñar e implementar hotel y su demo después de validar restaurante.
 3. Auditar el diseño aprobado de Dra. Fortul, clasificar los hallazgos por propietario
    y crear Issues atómicos.
@@ -371,6 +378,6 @@ El contrato vigente está en
    `vicunav-plugin-core`; la cobertura actual usa versiones más recientes y no bloquea
    `REST-01`.
 
-La siguiente acción del camino principal es DEMO-REST-01B. DEMO-REST-01A ya creó y
-validó el ensamblaje base. La secuencia está detallada en el
+La siguiente acción del camino principal es DEMO-REST-01C. DEMO-REST-01A y 01B ya
+crearon el ensamblaje y sus fuentes de contenido. La secuencia está detallada en el
 [`backlog`](backlog-ecosistema.md).
