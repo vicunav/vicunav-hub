@@ -160,7 +160,7 @@ REST-02R + THEME-REST-03
   -> DEMO-REST-01A..D
 ```
 
-## Siguiente unidad ejecutable
+## Registro de ejecución
 
 REST-02A quedó completado en `vicunav-restaurante`: el
 [issue 1](https://github.com/vicunav/vicunav-restaurante/issues/1) se cerró mediante
@@ -313,7 +313,10 @@ THEME-REST-03 quedó completado mediante el
 contacto, FAQ, testimonios y CTA, y añade únicamente historia editorial y enlaces
 visuales. Los correctivos descubiertos se aislaron en los
 [PR 35](https://github.com/vicunav/vicunav-theme-core/pull/35) y
-[PR 41](https://github.com/vicunav/vicunav-theme-core/pull/41).
+[PR 41](https://github.com/vicunav/vicunav-theme-core/pull/41). El gate final corrigió
+el estado inicial del acordeón en el
+[issue 43](https://github.com/vicunav/vicunav-theme-core/issues/43) y el
+[PR 44](https://github.com/vicunav/vicunav-theme-core/pull/44).
 
 DEMO-REST-01A quedó completado mediante el
 [issue 1](https://github.com/vicunav/vicunav-demo-restaurante/issues/1) y el
@@ -341,5 +344,16 @@ Bonasera y conserva un único H1 por vista. Dos aplicaciones consecutivas no cre
 duplicados ni revisiones nuevas; CI, las nueve rutas y la consola del navegador
 pasaron antes del reinicio del equipo.
 
-Checkpoint: REST-02A a REST-02R, THEME-REST-01 a THEME-REST-03 y DEMO-REST-01A a 01C
-están completos. La siguiente unidad ejecutable es DEMO-REST-01D.
+DEMO-REST-01D quedó completado mediante el
+[issue 7](https://github.com/vicunav/vicunav-demo-restaurante/issues/7) y el
+[PR 8](https://github.com/vicunav/vicunav-demo-restaurante/pull/8), después de pasar
+CI y el gate real en LocalWP. El squash
+`737d027f78ad301b4e0c80c2b316e131a1b807a5` versiona 45 comprobaciones responsive,
+evidencia visual y validación de frontend, Site Editor, accesibilidad, consola,
+media, menú, pizza, carrito, checkout manual y reservas. El gate aisló y fusionó los
+correctivos de menú y checkout en `vicunav-restaurante`, y el estado inicial de FAQ
+en `vicunav-theme-core`, sin incorporar lógica reutilizable al demo.
+
+Checkpoint: REST-02A a REST-02R, THEME-REST-01 a THEME-REST-03 y DEMO-REST-01A a
+DEMO-REST-01D están completos. No hay otra unidad autorizada en ejecución; hotel y
+demo informativo permanecen fuera de este checkpoint.
