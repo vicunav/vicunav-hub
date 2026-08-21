@@ -24,11 +24,10 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
 - El repositorio privado de Dra. Fortul funciona como implementación de referencia
   local del futuro `vicunav-demo-informativo`; todavía no pertenece a la organización
   ni debe publicarse sin una decisión separada.
-- La base funcional y la pista THEME-REST-01 a THEME-REST-03 de
-  `vicunav-theme-core` están terminadas. La variación Bonasera es seleccionable sin
-  cambiar defaults, el chrome de restaurante corrige responsive y accesibilidad, y
-  los patterns editoriales reutilizan hero, contacto, FAQ, testimonios y CTA mientras
-  añaden solo historia y enlaces visuales.
+- La base funcional de `vicunav-theme-core` y los cambios históricos
+  THEME-REST-01 a THEME-REST-03 están fusionados. Aportan una variación Bonasera,
+  chrome y patterns editoriales, pero su paridad 1:1 y su integración efectiva no
+  están aprobadas; continúan en THEME-REST-04 y THEME-REST-05.
 - La fase fundacional CORE-01 a CORE-09 de `vicunav-plugin-core` está terminada. El
   plugin 0.1.0 implementa el contrato público 1.0.0, tiene publicada la release
   `v0.1.0` y no tiene issues ni pull requests abiertos.
@@ -116,7 +115,14 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
   viewports por nueve rutas, Site Editor, teclado, foco, targets táctiles, consola,
   flujos de menú, pizza, carrito, checkout manual y reservas, además de los
   presupuestos de media. El video hero y los dos mapas siguen declarados como no
-  entregados. El checkpoint completo del vertical restaurante queda cerrado.
+  entregados. Una auditoría posterior comprobó que esas 45 combinaciones validaron
+  estructura y funcionamiento, no fidelidad visual contra la fuente. El cierre
+  histórico permanece, pero el checkpoint visual queda reabierto por el ADR 0010.
+- La misma auditoría confirmó que el demo persistió Bonasera sin
+  `isGlobalStylesUserThemeJSON: true`; WordPress ignora la variación y emite los
+  defaults del theme. La composición instalada también simplifica de forma sustancial
+  la fuente. El runtime conserva su estado, pero el producto integrado no está
+  aprobado.
 - `vicunav-hotel`, `vicunav-demo-hotel` y `vicunav-demo-informativo` todavía no
   existen como repositorios públicos canónicos en la organización.
 - `vicunav-gutenberg` pertenece a la organización Vicunav, pero es una migración
@@ -152,14 +158,14 @@ y contratos públicos.
 | --- | --- | --- | --- |
 | `vicunav-standards` | Completo | Seguridad, nombres, Git, accesibilidad, compatibilidad, pruebas e idioma | Mantener las normas cuando una decisión transversal cambie |
 | `vicunav-repo-template` | Completo | Plantilla base, guía de agentes, contribución, issue atómico, CI y submódulo de estándares | Usarlo para crear los repositorios restantes |
-| `vicunav-hub` | Activo | Nueve ADRs, spec durable de restaurante, arquitectura, gobierno, estado y backlog | Mantenerlo sincronizado al cerrar cada etapa |
-| `vicunav-transform-claude-to-gutenberg` | Base 0.1.0 publicada | Skill portable, auditor de proyectos frontend, validador FSE, referencias de LocalWP y QA, pruebas y CI | Usarlo cuando exista un diseño aprobado y refinarlo con evidencia de migraciones reales |
-| `vicunav-theme-core` | Base 0.1.0 y THEME-REST-01 a 03 completos | Tokens, variación Bonasera, templates, parts de restaurante, patterns, acordeón y contrato de integración | Mantener el contrato; sustituir la identidad visual global placeholder solo cuando exista la paleta final |
+| `vicunav-hub` | Activo | Diez ADRs, spec durable de restaurante, arquitectura, gobierno, estado y backlog | Ejecutar STANDARDS-VIS-01 y mantener sincronizado el funnel visual |
+| `vicunav-transform-claude-to-gutenberg` | Base 0.1.0 publicada; endurecimiento pendiente | Skill portable con reglas visuales, auditor y validador FSE | Implementar manifiesto y herramientas bloqueantes en TOOL-VIS-01 y TOOL-VIS-02 |
+| `vicunav-theme-core` | Base 0.1.0; recuperación visual pendiente | Tokens, variación Bonasera, templates, parts, patterns, acordeón y contrato de integración | Ejecutar THEME-REST-04 y 05 contra el baseline 1:1 |
 | `vicunav-plugin-core` | Base 0.1.0 publicada | Release `v0.1.0`, contrato 1.0.0, CPT compartidos, ajustes, administración, seguridad, REST y pruebas | Añadir en el futuro una matriz runtime para WordPress 6.6 y PHP 8.1 |
 | `vicunav-pagos` | Motor 0.3.1 completo | Contrato 0.3.0, CPT y REST protegidos, persistencia InnoDB versionada, servicios idempotentes, proveedor manual v1 con lectura persistida corregida, máquina de estados atómica, expiración y hooks con payload 1.0.0 | Mantener su contrato; integrar consumidores mediante servicios y eventos públicos |
 | `vicunav-restaurante` | Candidata 1.0.0; REST-02A a REST-02R completos y gate integrado aprobado | Dominio backend, siete bloques, privacidad nativa, matriz WordPress/PHP y prerelease `v1.0.0-rc.1`, sin WooCommerce ni contenido Bonasera | Mantener el contrato y evaluar publicación estable solo mediante una unidad futura explícita |
 | `vicunav-hotel` | Diferido | Reservas y disponibilidad | Mantener diferido hasta completar restaurante, según ADR 0006 |
-| `vicunav-demo-restaurante` | DEMO-REST-01A a 01D completos | Repositorio público, instalación idempotente, copy y datos ficticios, nueve imágenes licenciadas, nueve páginas FSE, siete flujos reales y gate integral aprobado | Conservar como demo verificable; no añadir lógica reutilizable |
+| `vicunav-demo-restaurante` | Runtime integrado disponible; checkpoint visual reabierto | Repositorio público, instalación idempotente, copy, media, nueve páginas FSE y siete flujos reales; la composición no acredita paridad | Ejecutar DESIGN-REST-02 y DEMO-REST-02A a 02E |
 | `vicunav-demo-hotel` | No existe | Demostración del vertical hotelero | Esperar la implementación de hotel |
 | `vicunav-demo-informativo` | Referencia privada en LocalWP | Sitio profesional no transaccional sobre `vicunav-theme-core`; contenido y estrategia de Dra. Fortul | Recibir el HTML aprobado, auditarlo y clasificar trabajo por repositorio |
 
@@ -361,6 +367,8 @@ El contrato vigente está en
   forma parte del runtime: ADR 0008.
 - El comercio de restaurante pertenece al vertical y no usa WooCommerce en v1: ADR
   0009.
+- La fidelidad visual 1:1 es un gate bloqueante y separa estado funcional de estado
+  visual: ADR 0010.
 - Los README y superficies públicas se escriben en inglés; la documentación interna y
   los comentarios de código se escriben en español.
 - Qwen es una herramienta global y opcional para trabajo mecánico verificable. No es
@@ -378,11 +386,11 @@ El contrato vigente está en
   `vicunav-demo-restaurante.local`. DEMO-REST-01A verificó dos ejecuciones sin
   reactivaciones, schema 9 del vertical y sus siete bloques registrados.
 - `vicunav-demo-restaurante.local` permaneció detenido y sin cambios durante REST-01.
-  Se inició después para QA de THEME-REST-01 a 03 y conserva la variación Bonasera
-  seleccionada. DEMO-REST-01C aplicó contenido, media, datos y composición, y validó
-  nueve rutas sin errores de consola. DEMO-REST-01D lo reabrió después del reinicio,
-  aprobó el gate final en WordPress 7.1/PHP 8.2.29 y lo dejó iniciado para inspección
-  local. Sus cuatro symlinks apuntan a los commits fijados por el demo.
+  Se inició después para QA de THEME-REST-01 a 03. DEMO-REST-01C aplicó contenido,
+  media, datos y composición, y validó nueve rutas sin errores de consola.
+  DEMO-REST-01D lo dejó iniciado en WordPress 7.1/PHP 8.2.29. La revisión posterior
+  demostró que la variación persistida no es efectiva y que el gate visual debe
+  repetirse. Sus cuatro symlinks apuntan a los commits fijados por el demo.
 - LocalWP: `drafortul.local`, referencia privada del demo informativo. Consume
   `vicunav-theme-core` mediante symlink y quedó sin contenido de ejemplo ni theme
   propio el 2026-08-06.
@@ -391,16 +399,21 @@ El contrato vigente está en
 
 ## Qué falta
 
-1. Diseñar e implementar hotel y su demo solo después de una instrucción explícita;
-   continúa diferido aunque el checkpoint restaurante ya pasó.
-2. Auditar el diseño aprobado de Dra. Fortul, clasificar los hallazgos por propietario
-   y crear Issues atómicos.
-3. Decidir si el proyecto privado se sanea, renombra y transfiere para convertirse en
+1. Completar STANDARDS-VIS-01 a HUB-VIS-02 para que baseline, evidencia y comparación
+   sean gates verificables del flujo.
+2. Completar DESIGN-REST-02 a HUB-VIS-03 y obtener aprobación humana de la paridad
+   Bonasera 1:1.
+3. Recuperar el video hero y los dos mapas originales, o recibir una decisión humana
+   sobre sustitutos, antes del gate final.
+4. Mantener hotel y Dra. Fortul bloqueados hasta cerrar HUB-VIS-03.
+5. Decidir si el proyecto privado se sanea, renombra y transfiere para convertirse en
    el repositorio público `vicunav-demo-informativo`.
-4. Añadir una matriz runtime específica para WordPress 6.6 y PHP 8.1 a
+6. Añadir una matriz runtime específica para WordPress 6.6 y PHP 8.1 a
    `vicunav-plugin-core`; la cobertura actual usa versiones más recientes y no bloquea
    `REST-01`.
 
-El camino de restaurante terminó en DEMO-REST-01D. No hay otra unidad autorizada en
-ejecución; hotel y demo informativo permanecen fuera del alcance de este checkpoint.
-La secuencia pendiente está detallada en el [`backlog`](backlog-ecosistema.md).
+El camino funcional de restaurante terminó en REST-02R. El producto integrado continúa
+abierto en el [plan de fidelidad visual](plan-fidelidad-visual.md). La siguiente unidad
+después de HUB-VIS-01 es STANDARDS-VIS-01; hotel y demo informativo permanecen fuera de
+alcance y bloqueados. La secuencia pendiente está detallada en el
+[`backlog`](backlog-ecosistema.md).
