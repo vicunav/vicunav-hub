@@ -32,6 +32,29 @@ Los estados recomendados son `borrador`, `decidida`, `planificada`, `aplicada` y
 `verificada`. Una decisión no se considera propagada mientras algún consumidor
 obligatorio siga pendiente.
 
+## Cambios derivados de un diseño aprobado
+
+Cuando un producto parte de un baseline visual, los estados funcional y visual se
+registran por separado. Una implementación puede tener runtime verificado y continuar
+pendiente como producto integrado.
+
+La verificación visual exige:
+
+- fuente y commit inmutables;
+- inventario de páginas, componentes, estados, viewports, fuentes y assets;
+- mapa de propiedad entre theme, plugin vertical y demo;
+- comparación del render fuente y WordPress con entorno equivalente;
+- evidencia lado a lado y overlay por página, estado y viewport;
+- diferencias deliberadas registradas y aprobación humana del checkpoint.
+
+No se acepta como sustituto la presencia de copy, bloques válidos, rutas 200, ausencia
+de overflow, Lighthouse ni una auditoría de accesibilidad. Todas esas pruebas siguen
+siendo obligatorias, pero verifican dimensiones diferentes del producto.
+
+La presencia de configuración en archivos o base de datos tampoco acredita su efecto.
+El consumidor debe demostrar la configuración aplicada en el CSS y el render finales.
+El [ADR 0010](adr/0010-fidelidad-visual-bloqueante.md) contiene el contrato completo.
+
 ## Fuente de verdad por tipo de cambio
 
 | Cambio | Fuente de verdad | Registro coordinador |
@@ -41,6 +64,7 @@ obligatorio siga pendiente.
 | Convención transversal | `vicunav-standards` | ADR si cambia arquitectura |
 | Contrato público de un paquete | Repositorio propietario | ADR y enlaces desde el hub |
 | Token visual, color o tipografía | `vicunav-theme-core` | Issue del theme y consumidores |
+| Markup y estado funcional de un bloque de dominio | Plugin vertical propietario | Issue del vertical y demo consumidor |
 | Lógica de negocio | Plugin o vertical propietario | Issue y pruebas del repositorio |
 | Composición de una demo | Repositorio de la demo | Backlog del hub |
 

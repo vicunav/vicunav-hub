@@ -13,6 +13,12 @@ La arquitectura normativa está en el [ADR 0009](../adr/0009-restaurante-sin-woo
 y en la [especificación v1](../especificaciones/restaurante-v1.md). Ninguna tarea
 autoriza a crear los repositorios futuros antes de llegar a su unidad.
 
+> **Checkpoint visual reabierto:** REST-02 conserva su estado funcional, pero la
+> evidencia posterior demostró que DEMO-REST-01D no validó paridad 1:1. La recuperación
+> y el flujo obligatorio continúan en el
+> [plan de fidelidad visual](plan-fidelidad-visual.md) y en el
+> [ADR 0010](../adr/0010-fidelidad-visual-bloqueante.md).
+
 ## Resultado de descubrimiento
 
 `DESIGN-REST-01` queda completado como auditoría, no como implementación. Verificó el
@@ -354,6 +360,8 @@ media, menú, pizza, carrito, checkout manual y reservas. El gate aisló y fusio
 correctivos de menú y checkout en `vicunav-restaurante`, y el estado inicial de FAQ
 en `vicunav-theme-core`, sin incorporar lógica reutilizable al demo.
 
-Checkpoint: REST-02A a REST-02R, THEME-REST-01 a THEME-REST-03 y DEMO-REST-01A a
-DEMO-REST-01D están completos. No hay otra unidad autorizada en ejecución; hotel y
-demo informativo permanecen fuera de este checkpoint.
+Checkpoint corregido: REST-02A a REST-02R están funcionalmente completos. Los issues y
+PRs históricos de THEME-REST-01 a 03 y DEMO-REST-01A a 01D siguen fusionados, pero no
+acreditan fidelidad visual 1:1. El producto integrado permanece abierto hasta cerrar
+HUB-VIS-03. Hotel y demo informativo continúan fuera de alcance y bloqueados por ese
+gate.
