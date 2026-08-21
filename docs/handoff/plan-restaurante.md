@@ -323,6 +323,14 @@ fija revisiones exactas e instala theme, core, pagos y restaurante mediante syml
 idempotentes en el LocalWP existente. CI y la segunda ejecución real pasaron; el
 sitio todavía no contiene copy, media ni páginas Bonasera.
 
-Checkpoint: REST-02A a REST-02R, THEME-REST-01 a THEME-REST-03 y DEMO-REST-01A están
-completos. La siguiente unidad ejecutable es DEMO-REST-01B; DEMO-REST-01C y
-DEMO-REST-01D siguen pendientes y deben ejecutarse en ese orden.
+DEMO-REST-01B quedó completado mediante el
+[issue 3](https://github.com/vicunav/vicunav-demo-restaurante/issues/3) y el
+[PR 4](https://github.com/vicunav/vicunav-demo-restaurante/pull/4). El squash
+`32b4e211179b68ec6df136812bd2ad5c7cf84a1a` conserva 37 platos, ocho categorías,
+copy y datos ficticios, y nueve imágenes WebP locales con licencia, alt, dimensiones,
+peso y checksum. Excluye retratos y marcas, y registra el video y los dos mapas como
+no entregados. No modifica todavía el contenido del sitio WordPress.
+
+Checkpoint: REST-02A a REST-02R, THEME-REST-01 a THEME-REST-03 y DEMO-REST-01A a 01B
+están completos. La siguiente unidad ejecutable es DEMO-REST-01C; DEMO-REST-01D sigue
+pendiente.
