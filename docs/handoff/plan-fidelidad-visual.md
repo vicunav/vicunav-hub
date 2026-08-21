@@ -137,6 +137,8 @@ HUB-VIS-03 cierre correctamente el checkpoint restaurante.
 
 ## Siguiente unidad ejecutable
 
-HUB-VIS-01 corresponde al issue 87 del hub y a la documentación de este plan. Después
-de su squash-merge, la siguiente unidad es STANDARDS-VIS-01. No se inicia trabajo de
-implementación visual ni otro proyecto antes de cerrar esta fase de planificación.
+HUB-VIS-01 se documentó mediante el
+[issue 87](https://github.com/vicunav/vicunav-hub/issues/87) y el
+[PR 88](https://github.com/vicunav/vicunav-hub/pull/88). Después de su squash-merge,
+la siguiente unidad es STANDARDS-VIS-01. No se inicia trabajo de implementación visual
+ni otro proyecto antes de cerrar esta fase de planificación.
