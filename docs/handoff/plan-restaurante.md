@@ -297,7 +297,24 @@ la matriz WordPress 6.6/PHP 8.1 y WordPress 6.9/PHP 8.4. El squash
 fixture y evidencia E2E, sin modificar LocalWP. La prerelease verificable es
 [`v1.0.0-rc.1`](https://github.com/vicunav/vicunav-restaurante/releases/tag/v1.0.0-rc.1).
 
-Checkpoint: REST-02A a REST-02R están completos. La siguiente unidad ejecutable es
-THEME-REST-01; después siguen THEME-REST-02, THEME-REST-03 y, solo entonces,
-DEMO-REST-01A a DEMO-REST-01D. Este checkpoint no marca ninguna de esas unidades
-visuales como iniciada o completada.
+THEME-REST-01 quedó completado mediante el
+[issue 33](https://github.com/vicunav/vicunav-theme-core/issues/33) y el
+[PR 36](https://github.com/vicunav/vicunav-theme-core/pull/36). Publica la variación
+Bonasera seleccionable sin cambiar los defaults globales.
+
+THEME-REST-02 quedó completado mediante el
+[issue 37](https://github.com/vicunav/vicunav-theme-core/issues/37) y el
+[PR 38](https://github.com/vicunav/vicunav-theme-core/pull/38). Publica cuatro parts
+de restaurante con navegación core, responsive y accesibilidad verificados.
+
+THEME-REST-03 quedó completado mediante el
+[issue 39](https://github.com/vicunav/vicunav-theme-core/issues/39) y el
+[PR 42](https://github.com/vicunav/vicunav-theme-core/pull/42). Reutiliza hero,
+contacto, FAQ, testimonios y CTA, y añade únicamente historia editorial y enlaces
+visuales. Los correctivos descubiertos se aislaron en los
+[PR 35](https://github.com/vicunav/vicunav-theme-core/pull/35) y
+[PR 41](https://github.com/vicunav/vicunav-theme-core/pull/41).
+
+Checkpoint: REST-02A a REST-02R y THEME-REST-01 a THEME-REST-03 están completos. La
+siguiente unidad ejecutable es DEMO-REST-01A; DEMO-REST-01B a DEMO-REST-01D siguen
+pendientes y deben ejecutarse en ese orden.
