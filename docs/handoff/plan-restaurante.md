@@ -331,6 +331,15 @@ copy y datos ficticios, y nueve imágenes WebP locales con licencia, alt, dimens
 peso y checksum. Excluye retratos y marcas, y registra el video y los dos mapas como
 no entregados. No modifica todavía el contenido del sitio WordPress.
 
-Checkpoint: REST-02A a REST-02R, THEME-REST-01 a THEME-REST-03 y DEMO-REST-01A a 01B
-están completos. La siguiente unidad ejecutable es DEMO-REST-01C; DEMO-REST-01D sigue
-pendiente.
+DEMO-REST-01C quedó completado mediante el
+[issue 5](https://github.com/vicunav/vicunav-demo-restaurante/issues/5) y el
+[PR 6](https://github.com/vicunav/vicunav-demo-restaurante/pull/6). El squash
+`bdc0a1536c8cd7f80a85a1084dfa6c7194c57580` aporta un aplicador WP-CLI idempotente,
+importa la media local y aplica datos mediante contratos públicos. Compone portada,
+siete rutas funcionales y privacidad con templates y parts FSE editables, selecciona
+Bonasera y conserva un único H1 por vista. Dos aplicaciones consecutivas no crearon
+duplicados ni revisiones nuevas; CI, las nueve rutas y la consola del navegador
+pasaron antes del reinicio del equipo.
+
+Checkpoint: REST-02A a REST-02R, THEME-REST-01 a THEME-REST-03 y DEMO-REST-01A a 01C
+están completos. La siguiente unidad ejecutable es DEMO-REST-01D.
