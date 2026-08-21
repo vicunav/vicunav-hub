@@ -21,6 +21,7 @@ issue.
 | `vicunav-plugin-core` | Fase fundacional CORE-01 a CORE-09 completa; contrato 1.0.0, plugin 0.1.0 y release `v0.1.0` publicados |
 | `vicunav-pagos` | PAGOS-01 a PAGOS-03 completos; plugin 0.3.1 y contrato 0.3.0 con persistencia transaccional, proveedor manual idempotente y lectura normalizada de su opción, estados, expiración, eventos versionados, pruebas, E2E real y CI |
 | `vicunav-restaurante` | REST-02A a REST-02R completos; plugin y contrato 1.0.0, siete bloques públicos, privacidad nativa, matriz WordPress/PHP y prerelease `v1.0.0-rc.1`, sin contenido de demo ni WooCommerce |
+| `vicunav-demo-restaurante` | DEMO-REST-01A completo; repositorio público, dependencias fijadas e instalación idempotente por symlinks validada en LocalWP y CI |
 | Referencia de diseño Bonasera | DESIGN-REST-01 auditó el commit `1e1f62787e088c0ca9701500e764802499d1b253`, sus siete pantallas, reglas, contratos propuestos, tokens y defectos; REST-01 incorporó el resultado sin aceptar su mapeo legacy a WooCommerce |
 | Referencia privada de `vicunav-demo-informativo` | Dra. Fortul conserva estrategia y contenido; WordPress local quedó limpio y consume `vicunav-theme-core` |
 
@@ -32,12 +33,11 @@ Las antiguas tareas para diferenciar `vicunav-secondary` y corregir el CPT de
 
 | Orden | ID | Repositorio | Trabajo | Depende de | Estado |
 | ---: | --- | --- | --- | --- | --- |
-| 1 | DEMO-REST-01A | `vicunav-demo-restaurante` | Crear el repositorio de composición FSE y su instalación idempotente | REST-02R, THEME-REST-03 | Siguiente |
-| 2 | DEMO-REST-01B | `vicunav-demo-restaurante` | Versionar copy, inventario y media licenciada de Bonasera | DEMO-REST-01A | Planificado |
-| 3 | DEMO-REST-01C | `vicunav-demo-restaurante` | Crear páginas y composición FSE con rutas reales | DEMO-REST-01B, REST-02R | Planificado |
-| 4 | DEMO-REST-01D | `vicunav-demo-restaurante` | Completar QA visual, editorial, accesible, funcional y de rendimiento | DEMO-REST-01C | Planificado |
-| 5 | HOTEL-01 | `vicunav-hotel` | Escribir spec del vertical hotelero | DEMO-REST-01D | Diferido por ADR 0006 |
-| 6 | DEMO-HOTEL-01 | `vicunav-demo-hotel` | Crear la demo del vertical hotelero | HOTEL-01 | Diferido |
+| 1 | DEMO-REST-01B | `vicunav-demo-restaurante` | Versionar copy, inventario y media licenciada de Bonasera | DEMO-REST-01A | Siguiente |
+| 2 | DEMO-REST-01C | `vicunav-demo-restaurante` | Crear páginas y composición FSE con rutas reales | DEMO-REST-01B, REST-02R | Planificado |
+| 3 | DEMO-REST-01D | `vicunav-demo-restaurante` | Completar QA visual, editorial, accesible, funcional y de rendimiento | DEMO-REST-01C | Planificado |
+| 4 | HOTEL-01 | `vicunav-hotel` | Escribir spec del vertical hotelero | DEMO-REST-01D | Diferido por ADR 0006 |
+| 5 | DEMO-HOTEL-01 | `vicunav-demo-hotel` | Crear la demo del vertical hotelero | HOTEL-01 | Diferido |
 
 La secuencia, aceptación y propietario de cada unidad están en el
 [plan atómico de restaurante](plan-restaurante.md).
@@ -61,7 +61,8 @@ en una dependencia de los repositorios resultantes.
 - REST-01 fijó el dominio sin WooCommerce. REST-02A a REST-02R completaron backend,
   siete bloques públicos y el gate integral. THEME-REST-01 a THEME-REST-03 completaron
   la variación Bonasera, el chrome responsive y los patterns faltantes. El demo ya no
-  está bloqueado por runtime ni theme; su siguiente unidad es DEMO-REST-01A.
+  está bloqueado por runtime ni theme. DEMO-REST-01A ya creó su ensamblaje
+  reproducible; la siguiente unidad es DEMO-REST-01B.
 - La paleta global final de Vicunav sigue pendiente, pero no bloquea `plugin-core`,
   pagos ni la variación Bonasera aislada.
 - Los diseños de restaurante, hotel y Dra. Fortul pueden descubrir funcionalidades,

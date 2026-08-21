@@ -315,6 +315,14 @@ visuales. Los correctivos descubiertos se aislaron en los
 [PR 35](https://github.com/vicunav/vicunav-theme-core/pull/35) y
 [PR 41](https://github.com/vicunav/vicunav-theme-core/pull/41).
 
-Checkpoint: REST-02A a REST-02R y THEME-REST-01 a THEME-REST-03 están completos. La
-siguiente unidad ejecutable es DEMO-REST-01A; DEMO-REST-01B a DEMO-REST-01D siguen
-pendientes y deben ejecutarse en ese orden.
+DEMO-REST-01A quedó completado mediante el
+[issue 1](https://github.com/vicunav/vicunav-demo-restaurante/issues/1) y el
+[PR 2](https://github.com/vicunav/vicunav-demo-restaurante/pull/2). El squash
+`b1942cb3138669bd475e43dab4aceb0828be21ab` crea el repositorio de composición,
+fija revisiones exactas e instala theme, core, pagos y restaurante mediante symlinks
+idempotentes en el LocalWP existente. CI y la segunda ejecución real pasaron; el
+sitio todavía no contiene copy, media ni páginas Bonasera.
+
+Checkpoint: REST-02A a REST-02R, THEME-REST-01 a THEME-REST-03 y DEMO-REST-01A están
+completos. La siguiente unidad ejecutable es DEMO-REST-01B; DEMO-REST-01C y
+DEMO-REST-01D siguen pendientes y deben ejecutarse en ese orden.
