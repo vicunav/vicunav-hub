@@ -1,6 +1,6 @@
 # Plan atómico de restaurante
 
-Actualizado: 2026-08-20.
+Actualizado: 2026-08-26.
 
 ## Propósito
 
@@ -363,5 +363,5 @@ en `vicunav-theme-core`, sin incorporar lógica reutilizable al demo.
 Checkpoint corregido: REST-02A a REST-02R están funcionalmente completos. Los issues y
 PRs históricos de THEME-REST-01 a 03 y DEMO-REST-01A a 01D siguen fusionados, pero no
 acreditan fidelidad visual 1:1. El producto integrado permanece abierto hasta cerrar
-HUB-VIS-03. Hotel y demo informativo continúan fuera de alcance y bloqueados por ese
-gate.
+HUB-VIS-03. Hotel, demo informativo y las superficies visuales Yoga continúan fuera
+de implementación y bloqueados por ese gate.

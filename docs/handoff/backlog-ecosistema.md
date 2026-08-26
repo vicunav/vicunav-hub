@@ -15,7 +15,7 @@ issue.
 | --- | --- |
 | `vicunav-standards` | Ocho estándares compartidos publicados; fidelidad visual vigente en `5c5af785ae7d157af876da8367c2d30f992f0319` |
 | `vicunav-repo-template` | Template con submódulo, AGENTS, contribución, issue atómico, clasificación visual, checklist de PR y CI; revisión `34179579367d89c6b6c7d1510fd24163c25b4ca2` |
-| `vicunav-hub` | Diez ADRs, spec durable de restaurante, gobierno, estado y backlog consolidados; HUB-VIS-01 y HUB-VIS-02 completan el funnel preventivo |
+| `vicunav-hub` | Once ADRs, spec durable de restaurante, gobierno, estado y backlog consolidados; HUB-VIS-01 y HUB-VIS-02 completan el funnel preventivo |
 | `vicunav-transform-claude-to-gutenberg` | Skill 0.1.0 con manifiesto, captura Chromium, comparación, reportes, hashes y gate visual publicados hasta `a55cfe447f8ba72098cf940c75605482236d2b35` |
 | `vicunav-theme-core` | Base 0.1.0 y entregas históricas THEME-REST-01 a 03 fusionadas; su integración Bonasera requiere recuperación y gate visual 1:1 |
 | `vicunav-plugin-core` | Fase fundacional CORE-01 a CORE-09 completa; contrato 1.0.0, plugin 0.1.0 y release `v0.1.0` publicados |
@@ -24,6 +24,9 @@ issue.
 | `vicunav-demo-restaurante` | Ensamblaje, contenido, rutas y flujos reales disponibles; DESIGN-REST-02 fija el baseline en `6789edd745887468afca7831fa158b53c78448f0`, con 35 diferencias abiertas y tres assets ausentes |
 | Referencia de diseño Bonasera | DESIGN-REST-01 auditó el commit `1e1f62787e088c0ca9701500e764802499d1b253`, sus siete pantallas, reglas, contratos propuestos, tokens y defectos; REST-01 incorporó el resultado sin aceptar su mapeo legacy a WooCommerce |
 | Referencia privada de `vicunav-demo-informativo` | Dra. Fortul conserva estrategia y contenido; WordPress local quedó limpio y consume `vicunav-theme-core` |
+| `vicunav-yoga` | YOGA-00 y YOGA-01 crearon localmente el repositorio neutral, un bootstrap instalable 0.1.0, arquitectura, contrato v1 en borrador y validación; todavía no registra dominio |
+| `vicunav-bhoga-yoga` | BHO-00 y BHO-01 crearon localmente la implementación privada, brief, inventario preliminar, prompts, QA y contrato de rollback; WordPress y producción no se modificaron |
+| `vicunav-demo-yoga` | DEMO-YOGA-01 creó localmente la fundación de una demo pública saneada, su configuración, prompts y validación; todavía no tiene LocalWP ni contenido |
 
 Las antiguas tareas para diferenciar `vicunav-secondary` y corregir el CPT de
 `plantillas-verticales.md` ya están resueltas en los issues 27 y 29 de
@@ -36,12 +39,34 @@ Las antiguas tareas para diferenciar `vicunav-secondary` y corregir el CPT de
 | 1 | HUB-VIS-01 | `vicunav-hub` | Registrar decisión, funnel y reapertura del checkpoint visual | Auditoría posterior a DEMO-REST-01D | Documentado mediante issue 87 y PR 88 |
 | 2 | STANDARDS-VIS-01 a HUB-VIS-02 | Varios | Endurecer estándar, skill, tooling, plantilla y adopción canónica antes de otra migración | HUB-VIS-01 | Completo; commits fijados en el plan visual |
 | 3 | DESIGN-REST-02 a HUB-VIS-03 | Varios | Recuperar Bonasera 1:1 en theme, vertical y demo, y cerrar el gate con aprobación humana | HUB-VIS-02 | DESIGN-REST-02 completo; siguiente: DEMO-REST-02A |
-| 4 | HOTEL-01 | `vicunav-hotel` | Escribir spec del vertical hotelero | HUB-VIS-03 | Bloqueado; no autorizado en ejecución |
-| 5 | DEMO-HOTEL-01 | `vicunav-demo-hotel` | Crear la demo del vertical hotelero | HOTEL-01 | Diferido |
+| 4 | YOGA-02 a DEMO-YOGA-05 y BHO-09 | `vicunav-yoga`, `vicunav-bhoga-yoga`, `vicunav-demo-yoga` y `vicunav-theme-core` | Aprobar el contrato Yoga, migrar Bhoga 1:1 y construir una demo pública saneada sobre los paquetes compartidos | HUB-VIS-03, contrato Yoga, gate del cliente y aprobaciones de corte | Fundaciones locales completas; dominio y superficies visuales bloqueados |
+| 5 | HOTEL-01 | `vicunav-hotel` | Escribir spec del vertical hotelero | HUB-VIS-03 | Bloqueado; no autorizado en ejecución |
+| 6 | DEMO-HOTEL-01 | `vicunav-demo-hotel` | Crear la demo del vertical hotelero | HOTEL-01 | Diferido |
 
 La recuperación, aceptación y propietario de cada unidad están en el
 [plan atómico de fidelidad visual](plan-fidelidad-visual.md). La historia del runtime
-permanece en el [plan de restaurante](plan-restaurante.md).
+permanece en el [plan de restaurante](plan-restaurante.md). La migración del cliente
+Bhoga Yoga está desglosada en el [plan específico](plan-bhoga-yoga.md).
+
+## Pista Yoga y Bhoga
+
+La arquitectura separa cuatro propietarios: `vicunav-theme-core` presenta,
+`vicunav-yoga` implementa el dominio reusable, `vicunav-bhoga-yoga` conserva la
+implementación privada del cliente y `vicunav-demo-yoga` compone una demostración
+pública sin identidad ni datos reales de Bhoga.
+
+| ID | Repositorio | Trabajo | Depende de | Estado |
+| --- | --- | --- | --- | --- |
+| YOGA-00 a YOGA-01 | `vicunav-hub` y `vicunav-yoga` | Decidir ownership y crear el bootstrap neutral con contrato en borrador | Solicitud del usuario | Completado localmente |
+| YOGA-02 | `vicunav-yoga` | Aprobar entidades, capacidades, bloques y exclusiones del contrato v1 | Decisión humana de producto | Pendiente |
+| YOGA-03 a YOGA-05 | `vicunav-yoga` | Implementar, probar y documentar el dominio reusable sin marca Bhoga | YOGA-02; superficies visuales además dependen de HUB-VIS-03 | Pendiente |
+| BHO-00 a BHO-01 | `vicunav-hub` y `vicunav-bhoga-yoga` | Crear la fundación privada, inventarios, prompts y validación | Solicitud del usuario | Completado localmente |
+| BHO-02 | `vicunav-bhoga-yoga` | Congelar baseline de tres rutas, estados y viewports | HUB-VIS-03 y gate del cliente | Bloqueado |
+| BHO-03 a BHO-07 | Varios | Inventariar, componer theme y plugins, migrar y aprobar QA integral | BHO-02 y YOGA-02 | Pendiente |
+| BHO-08 | Proyecto e infraestructura autorizada | Crear respaldo Elementor privado y ensayar rollback | BHO-07 | Pendiente |
+| BHO-09 | Infraestructura autorizada | Reemplazar producción y observar el corte | BHO-08 y aprobación humana explícita | Pendiente |
+| DEMO-YOGA-01 | `vicunav-demo-yoga` | Crear la fundación local de la demo pública saneada | Decisión de arquitectura | Completado localmente |
+| DEMO-YOGA-02 a DEMO-YOGA-05 | `vicunav-demo-yoga` | Crear LocalWP, contenido ficticio, composición y gate público | YOGA-02; superficies visuales además dependen de HUB-VIS-03 | Pendiente |
 
 ## Pista paralela de diseño
 
@@ -76,6 +101,12 @@ en una dependencia de los repositorios resultantes.
 - Los diseños de restaurante, hotel y Dra. Fortul pueden descubrir funcionalidades,
   pero un elemento visual no define por sí solo un contrato de backend. Antes de crear
   lógica se deben precisar estado, datos, permisos, errores y repositorio propietario.
+- Bhoga Yoga contiene identidad, fotografías y testimonios de personas reales. El
+  repositorio permanece privado y no recibe media hasta confirmar licencia,
+  consentimiento y autorización. `vicunav-yoga` no puede incorporar esos datos ni
+  decisiones de marca, y `vicunav-demo-yoga` solo usará contenido ficticio o
+  expresamente autorizado. El live no se modifica antes de un staging Elementor
+  privado, un backup inmutable y un rollback ensayado.
 - `vicunav-plugin-core` declara compatibilidad mínima con WordPress 6.6 y PHP 8.1. Su
   matriz CI específica para esas versiones es una mejora futura y no bloquea
   REST-01.

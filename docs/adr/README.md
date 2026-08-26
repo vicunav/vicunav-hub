@@ -17,6 +17,8 @@ trabajo pendiente se mantienen en `docs/handoff/`.
 | [0007](0007-demo-informativo-theme-base.md) | Validar el theme base con un demo informativo |
 | [0008](0008-skill-claude-gutenberg.md) | Mantener el skill de migración fuera del runtime |
 | [0009](0009-restaurante-sin-woocommerce.md) | Implementar comercio de restaurante sin WooCommerce |
+| [0010](0010-fidelidad-visual-bloqueante.md) | Bloquear migraciones hasta demostrar fidelidad visual 1:1 |
+| [0011](0011-bhoga-yoga-cliente-privado.md) | Separar vertical Yoga, implementación Bhoga y demo saneada |
 
 ## Cuándo crear otro ADR
 

@@ -171,10 +171,17 @@ HUB-VIS-01
 de HUB-VIS-02. Hotel y demo informativo permanecen además fuera del alcance hasta que
 HUB-VIS-03 cierre correctamente el checkpoint restaurante.
 
+`BHO-02`, `YOGA-04` y `DEMO-YOGA-04` son las primeras unidades visuales de la pista
+Yoga y, por el [ADR 0011](../adr/0011-bhoga-yoga-cliente-privado.md), dependen
+directamente de HUB-VIS-03. BHO-02 depende además de las decisiones previas del
+cliente. Las fundaciones de los tres repositorios solo preparan gobierno, contratos,
+documentación y configuración; no implementan superficies visuales ni evitan el gate.
+
 ## Siguiente unidad ejecutable
 
 DESIGN-REST-02 está completo en
 `6789edd745887468afca7831fa158b53c78448f0`. La siguiente unidad es DEMO-REST-02A en
 `vicunav-demo-restaurante`: resolver el inventario de assets sin presentar sustitutos
 como paridad. THEME-REST-04 y el resto del funnel permanecen pendientes. Hotel y demo
-informativo continúan fuera de alcance.
+informativo continúan fuera de alcance. Las superficies visuales Yoga permanecen
+bloqueadas por HUB-VIS-03; Bhoga depende además de su gate previo de cliente.
