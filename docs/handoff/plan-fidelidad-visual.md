@@ -88,18 +88,33 @@ El producto integrado no vuelve a estado completo hasta que:
 
 ## Funnel B: recuperación Bonasera 1:1
 
-| Orden | ID | Repositorio | Resultado atómico | Depende de |
-| ---: | --- | --- | --- | --- |
-| B1 | DESIGN-REST-02 | `vicunav-demo-restaurante` | Congelar baseline visual completo del commit aprobado: nueve rutas o estados equivalentes, cinco viewports, estados interactivos, fuentes, datos y mapa componente-propietario | HUB-VIS-02 |
-| B2 | DEMO-REST-02A | `vicunav-demo-restaurante` | Resolver inventario de assets 1:1: recuperar originales disponibles y bloquear video/mapas faltantes hasta recibir originales o sustitución humana aprobada | DESIGN-REST-02 |
-| B3 | THEME-REST-04 | `vicunav-theme-core` | Completar y probar la variación Bonasera: colores, tipografía, tamaños, alturas, espaciado, anchos, radios, sombras, estilos de elementos y coherencia frontend-editor | DESIGN-REST-02 |
-| B4 | THEME-REST-05 | `vicunav-theme-core` | Reproducir 1:1 el chrome y los patterns realmente reutilizables, incluidos hero, categorías, historia, ubicación, testimonios, FAQ, contacto y CTA | THEME-REST-04 |
-| B5 | REST-02S | `vicunav-restaurante` | Definir y aplicar el contrato visual neutral de los siete bloques: markup, composiciones intrínsecas y estados funcionales consumen presets públicos del theme sin literales Bonasera | DESIGN-REST-02, THEME-REST-04 |
-| B6 | DEMO-REST-02B | `vicunav-demo-restaurante` | Corregir la selección idempotente de Global Styles y probar la paleta y fuentes efectivas en frontend y Site Editor, no solo el post persistido | THEME-REST-04 |
-| B7 | DEMO-REST-02C | `vicunav-demo-restaurante` | Recomponer portada y páginas sección por sección con patterns, bloques core, assets y contenido 1:1, sin lógica reutilizable propia | DEMO-REST-02A, THEME-REST-05, DEMO-REST-02B |
-| B8 | DEMO-REST-02D | `vicunav-demo-restaurante` | Integrar los siete flujos reales con la composición y los estados visuales aprobados; devolver cualquier defecto reusable a theme o vertical mediante issue separado | REST-02S, DEMO-REST-02C |
-| B9 | DEMO-REST-02E | `vicunav-demo-restaurante` | Ejecutar gate final con lado a lado, overlays, Site Editor, accesibilidad, responsive, rendimiento y regresión funcional; registrar diferencias y obtener aprobación humana | TOOL-VIS-02, DEMO-REST-02D |
-| B10 | HUB-VIS-03 | `vicunav-hub` | Registrar commits, evidencia y aprobación; cerrar el checkpoint visual solo si todos los gates pasan | DEMO-REST-02E |
+| Orden | ID | Repositorio | Resultado atómico | Depende de | Estado |
+| ---: | --- | --- | --- | --- | --- |
+| B1 | DESIGN-REST-02 | `vicunav-demo-restaurante` | Congelar baseline visual completo del commit aprobado: nueve rutas o estados equivalentes, cinco viewports, estados interactivos, fuentes, datos y mapa componente-propietario | HUB-VIS-02 | Completo: issue 9, PR 10, `6789edd745887468afca7831fa158b53c78448f0` |
+| B2 | DEMO-REST-02A | `vicunav-demo-restaurante` | Resolver inventario de assets 1:1: recuperar originales disponibles y bloquear video/mapas faltantes hasta recibir originales o sustitución humana aprobada | DESIGN-REST-02 | Siguiente |
+| B3 | THEME-REST-04 | `vicunav-theme-core` | Completar y probar la variación Bonasera: colores, tipografía, tamaños, alturas, espaciado, anchos, radios, sombras, estilos de elementos y coherencia frontend-editor | DESIGN-REST-02 | Pendiente |
+| B4 | THEME-REST-05 | `vicunav-theme-core` | Reproducir 1:1 el chrome y los patterns realmente reutilizables, incluidos hero, categorías, historia, ubicación, testimonios, FAQ, contacto y CTA | THEME-REST-04 | Pendiente |
+| B5 | REST-02S | `vicunav-restaurante` | Definir y aplicar el contrato visual neutral de los siete bloques: markup, composiciones intrínsecas y estados funcionales consumen presets públicos del theme sin literales Bonasera | DESIGN-REST-02, THEME-REST-04 | Pendiente |
+| B6 | DEMO-REST-02B | `vicunav-demo-restaurante` | Corregir la selección idempotente de Global Styles y probar la paleta y fuentes efectivas en frontend y Site Editor, no solo el post persistido | THEME-REST-04 | Pendiente |
+| B7 | DEMO-REST-02C | `vicunav-demo-restaurante` | Recomponer portada y páginas sección por sección con patterns, bloques core, assets y contenido 1:1, sin lógica reutilizable propia | DEMO-REST-02A, THEME-REST-05, DEMO-REST-02B | Pendiente |
+| B8 | DEMO-REST-02D | `vicunav-demo-restaurante` | Integrar los siete flujos reales con la composición y los estados visuales aprobados; devolver cualquier defecto reusable a theme o vertical mediante issue separado | REST-02S, DEMO-REST-02C | Pendiente |
+| B9 | DEMO-REST-02E | `vicunav-demo-restaurante` | Ejecutar gate final con lado a lado, overlays, Site Editor, accesibilidad, responsive, rendimiento y regresión funcional; registrar diferencias y obtener aprobación humana | TOOL-VIS-02, DEMO-REST-02D | Pendiente |
+| B10 | HUB-VIS-03 | `vicunav-hub` | Registrar commits, evidencia y aprobación; cerrar el checkpoint visual solo si todos los gates pasan | DEMO-REST-02E | Pendiente |
+
+### Baseline publicado de DESIGN-REST-02
+
+`vicunav-demo-restaurante` cerró el
+[issue 9](https://github.com/vicunav/vicunav-demo-restaurante/issues/9) mediante el
+[PR 10](https://github.com/vicunav/vicunav-demo-restaurante/pull/10), con squash
+`6789edd745887468afca7831fa158b53c78448f0` y CI verde. El manifiesto fija siete
+superficies comparables por cinco viewports: 35 filas, todas `different`, cero
+coincidencias y cero diferencias aprobadas. `/pedido/` y `/privacidad/` permanecen
+como superficies WordPress sin equivalencia falsa en la SPA.
+
+El gate final bloquea correctamente las 35 diferencias y los tres assets ausentes:
+video hero, mapa de Zulia y mapa de Maracaibo. DESIGN-REST-02 documentó estados
+interactivos y propiedad multirrepositorio sin modificar theme, plugins, contenido,
+LocalWP ni base de datos.
 
 ### Aceptación por propietario
 
@@ -158,9 +173,8 @@ HUB-VIS-03 cierre correctamente el checkpoint restaurante.
 
 ## Siguiente unidad ejecutable
 
-HUB-VIS-02 se documentó mediante el
-[issue 89](https://github.com/vicunav/vicunav-hub/issues/89) y el
-[PR 90](https://github.com/vicunav/vicunav-hub/pull/90). El funnel A está completo y
-la siguiente unidad es DESIGN-REST-02 en `vicunav-demo-restaurante`. Debe congelar el
-baseline antes de modificar theme, vertical, demo o LocalWP. Hotel y demo informativo
-permanecen fuera de alcance.
+DESIGN-REST-02 está completo en
+`6789edd745887468afca7831fa158b53c78448f0`. La siguiente unidad es DEMO-REST-02A en
+`vicunav-demo-restaurante`: resolver el inventario de assets sin presentar sustitutos
+como paridad. THEME-REST-04 y el resto del funnel permanecen pendientes. Hotel y demo
+informativo continúan fuera de alcance.
