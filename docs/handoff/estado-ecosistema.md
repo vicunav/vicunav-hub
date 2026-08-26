@@ -150,6 +150,13 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
   `6789edd745887468afca7831fa158b53c78448f0`. El baseline versiona 35 comparaciones
   en cinco viewports: todas son diferencias abiertas, ninguna fue aprobada. El gate
   también conserva como bloqueos el video hero y los mapas de Zulia y Maracaibo.
+- DEMO-REST-02A cerró el
+  [issue 11](https://github.com/vicunav/vicunav-demo-restaurante/issues/11) y el
+  [PR 12](https://github.com/vicunav/vicunav-demo-restaurante/pull/12) en el squash
+  `488f21521abf1d723ab3f4eebd1d90c83bcb3af8`. Clasificó ocho originales recuperados,
+  un sustituto pendiente, cinco originales retenidos y tres activos no entregados.
+  El gate final conserva 41 bloqueos: 35 diferencias visuales y seis grupos de assets,
+  sin aprobaciones inventadas ni cambios en LocalWP.
 
 ## Arquitectura vigente
 
@@ -182,14 +189,14 @@ y contratos públicos.
 | --- | --- | --- | --- |
 | `vicunav-standards` | Completo | Ocho normas, incluida fidelidad visual bloqueante | Mantener las normas cuando una decisión transversal cambie |
 | `vicunav-repo-template` | Completo | Plantilla, AGENTS, contribución, issue atómico, clasificación visual, checklist de PR, CI y submódulo | Usarlo para crear los repositorios restantes |
-| `vicunav-hub` | Activo | Once ADRs, spec durable de restaurante, arquitectura, gobierno, estado y backlog | Mantener sincronizado el funnel visual desde DEMO-REST-02A |
+| `vicunav-hub` | Activo | Once ADRs, spec durable de restaurante, arquitectura, gobierno, estado y backlog | Mantener sincronizado el funnel visual desde THEME-REST-04 |
 | `vicunav-transform-claude-to-gutenberg` | Base 0.1.0 y gate visual publicados | Skill, auditoría, manifiesto, captura reproducible, comparación, reportes y validadores | Consumirlo en cada unidad visual; no es dependencia runtime |
 | `vicunav-theme-core` | Base 0.1.0; recuperación visual pendiente | Tokens, variación Bonasera, templates, parts, patterns, acordeón y contrato de integración | Ejecutar THEME-REST-04 y 05 contra el baseline 1:1 |
 | `vicunav-plugin-core` | Base 0.1.0 publicada | Release `v0.1.0`, contrato 1.0.0, CPT compartidos, ajustes, administración, seguridad, REST y pruebas | Añadir en el futuro una matriz runtime para WordPress 6.6 y PHP 8.1 |
 | `vicunav-pagos` | Motor 0.3.1 completo | Contrato 0.3.0, CPT y REST protegidos, persistencia InnoDB versionada, servicios idempotentes, proveedor manual v1 con lectura persistida corregida, máquina de estados atómica, expiración y hooks con payload 1.0.0 | Mantener su contrato; integrar consumidores mediante servicios y eventos públicos |
 | `vicunav-restaurante` | Candidata 1.0.0; REST-02A a REST-02R completos y gate integrado aprobado | Dominio backend, siete bloques, privacidad nativa, matriz WordPress/PHP y prerelease `v1.0.0-rc.1`, sin WooCommerce ni contenido Bonasera | Mantener el contrato y evaluar publicación estable solo mediante una unidad futura explícita |
 | `vicunav-hotel` | Diferido | Reservas y disponibilidad | Mantener diferido hasta completar restaurante, según ADR 0006 |
-| `vicunav-demo-restaurante` | Baseline visual publicado; recuperación pendiente | Runtime integrado, manifiesto, 35 comparaciones, copy, media, nueve páginas FSE y siete flujos reales; ninguna diferencia visual está aprobada | Ejecutar DEMO-REST-02A y después las dependencias del funnel B |
+| `vicunav-demo-restaurante` | Baseline e inventario visual publicados; recuperación pendiente | Runtime integrado, manifiesto, 35 comparaciones, ocho originales recuperados, seis grupos de assets pendientes, nueve páginas FSE y siete flujos reales; ninguna diferencia visual está aprobada | Esperar THEME-REST-04 y continuar después las dependencias del funnel B |
 | `vicunav-demo-hotel` | No existe | Demostración del vertical hotelero | Esperar la implementación de hotel |
 | `vicunav-demo-informativo` | Referencia privada en LocalWP | Sitio profesional no transaccional sobre `vicunav-theme-core`; contenido y estrategia de Dra. Fortul | Recibir el HTML aprobado, auditarlo y clasificar trabajo por repositorio |
 | `vicunav-yoga` | Bootstrap 0.1.0 local; contrato pendiente | Plugin neutral, hook de carga, arquitectura, contrato v1 en borrador y validación | Aprobar YOGA-02 antes de registrar dominio |
@@ -435,8 +442,8 @@ El contrato vigente está en
 
 ## Qué falta
 
-1. Completar DEMO-REST-02A a HUB-VIS-03 y obtener aprobación humana de la paridad
-   Bonasera 1:1; DESIGN-REST-02 ya está fusionado.
+1. Completar THEME-REST-04 a HUB-VIS-03 y obtener aprobación humana de la paridad
+   Bonasera 1:1; DESIGN-REST-02 y DEMO-REST-02A ya están fusionados.
 2. Recuperar el video hero y los dos mapas originales, o recibir una decisión humana
    sobre sustitutos, antes del gate final.
 3. Mantener hotel, Dra. Fortul y las superficies visuales Yoga bloqueadas hasta cerrar
@@ -455,7 +462,7 @@ El contrato vigente está en
 
 El camino funcional de restaurante terminó en REST-02R. El producto integrado continúa
 abierto en el [plan de fidelidad visual](plan-fidelidad-visual.md). La siguiente unidad
-es DEMO-REST-02A; hotel, demo informativo y las superficies visuales Yoga permanecen
+es THEME-REST-04; hotel, demo informativo y las superficies visuales Yoga permanecen
 bloqueados. La pista Yoga y Bhoga está en su
 [plan específico](plan-bhoga-yoga.md) y la secuencia global en el
 [`backlog`](backlog-ecosistema.md).
