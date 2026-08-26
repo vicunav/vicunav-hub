@@ -1,6 +1,6 @@
 # Estado canónico del ecosistema Vicunav
 
-Actualizado: 2026-08-20.
+Actualizado: 2026-08-26.
 
 ## Cómo usar este documento
 
@@ -130,6 +130,12 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
 - `vicunav-transform-claude-to-gutenberg` publica el skill y los validadores que
   traducen prototipos aprobados a block themes FSE. Es tooling de desarrollo y no una
   dependencia de runtime.
+- El funnel preventivo HUB-VIS-01 a HUB-VIS-02 está completo. El estándar visual quedó
+  en `5c5af785ae7d157af876da8367c2d30f992f0319`; el skill añadió manifiesto en
+  `3e35e14796006ac2d3868bbee7147610f96d6633` y automatización de evidencia en
+  `a55cfe447f8ba72098cf940c75605482236d2b35`; el template adoptó los campos visuales
+  en `34179579367d89c6b6c7d1510fd24163c25b4ca2`. Ninguna de estas entregas acredita
+  todavía paridad Bonasera.
 
 ## Arquitectura vigente
 
@@ -156,10 +162,10 @@ y contratos públicos.
 
 | Repositorio | Estado | Qué contiene o debe contener | Próximo paso |
 | --- | --- | --- | --- |
-| `vicunav-standards` | Completo | Seguridad, nombres, Git, accesibilidad, compatibilidad, pruebas e idioma | Mantener las normas cuando una decisión transversal cambie |
-| `vicunav-repo-template` | Completo | Plantilla base, guía de agentes, contribución, issue atómico, CI y submódulo de estándares | Usarlo para crear los repositorios restantes |
-| `vicunav-hub` | Activo | Diez ADRs, spec durable de restaurante, arquitectura, gobierno, estado y backlog | Ejecutar STANDARDS-VIS-01 y mantener sincronizado el funnel visual |
-| `vicunav-transform-claude-to-gutenberg` | Base 0.1.0 publicada; endurecimiento pendiente | Skill portable con reglas visuales, auditor y validador FSE | Implementar manifiesto y herramientas bloqueantes en TOOL-VIS-01 y TOOL-VIS-02 |
+| `vicunav-standards` | Completo | Ocho normas, incluida fidelidad visual bloqueante | Mantener las normas cuando una decisión transversal cambie |
+| `vicunav-repo-template` | Completo | Plantilla, AGENTS, contribución, issue atómico, clasificación visual, checklist de PR, CI y submódulo | Usarlo para crear los repositorios restantes |
+| `vicunav-hub` | Activo | Diez ADRs, spec durable de restaurante, arquitectura, gobierno, estado y backlog | Ejecutar DESIGN-REST-02 y mantener sincronizado el funnel visual |
+| `vicunav-transform-claude-to-gutenberg` | Base 0.1.0 y gate visual publicados | Skill, auditoría, manifiesto, captura reproducible, comparación, reportes y validadores | Consumirlo desde DESIGN-REST-02; no es dependencia runtime |
 | `vicunav-theme-core` | Base 0.1.0; recuperación visual pendiente | Tokens, variación Bonasera, templates, parts, patterns, acordeón y contrato de integración | Ejecutar THEME-REST-04 y 05 contra el baseline 1:1 |
 | `vicunav-plugin-core` | Base 0.1.0 publicada | Release `v0.1.0`, contrato 1.0.0, CPT compartidos, ajustes, administración, seguridad, REST y pruebas | Añadir en el futuro una matriz runtime para WordPress 6.6 y PHP 8.1 |
 | `vicunav-pagos` | Motor 0.3.1 completo | Contrato 0.3.0, CPT y REST protegidos, persistencia InnoDB versionada, servicios idempotentes, proveedor manual v1 con lectura persistida corregida, máquina de estados atómica, expiración y hooks con payload 1.0.0 | Mantener su contrato; integrar consumidores mediante servicios y eventos públicos |
@@ -399,21 +405,19 @@ El contrato vigente está en
 
 ## Qué falta
 
-1. Completar STANDARDS-VIS-01 a HUB-VIS-02 para que baseline, evidencia y comparación
-   sean gates verificables del flujo.
-2. Completar DESIGN-REST-02 a HUB-VIS-03 y obtener aprobación humana de la paridad
+1. Completar DESIGN-REST-02 a HUB-VIS-03 y obtener aprobación humana de la paridad
    Bonasera 1:1.
-3. Recuperar el video hero y los dos mapas originales, o recibir una decisión humana
+2. Recuperar el video hero y los dos mapas originales, o recibir una decisión humana
    sobre sustitutos, antes del gate final.
-4. Mantener hotel y Dra. Fortul bloqueados hasta cerrar HUB-VIS-03.
-5. Decidir si el proyecto privado se sanea, renombra y transfiere para convertirse en
+3. Mantener hotel y Dra. Fortul bloqueados hasta cerrar HUB-VIS-03.
+4. Decidir si el proyecto privado se sanea, renombra y transfiere para convertirse en
    el repositorio público `vicunav-demo-informativo`.
-6. Añadir una matriz runtime específica para WordPress 6.6 y PHP 8.1 a
+5. Añadir una matriz runtime específica para WordPress 6.6 y PHP 8.1 a
    `vicunav-plugin-core`; la cobertura actual usa versiones más recientes y no bloquea
    `REST-01`.
 
 El camino funcional de restaurante terminó en REST-02R. El producto integrado continúa
 abierto en el [plan de fidelidad visual](plan-fidelidad-visual.md). La siguiente unidad
-después de HUB-VIS-01 es STANDARDS-VIS-01; hotel y demo informativo permanecen fuera de
-alcance y bloqueados. La secuencia pendiente está detallada en el
+es DESIGN-REST-02; hotel y demo informativo permanecen fuera de alcance y bloqueados.
+La secuencia pendiente está detallada en el
 [`backlog`](backlog-ecosistema.md).
