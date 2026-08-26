@@ -21,7 +21,7 @@ issue.
 | `vicunav-plugin-core` | Fase fundacional CORE-01 a CORE-09 completa; contrato 1.0.0, plugin 0.1.0 y release `v0.1.0` publicados |
 | `vicunav-pagos` | PAGOS-01 a PAGOS-03 completos; plugin 0.3.1 y contrato 0.3.0 con persistencia transaccional, proveedor manual idempotente y lectura normalizada de su opción, estados, expiración, eventos versionados, pruebas, E2E real y CI |
 | `vicunav-restaurante` | REST-02A a REST-02R completos; plugin y contrato 1.0.0, siete bloques públicos, privacidad nativa, matriz WordPress/PHP y prerelease `v1.0.0-rc.1`; el gate integrado corrigió menú y checkout sin añadir contenido Bonasera ni WooCommerce |
-| `vicunav-demo-restaurante` | Ensamblaje, contenido, rutas y flujos reales disponibles; el cierre histórico de DEMO-REST-01D no acreditó fidelidad visual y el checkpoint queda reabierto |
+| `vicunav-demo-restaurante` | Ensamblaje, contenido, rutas y flujos reales disponibles; DESIGN-REST-02 fija el baseline en `6789edd745887468afca7831fa158b53c78448f0`, con 35 diferencias abiertas y tres assets ausentes |
 | Referencia de diseño Bonasera | DESIGN-REST-01 auditó el commit `1e1f62787e088c0ca9701500e764802499d1b253`, sus siete pantallas, reglas, contratos propuestos, tokens y defectos; REST-01 incorporó el resultado sin aceptar su mapeo legacy a WooCommerce |
 | Referencia privada de `vicunav-demo-informativo` | Dra. Fortul conserva estrategia y contenido; WordPress local quedó limpio y consume `vicunav-theme-core` |
 
@@ -35,7 +35,7 @@ Las antiguas tareas para diferenciar `vicunav-secondary` y corregir el CPT de
 | ---: | --- | --- | --- | --- | --- |
 | 1 | HUB-VIS-01 | `vicunav-hub` | Registrar decisión, funnel y reapertura del checkpoint visual | Auditoría posterior a DEMO-REST-01D | Documentado mediante issue 87 y PR 88 |
 | 2 | STANDARDS-VIS-01 a HUB-VIS-02 | Varios | Endurecer estándar, skill, tooling, plantilla y adopción canónica antes de otra migración | HUB-VIS-01 | Completo; commits fijados en el plan visual |
-| 3 | DESIGN-REST-02 a HUB-VIS-03 | Varios | Recuperar Bonasera 1:1 en theme, vertical y demo, y cerrar el gate con aprobación humana | HUB-VIS-02 | Siguiente: DESIGN-REST-02 |
+| 3 | DESIGN-REST-02 a HUB-VIS-03 | Varios | Recuperar Bonasera 1:1 en theme, vertical y demo, y cerrar el gate con aprobación humana | HUB-VIS-02 | DESIGN-REST-02 completo; siguiente: DEMO-REST-02A |
 | 4 | HOTEL-01 | `vicunav-hotel` | Escribir spec del vertical hotelero | HUB-VIS-03 | Bloqueado; no autorizado en ejecución |
 | 5 | DEMO-HOTEL-01 | `vicunav-demo-hotel` | Crear la demo del vertical hotelero | HOTEL-01 | Diferido |
 
@@ -68,6 +68,9 @@ en una dependencia de los repositorios resultantes.
   simplificación y requiere el funnel completo, no un parche aislado.
 - El video hero y los dos mapas originales siguen ausentes. Su recuperación o una
   sustitución aprobada bloquean la paridad final de esos elementos.
+- DESIGN-REST-02 comparó siete superficies en cinco viewports. Las 35 filas quedaron
+  `different`, sin coincidencias ni aprobaciones implícitas. El resultado es baseline
+  de deuda, no un gate visual aprobado.
 - La paleta global final de Vicunav sigue pendiente, pero no bloquea `plugin-core`,
   pagos ni la variación Bonasera aislada.
 - Los diseños de restaurante, hotel y Dra. Fortul pueden descubrir funcionalidades,
