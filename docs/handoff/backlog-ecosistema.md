@@ -1,6 +1,6 @@
 # Backlog multirrepositorio de Vicunav
 
-Actualizado: 2026-08-20.
+Actualizado: 2026-08-26.
 
 ## Propósito
 
@@ -13,10 +13,10 @@ issue.
 
 | Repositorio | Resultado vigente |
 | --- | --- |
-| `vicunav-standards` | Siete estándares compartidos publicados; sin issues abiertos |
-| `vicunav-repo-template` | Template utilizable con submódulo, AGENTS, contribución, issue atómico y CI |
-| `vicunav-hub` | Diez ADRs, spec durable de restaurante, gobierno, estado y backlog consolidados; HUB-VIS-01 reabre el checkpoint visual |
-| `vicunav-transform-claude-to-gutenberg` | Skill 0.1.0 público con requisitos visuales documentados; falta cumplimiento mediante manifiesto, evidencia y herramientas de comparación |
+| `vicunav-standards` | Ocho estándares compartidos publicados; fidelidad visual vigente en `5c5af785ae7d157af876da8367c2d30f992f0319` |
+| `vicunav-repo-template` | Template con submódulo, AGENTS, contribución, issue atómico, clasificación visual, checklist de PR y CI; revisión `34179579367d89c6b6c7d1510fd24163c25b4ca2` |
+| `vicunav-hub` | Diez ADRs, spec durable de restaurante, gobierno, estado y backlog consolidados; HUB-VIS-01 y HUB-VIS-02 completan el funnel preventivo |
+| `vicunav-transform-claude-to-gutenberg` | Skill 0.1.0 con manifiesto, captura Chromium, comparación, reportes, hashes y gate visual publicados hasta `a55cfe447f8ba72098cf940c75605482236d2b35` |
 | `vicunav-theme-core` | Base 0.1.0 y entregas históricas THEME-REST-01 a 03 fusionadas; su integración Bonasera requiere recuperación y gate visual 1:1 |
 | `vicunav-plugin-core` | Fase fundacional CORE-01 a CORE-09 completa; contrato 1.0.0, plugin 0.1.0 y release `v0.1.0` publicados |
 | `vicunav-pagos` | PAGOS-01 a PAGOS-03 completos; plugin 0.3.1 y contrato 0.3.0 con persistencia transaccional, proveedor manual idempotente y lectura normalizada de su opción, estados, expiración, eventos versionados, pruebas, E2E real y CI |
@@ -34,8 +34,8 @@ Las antiguas tareas para diferenciar `vicunav-secondary` y corregir el CPT de
 | Orden | ID | Repositorio | Trabajo | Depende de | Estado |
 | ---: | --- | --- | --- | --- | --- |
 | 1 | HUB-VIS-01 | `vicunav-hub` | Registrar decisión, funnel y reapertura del checkpoint visual | Auditoría posterior a DEMO-REST-01D | Documentado mediante issue 87 y PR 88 |
-| 2 | STANDARDS-VIS-01 a HUB-VIS-02 | Varios | Endurecer estándar, skill, tooling, plantilla y adopción canónica antes de otra migración | HUB-VIS-01 | Planificado |
-| 3 | DESIGN-REST-02 a HUB-VIS-03 | Varios | Recuperar Bonasera 1:1 en theme, vertical y demo, y cerrar el gate con aprobación humana | HUB-VIS-02 | Planificado |
+| 2 | STANDARDS-VIS-01 a HUB-VIS-02 | Varios | Endurecer estándar, skill, tooling, plantilla y adopción canónica antes de otra migración | HUB-VIS-01 | Completo; commits fijados en el plan visual |
+| 3 | DESIGN-REST-02 a HUB-VIS-03 | Varios | Recuperar Bonasera 1:1 en theme, vertical y demo, y cerrar el gate con aprobación humana | HUB-VIS-02 | Siguiente: DESIGN-REST-02 |
 | 4 | HOTEL-01 | `vicunav-hotel` | Escribir spec del vertical hotelero | HUB-VIS-03 | Bloqueado; no autorizado en ejecución |
 | 5 | DEMO-HOTEL-01 | `vicunav-demo-hotel` | Crear la demo del vertical hotelero | HOTEL-01 | Diferido |
 

@@ -1,6 +1,6 @@
 # Plan atómico de fidelidad visual
 
-Actualizado: 2026-08-20.
+Actualizado: 2026-08-26.
 
 ## Propósito
 
@@ -43,14 +43,35 @@ El producto integrado no vuelve a estado completo hasta que:
 
 ## Funnel A: prevención transversal
 
-| Orden | ID | Repositorio | Resultado atómico | Depende de |
-| ---: | --- | --- | --- | --- |
-| A1 | HUB-VIS-01 | `vicunav-hub` | Registrar el ADR 0010, este funnel y la reapertura del checkpoint visual sin implementar runtime | Auditoría posterior a DEMO-REST-01D |
-| A2 | STANDARDS-VIS-01 | `vicunav-standards` | Publicar un estándar transversal de fidelidad visual con clasificación de impacto, baseline, evidencia mínima, gates de PR y criterio de bloqueo | HUB-VIS-01 |
-| A3 | TOOL-VIS-01 | `vicunav-transform-claude-to-gutenberg` | Endurecer el skill con un manifiesto obligatorio de migración, inventario por página y estado, mapa de propiedad y un índice de evidencia validable | STANDARDS-VIS-01 |
-| A4 | TOOL-VIS-02 | `vicunav-transform-claude-to-gutenberg` | Añadir comandos y pruebas para capturar fuente y WordPress con entorno equivalente, generar lado a lado, overlay y reporte de diferencias, y fallar si falta evidencia | TOOL-VIS-01 |
-| A5 | TEMPLATE-VIS-01 | `vicunav-repo-template` | Añadir a issues y PRs la clasificación de impacto visual, enlaces al baseline, viewports, estados, diferencias y aprobación requerida | STANDARDS-VIS-01 |
-| A6 | HUB-VIS-02 | `vicunav-hub` | Adoptar las revisiones publicadas de estándar, skill y plantilla; registrar sus commits y habilitar el flujo para futuros proyectos | TOOL-VIS-02, TEMPLATE-VIS-01 |
+| Orden | ID | Repositorio | Resultado atómico | Depende de | Estado |
+| ---: | --- | --- | --- | --- | --- |
+| A1 | HUB-VIS-01 | `vicunav-hub` | Registrar el ADR 0010, este funnel y la reapertura del checkpoint visual sin implementar runtime | Auditoría posterior a DEMO-REST-01D | Completo: issue 87, PR 88, `56cf70a00e52f43bc7fdc96e0289f20bde385b5c` |
+| A2 | STANDARDS-VIS-01 | `vicunav-standards` | Publicar un estándar transversal de fidelidad visual con clasificación de impacto, baseline, evidencia mínima, gates de PR y criterio de bloqueo | HUB-VIS-01 | Completo: issue 11, PR 12, `5c5af785ae7d157af876da8367c2d30f992f0319` |
+| A3 | TOOL-VIS-01 | `vicunav-transform-claude-to-gutenberg` | Endurecer el skill con un manifiesto obligatorio de migración, inventario por página y estado, mapa de propiedad y un índice de evidencia validable | STANDARDS-VIS-01 | Completo: issue 1, PR 2, `3e35e14796006ac2d3868bbee7147610f96d6633` |
+| A4 | TOOL-VIS-02 | `vicunav-transform-claude-to-gutenberg` | Añadir comandos y pruebas para capturar fuente y WordPress con entorno equivalente, generar lado a lado, overlay y reporte de diferencias, y fallar si falta evidencia | TOOL-VIS-01 | Completo: issue 3, PR 4, `a55cfe447f8ba72098cf940c75605482236d2b35` |
+| A5 | TEMPLATE-VIS-01 | `vicunav-repo-template` | Añadir a issues y PRs la clasificación de impacto visual, enlaces al baseline, viewports, estados, diferencias y aprobación requerida | STANDARDS-VIS-01 | Completo: issue 18, PR 19, `34179579367d89c6b6c7d1510fd24163c25b4ca2` |
+| A6 | HUB-VIS-02 | `vicunav-hub` | Adoptar las revisiones publicadas de estándar, skill y plantilla; registrar sus commits y habilitar el flujo para futuros proyectos | TOOL-VIS-02, TEMPLATE-VIS-01 | Completo: issue 89 y PR de adopción canónica |
+
+### Resultado publicado del funnel A
+
+- `vicunav-standards` añadió `docs/visual-fidelity.md` mediante el
+  [issue 11](https://github.com/vicunav/vicunav-standards/issues/11) y el
+  [PR 12](https://github.com/vicunav/vicunav-standards/pull/12). El hub fija el squash
+  `5c5af785ae7d157af876da8367c2d30f992f0319` como norma transversal vigente.
+- `vicunav-transform-claude-to-gutenberg` publicó el manifiesto mediante el
+  [issue 1](https://github.com/vicunav/vicunav-transform-claude-to-gutenberg/issues/1)
+  y el [PR 2](https://github.com/vicunav/vicunav-transform-claude-to-gutenberg/pull/2)
+  en `3e35e14796006ac2d3868bbee7147610f96d6633`. La captura, comparación, reportes,
+  hashes y gate final se publicaron mediante el
+  [issue 3](https://github.com/vicunav/vicunav-transform-claude-to-gutenberg/issues/3)
+  y el [PR 4](https://github.com/vicunav/vicunav-transform-claude-to-gutenberg/pull/4)
+  en `a55cfe447f8ba72098cf940c75605482236d2b35`.
+- `vicunav-repo-template` exige clasificación visual y evidencia desde el issue y el
+  PR mediante el [issue 18](https://github.com/vicunav/vicunav-repo-template/issues/18)
+  y el [PR 19](https://github.com/vicunav/vicunav-repo-template/pull/19), con squash
+  `34179579367d89c6b6c7d1510fd24163c25b4ca2`.
+- Estas entregas endurecen el proceso. No acreditan todavía la paridad Bonasera ni
+  completan ninguna unidad B1 a B10.
 
 ### Aceptación del funnel A
 
@@ -137,8 +158,8 @@ HUB-VIS-03 cierre correctamente el checkpoint restaurante.
 
 ## Siguiente unidad ejecutable
 
-HUB-VIS-01 se documentó mediante el
-[issue 87](https://github.com/vicunav/vicunav-hub/issues/87) y el
-[PR 88](https://github.com/vicunav/vicunav-hub/pull/88). Después de su squash-merge,
-la siguiente unidad es STANDARDS-VIS-01. No se inicia trabajo de implementación visual
-ni otro proyecto antes de cerrar esta fase de planificación.
+HUB-VIS-02 se documentó mediante el
+[issue 89](https://github.com/vicunav/vicunav-hub/issues/89). El funnel A está
+completo y la siguiente unidad es DESIGN-REST-02 en `vicunav-demo-restaurante`.
+Debe congelar el baseline antes de modificar theme, vertical, demo o LocalWP. Hotel y
+demo informativo permanecen fuera de alcance.
