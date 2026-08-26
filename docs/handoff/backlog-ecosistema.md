@@ -21,7 +21,7 @@ issue.
 | `vicunav-plugin-core` | Fase fundacional CORE-01 a CORE-09 completa; contrato 1.0.0, plugin 0.1.0 y release `v0.1.0` publicados |
 | `vicunav-pagos` | PAGOS-01 a PAGOS-03 completos; plugin 0.3.1 y contrato 0.3.0 con persistencia transaccional, proveedor manual idempotente y lectura normalizada de su opción, estados, expiración, eventos versionados, pruebas, E2E real y CI |
 | `vicunav-restaurante` | REST-02A a REST-02R completos; plugin y contrato 1.0.0, siete bloques públicos, privacidad nativa, matriz WordPress/PHP y prerelease `v1.0.0-rc.1`; el gate integrado corrigió menú y checkout sin añadir contenido Bonasera ni WooCommerce |
-| `vicunav-demo-restaurante` | Ensamblaje, contenido, rutas y flujos reales disponibles; DESIGN-REST-02 fija el baseline en `6789edd745887468afca7831fa158b53c78448f0`, con 35 diferencias abiertas y tres assets ausentes |
+| `vicunav-demo-restaurante` | Ensamblaje, contenido, rutas y flujos reales disponibles; DESIGN-REST-02 fija 35 diferencias abiertas y DEMO-REST-02A clasifica ocho originales recuperados, seis grupos pendientes y 41 bloqueos finales en `488f21521abf1d723ab3f4eebd1d90c83bcb3af8` |
 | Referencia de diseño Bonasera | DESIGN-REST-01 auditó el commit `1e1f62787e088c0ca9701500e764802499d1b253`, sus siete pantallas, reglas, contratos propuestos, tokens y defectos; REST-01 incorporó el resultado sin aceptar su mapeo legacy a WooCommerce |
 | Referencia privada de `vicunav-demo-informativo` | Dra. Fortul conserva estrategia y contenido; WordPress local quedó limpio y consume `vicunav-theme-core` |
 | `vicunav-yoga` | YOGA-00 y YOGA-01 crearon localmente el repositorio neutral, un bootstrap instalable 0.1.0, arquitectura, contrato v1 en borrador y validación; todavía no registra dominio |
@@ -38,7 +38,7 @@ Las antiguas tareas para diferenciar `vicunav-secondary` y corregir el CPT de
 | ---: | --- | --- | --- | --- | --- |
 | 1 | HUB-VIS-01 | `vicunav-hub` | Registrar decisión, funnel y reapertura del checkpoint visual | Auditoría posterior a DEMO-REST-01D | Documentado mediante issue 87 y PR 88 |
 | 2 | STANDARDS-VIS-01 a HUB-VIS-02 | Varios | Endurecer estándar, skill, tooling, plantilla y adopción canónica antes de otra migración | HUB-VIS-01 | Completo; commits fijados en el plan visual |
-| 3 | DESIGN-REST-02 a HUB-VIS-03 | Varios | Recuperar Bonasera 1:1 en theme, vertical y demo, y cerrar el gate con aprobación humana | HUB-VIS-02 | DESIGN-REST-02 completo; siguiente: DEMO-REST-02A |
+| 3 | DESIGN-REST-02 a HUB-VIS-03 | Varios | Recuperar Bonasera 1:1 en theme, vertical y demo, y cerrar el gate con aprobación humana | HUB-VIS-02 | DESIGN-REST-02 y DEMO-REST-02A completos; siguiente: THEME-REST-04 |
 | 4 | YOGA-02 a DEMO-YOGA-05 y BHO-09 | `vicunav-yoga`, `vicunav-bhoga-yoga`, `vicunav-demo-yoga` y `vicunav-theme-core` | Aprobar el contrato Yoga, migrar Bhoga 1:1 y construir una demo pública saneada sobre los paquetes compartidos | HUB-VIS-03, contrato Yoga, gate del cliente y aprobaciones de corte | Fundaciones locales completas; dominio y superficies visuales bloqueados |
 | 5 | HOTEL-01 | `vicunav-hotel` | Escribir spec del vertical hotelero | HUB-VIS-03 | Bloqueado; no autorizado en ejecución |
 | 6 | DEMO-HOTEL-01 | `vicunav-demo-hotel` | Crear la demo del vertical hotelero | HOTEL-01 | Diferido |
