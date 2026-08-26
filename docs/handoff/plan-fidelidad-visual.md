@@ -50,7 +50,7 @@ El producto integrado no vuelve a estado completo hasta que:
 | A3 | TOOL-VIS-01 | `vicunav-transform-claude-to-gutenberg` | Endurecer el skill con un manifiesto obligatorio de migración, inventario por página y estado, mapa de propiedad y un índice de evidencia validable | STANDARDS-VIS-01 | Completo: issue 1, PR 2, `3e35e14796006ac2d3868bbee7147610f96d6633` |
 | A4 | TOOL-VIS-02 | `vicunav-transform-claude-to-gutenberg` | Añadir comandos y pruebas para capturar fuente y WordPress con entorno equivalente, generar lado a lado, overlay y reporte de diferencias, y fallar si falta evidencia | TOOL-VIS-01 | Completo: issue 3, PR 4, `a55cfe447f8ba72098cf940c75605482236d2b35` |
 | A5 | TEMPLATE-VIS-01 | `vicunav-repo-template` | Añadir a issues y PRs la clasificación de impacto visual, enlaces al baseline, viewports, estados, diferencias y aprobación requerida | STANDARDS-VIS-01 | Completo: issue 18, PR 19, `34179579367d89c6b6c7d1510fd24163c25b4ca2` |
-| A6 | HUB-VIS-02 | `vicunav-hub` | Adoptar las revisiones publicadas de estándar, skill y plantilla; registrar sus commits y habilitar el flujo para futuros proyectos | TOOL-VIS-02, TEMPLATE-VIS-01 | Completo: issue 89 y PR de adopción canónica |
+| A6 | HUB-VIS-02 | `vicunav-hub` | Adoptar las revisiones publicadas de estándar, skill y plantilla; registrar sus commits y habilitar el flujo para futuros proyectos | TOOL-VIS-02, TEMPLATE-VIS-01 | Completo: issue 89 y PR 90 |
 
 ### Resultado publicado del funnel A
 
@@ -159,7 +159,8 @@ HUB-VIS-03 cierre correctamente el checkpoint restaurante.
 ## Siguiente unidad ejecutable
 
 HUB-VIS-02 se documentó mediante el
-[issue 89](https://github.com/vicunav/vicunav-hub/issues/89). El funnel A está
-completo y la siguiente unidad es DESIGN-REST-02 en `vicunav-demo-restaurante`.
-Debe congelar el baseline antes de modificar theme, vertical, demo o LocalWP. Hotel y
-demo informativo permanecen fuera de alcance.
+[issue 89](https://github.com/vicunav/vicunav-hub/issues/89) y el
+[PR 90](https://github.com/vicunav/vicunav-hub/pull/90). El funnel A está completo y
+la siguiente unidad es DESIGN-REST-02 en `vicunav-demo-restaurante`. Debe congelar el
+baseline antes de modificar theme, vertical, demo o LocalWP. Hotel y demo informativo
+permanecen fuera de alcance.
