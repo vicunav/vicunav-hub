@@ -17,7 +17,7 @@ issue.
 | `vicunav-repo-template` | Template con submódulo, AGENTS, contribución, issue atómico, clasificación visual, checklist de PR y CI; revisión `34179579367d89c6b6c7d1510fd24163c25b4ca2` |
 | `vicunav-hub` | Once ADRs, spec durable de restaurante, gobierno, estado y backlog consolidados; HUB-VIS-01 y HUB-VIS-02 completan el funnel preventivo |
 | `vicunav-transform-claude-to-gutenberg` | Skill 0.1.0 con manifiesto, captura Chromium, comparación, reportes, hashes y gate visual publicados hasta `a55cfe447f8ba72098cf940c75605482236d2b35` |
-| `vicunav-theme-core` | Base 0.1.0 y entregas históricas THEME-REST-01 a 03 fusionadas; su integración Bonasera requiere recuperación y gate visual 1:1 |
+| `vicunav-theme-core` | Base 0.1.0; THEME-REST-04 completó la variación Bonasera verificable en `8628097f024ccb9214d82caf8d87c5ece9de162f`; chrome y patterns 1:1 continúan en THEME-REST-05 |
 | `vicunav-plugin-core` | Fase fundacional CORE-01 a CORE-09 completa; contrato 1.0.0, plugin 0.1.0 y release `v0.1.0` publicados |
 | `vicunav-pagos` | PAGOS-01 a PAGOS-03 completos; plugin 0.3.1 y contrato 0.3.0 con persistencia transaccional, proveedor manual idempotente y lectura normalizada de su opción, estados, expiración, eventos versionados, pruebas, E2E real y CI |
 | `vicunav-restaurante` | REST-02A a REST-02R completos; plugin y contrato 1.0.0, siete bloques públicos, privacidad nativa, matriz WordPress/PHP y prerelease `v1.0.0-rc.1`; el gate integrado corrigió menú y checkout sin añadir contenido Bonasera ni WooCommerce |
@@ -38,7 +38,7 @@ Las antiguas tareas para diferenciar `vicunav-secondary` y corregir el CPT de
 | ---: | --- | --- | --- | --- | --- |
 | 1 | HUB-VIS-01 | `vicunav-hub` | Registrar decisión, funnel y reapertura del checkpoint visual | Auditoría posterior a DEMO-REST-01D | Documentado mediante issue 87 y PR 88 |
 | 2 | STANDARDS-VIS-01 a HUB-VIS-02 | Varios | Endurecer estándar, skill, tooling, plantilla y adopción canónica antes de otra migración | HUB-VIS-01 | Completo; commits fijados en el plan visual |
-| 3 | DESIGN-REST-02 a HUB-VIS-03 | Varios | Recuperar Bonasera 1:1 en theme, vertical y demo, y cerrar el gate con aprobación humana | HUB-VIS-02 | DESIGN-REST-02 y DEMO-REST-02A completos; siguiente: THEME-REST-04 |
+| 3 | DESIGN-REST-02 a HUB-VIS-03 | Varios | Recuperar Bonasera 1:1 en theme, vertical y demo, y cerrar el gate con aprobación humana | HUB-VIS-02 | DESIGN-REST-02, DEMO-REST-02A y THEME-REST-04 completos; siguiente: THEME-REST-05 |
 | 4 | YOGA-03 a DEMO-YOGA-05 y BHO-09 | `vicunav-yoga`, `vicunav-bhoga-yoga`, `vicunav-demo-yoga` y `vicunav-theme-core` | Implementar el contrato Yoga aprobado, migrar Bhoga 1:1 y construir una demo pública saneada sobre los paquetes compartidos | HUB-VIS-03, gate del cliente y aprobaciones de corte | Contrato aprobado; dominio y superficies visuales bloqueados |
 | 5 | HOTEL-01 | `vicunav-hotel` | Escribir spec del vertical hotelero | HUB-VIS-03 | Bloqueado; no autorizado en ejecución |
 | 6 | DEMO-HOTEL-01 | `vicunav-demo-hotel` | Crear la demo del vertical hotelero | HOTEL-01 | Diferido |
