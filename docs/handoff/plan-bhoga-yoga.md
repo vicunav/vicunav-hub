@@ -36,7 +36,9 @@ pero ninguna composición comienza antes de cerrar `HUB-VIS-03`.
 - Rutas públicas detectadas: portada, política de privacidad y términos y
   condiciones.
 - La conversión principal deriva a WhatsApp; no se observó reserva persistida.
-- El usuario corregirá el locale declarado en producción antes de congelar baseline.
+- El usuario corrigió el idioma declarado y se verificó `lang="es"` en las tres rutas.
+- El usuario confirmó derechos de copy, logo, fotografía y testimonios para la finalidad
+  prevista del proyecto.
 - Las URLs públicas de WhatsApp presentan variantes que requieren confirmación.
 - El LocalWP para la demo reusable todavía no existe. Se recomienda
   `vicunav-demo-yoga.local`.
@@ -54,7 +56,7 @@ pero ninguna composición comienza antes de cerrar `HUB-VIS-03`.
 
 | Orden | ID | Repositorio | Resultado | Depende de | Estado |
 | ---: | --- | --- | --- | --- | --- |
-| 1 | YOGA-02 | `vicunav-yoga` | Contrato v1 aprobado y mapa de entidades, permisos, estados y bloques | Decisión de producto | Pendiente |
+| 1 | YOGA-02 | `vicunav-yoga` | Contrato público 1.0.0 aprobado y mapa de entidades, permisos, estados y bloques | Decisión de producto | Completado y publicado |
 | 2 | YOGA-03 | `vicunav-yoga` | Entidades, administración, servicios y settings del contrato | YOGA-02 | Pendiente |
 | 3 | YOGA-04 | `vicunav-yoga` | Bloques API 3, estados editor/frontend y CSS neutral | YOGA-03 y `HUB-VIS-03` | Bloqueado |
 | 4 | YOGA-05 | Varios | Integración con theme core, demo y cliente real | YOGA-04 | Pendiente |
@@ -84,7 +86,7 @@ pero ninguna composición comienza antes de cerrar `HUB-VIS-03`.
 
 ## Decisiones de producto requeridas
 
-El contrato YOGA-02 necesita aprobación explícita. La recomendación inicial es:
+El contrato YOGA-02 quedó aprobado explícitamente el 2026-08-26:
 
 - instructores como contenido estructurado;
 - prácticas o tipos de clase como contenido estructurado;
@@ -94,13 +96,25 @@ El contrato YOGA-02 necesita aprobación explícita. La recomendación inicial e
 - FAQ y testimonios mediante `vicunav-plugin-core`;
 - reservas, pagos y membresías fuera de v1.
 
+## Aprendizaje continuo de la skill
+
+Cada unidad de migración debe registrar aprendizajes verificables que puedan mejorar
+`vicunav-transform-claude-to-gutenberg` sin convertir el proyecto cliente en una
+dependencia del tooling. Los cambios a prompts, validadores o captura deben incluir
+una regresión, medir su impacto en contexto y conservar los gates de fidelidad visual.
+
+| Unidad | Propietario | Resultado | Estado |
+| --- | --- | --- | --- |
+| TOOL-YOGA-01 | `vicunav-transform-claude-to-gutenberg` | Consolidar hallazgos de BHO-03 a BHO-07 y optimizar flujo, evidencia y consumo | Pendiente |
+
 ## Gate previo del cliente
 
 BHO-02 no comienza hasta confirmar:
 
-- alcance 1:1 frente a mejoras de diseño o conversión;
-- autorización de copy, logos, fotografías y testimonios;
-- corrección del locale y tratamiento de desviaciones accesibles;
+- [x] alcance 1:1 frente a mejoras de diseño o conversión;
+- [x] autorización de copy, logos, fotografías y testimonios;
+- [x] corrección del idioma y verificación de `lang="es"`; el tratamiento de
+  desviaciones accesibles se registra durante el baseline;
 - números y CTA de WhatsApp aprobados;
 - propiedad y continuidad de SEO, Analytics, Tag Manager y Search Console;
 - hosting, DNS, CDN, cache, correo y responsables del corte;
@@ -115,6 +129,5 @@ compatibles, documentar su retención y pasar un smoke test antes del corte.
 
 ## Próxima unidad ejecutable
 
-La siguiente decisión ejecutable es YOGA-02. Requiere que el usuario apruebe o corrija
-el alcance recomendado. BHO-02, YOGA-04 y DEMO-YOGA-04 permanecen bloqueados por
-`HUB-VIS-03`.
+La siguiente unidad de producto es YOGA-03. BHO-02, YOGA-04 y DEMO-YOGA-04 permanecen
+bloqueados por `HUB-VIS-03`; BHO-02 requiere además completar su gate operativo.

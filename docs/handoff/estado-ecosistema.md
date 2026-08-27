@@ -16,22 +16,22 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
 
 ## Resumen actual
 
-- Los nueve repositorios públicos existentes del ecosistema están disponibles:
+- Los once repositorios públicos existentes del ecosistema están disponibles:
   `vicunav-hub`, `vicunav-standards`, `vicunav-repo-template`,
   `vicunav-transform-claude-to-gutenberg`, `vicunav-theme-core`,
-  `vicunav-plugin-core`, `vicunav-pagos`, `vicunav-restaurante` y
-  `vicunav-demo-restaurante`.
+  `vicunav-plugin-core`, `vicunav-pagos`, `vicunav-restaurante`,
+  `vicunav-demo-restaurante`, `vicunav-yoga` y `vicunav-demo-yoga`.
 - El repositorio privado de Dra. Fortul funciona como implementación de referencia
   local del futuro `vicunav-demo-informativo`; todavía no pertenece a la organización
   ni debe publicarse sin una decisión separada.
-- `vicunav-bhoga-yoga` existe como repositorio Git local y privado para migrar el
-  sitio real Bhoga Yoga desde Elementor a Gutenberg. Su fundación documental,
-  inventario preliminar, prompts y contrato de rollback están preparados; no se ha
-  implementado ni enlazado código al LocalWP y producción permanece intacta.
-- `vicunav-yoga` y `vicunav-demo-yoga` existen como repositorios Git locales. El
-  primero aporta un bootstrap neutral 0.1.0 y un contrato v1 en borrador; el segundo
-  fija la arquitectura de una demo pública saneada. Ninguno tiene todavía repositorio
-  remoto, contenido de dominio implementado ni LocalWP de demo.
+- `vicunav-bhoga-yoga` es un repositorio Git privado para migrar el sitio real Bhoga
+  Yoga desde Elementor a Gutenberg. Su fundación documental, inventario preliminar,
+  prompts y contrato de rollback están publicados; no se ha implementado ni enlazado
+  código al LocalWP y producción permanece intacta.
+- `vicunav-yoga` es el plugin vertical público con bootstrap 0.1.0 y contrato público
+  1.0.0 aprobado. `vicunav-demo-yoga` es el website demo público, publicado con su
+  arquitectura de composición saneada. Ninguno tiene todavía contenido de dominio
+  implementado ni LocalWP de demo.
 - La base funcional de `vicunav-theme-core` y los cambios históricos
   THEME-REST-01 a THEME-REST-03 están fusionados. Aportan una variación Bonasera,
   chrome y patterns editoriales, pero su paridad 1:1 y su integración efectiva no
@@ -199,9 +199,9 @@ y contratos públicos.
 | `vicunav-demo-restaurante` | Baseline e inventario visual publicados; recuperación pendiente | Runtime integrado, manifiesto, 35 comparaciones, ocho originales recuperados, seis grupos de assets pendientes, nueve páginas FSE y siete flujos reales; ninguna diferencia visual está aprobada | Esperar THEME-REST-04 y continuar después las dependencias del funnel B |
 | `vicunav-demo-hotel` | No existe | Demostración del vertical hotelero | Esperar la implementación de hotel |
 | `vicunav-demo-informativo` | Referencia privada en LocalWP | Sitio profesional no transaccional sobre `vicunav-theme-core`; contenido y estrategia de Dra. Fortul | Recibir el HTML aprobado, auditarlo y clasificar trabajo por repositorio |
-| `vicunav-yoga` | Bootstrap 0.1.0 local; contrato pendiente | Plugin neutral, hook de carga, arquitectura, contrato v1 en borrador y validación | Aprobar YOGA-02 antes de registrar dominio |
-| `vicunav-bhoga-yoga` | Fundación local privada; implementación bloqueada | Consumidor de theme core y plugin Yoga; brief, inventario, prompts, QA y rollback del cliente | Resolver gate del cliente y esperar `HUB-VIS-03` antes de BHO-02 |
-| `vicunav-demo-yoga` | Fundación local; composición bloqueada | Demo pública saneada que consumirá theme core, plugin core y vertical Yoga | Crear LocalWP separado y contenido ficticio después de YOGA-02 |
+| [`vicunav-yoga`](https://github.com/vicunav/vicunav-yoga) | Público, bootstrap 0.1.0; contrato 1.0.0 aprobado | Plugin neutral, hook de carga, contrato, prompts, CI y validación | Implementar YOGA-03; mantener YOGA-04 detrás de `HUB-VIS-03` |
+| [`vicunav-bhoga-yoga`](https://github.com/vicunav/vicunav-bhoga-yoga) | Privado; implementación bloqueada | Consumidor de theme core y plugin Yoga; brief, inventario, prompts, QA y rollback del cliente | Resolver gate operativo y esperar `HUB-VIS-03` antes de BHO-02 |
+| [`vicunav-demo-yoga`](https://github.com/vicunav/vicunav-demo-yoga) | Público; composición bloqueada | Website demo saneado que consumirá theme core, plugin core y vertical Yoga | Crear LocalWP separado y contenido ficticio |
 
 ## Lo que ya existe en `vicunav-theme-core`
 
@@ -448,10 +448,11 @@ El contrato vigente está en
    sobre sustitutos, antes del gate final.
 3. Mantener hotel, Dra. Fortul y las superficies visuales Yoga bloqueadas hasta cerrar
    HUB-VIS-03.
-4. Aprobar el contrato YOGA-02: instructores, prácticas, horarios, WhatsApp y límites
-   frente a reservas, pagos y membresías.
-5. Resolver para Bhoga Yoga derechos de contenido y media, locale, WhatsApp,
-   integraciones, hosting y destino privado del respaldo Elementor antes de BHO-02.
+4. Ejecutar YOGA-03 y preparar YOGA-04 con el contrato 1.0.0 aprobado; las superficies
+   visuales continúan detrás de `HUB-VIS-03`.
+5. Resolver para Bhoga Yoga WhatsApp, integraciones, hosting y destino privado del
+   respaldo Elementor antes de BHO-02; derechos de contenido, testimonios, media y
+   `lang="es"` ya están confirmados.
 6. Crear un LocalWP separado para `vicunav-demo-yoga`, recomendado como
    `vicunav-demo-yoga.local`.
 7. Decidir si el proyecto privado de Dra. Fortul se sanea, renombra y transfiere para
@@ -459,6 +460,8 @@ El contrato vigente está en
 8. Añadir una matriz runtime específica para WordPress 6.6 y PHP 8.1 a
    `vicunav-plugin-core`; la cobertura actual usa versiones más recientes y no bloquea
    `REST-01`.
+9. Capturar aprendizajes verificables de Bhoga en `vicunav-transform-claude-to-gutenberg`
+   para mejorar prompts, validadores y consumo de contexto sin degradar el gate visual.
 
 El camino funcional de restaurante terminó en REST-02R. El producto integrado continúa
 abierto en el [plan de fidelidad visual](plan-fidelidad-visual.md). La siguiente unidad
