@@ -46,11 +46,10 @@ La implementación Bhoga consume obligatoriamente `vicunav-theme-core` y
 `vicunav-yoga` mediante revisiones exactas. La demo Yoga consume esos paquetes y
 `vicunav-plugin-core` desde un LocalWP separado.
 
-El contrato funcional de `vicunav-yoga` se aprueba antes de registrar CPT, tablas,
-endpoints o bloques. El bootstrap inicial puede existir sin dominio persistido. Como
-alcance recomendado para v1 se documentan instructores, prácticas, horarios o
-convocatorias y conversión externa a WhatsApp; reservas, pagos y membresías permanecen
-fuera hasta decisión explícita.
+El contrato funcional 1.0.0 de `vicunav-yoga` quedó aprobado el 2026-08-26 antes de
+registrar CPT, tablas, endpoints o bloques. El bootstrap inicial existe sin dominio
+persistido. El alcance aprobado cubre instructores, prácticas, horarios o convocatorias
+y conversión externa a WhatsApp; reservas, pagos y membresías permanecen fuera.
 
 Producción se trata como referencia de solo lectura hasta una autorización explícita
 de corte. La migración visual adopta el
@@ -59,8 +58,8 @@ de corte. La migración visual adopta el
 
 ## Consecuencias
 
-- El ecosistema incorpora `vicunav-yoga` como vertical planificado y
-  `vicunav-demo-yoga` como demo pública futura.
+- El ecosistema incorpora `vicunav-yoga` como vertical público y
+  `vicunav-demo-yoga` como website demo público.
 - Bhoga Yoga continúa privado y separado del runtime reusable.
 - Los valores de marca se resuelven como composición o configuración del consumidor,
   nunca como literales en el plugin.
@@ -80,7 +79,7 @@ de corte. La migración visual adopta el
 
 ## Estado
 
-Decisión actualizada el 2026-08-26 tras la aclaración del usuario. Las fundaciones
-locales de `vicunav-yoga`, `vicunav-bhoga-yoga` y `vicunav-demo-yoga` están creadas.
-El contrato v1, la composición visual y el corte live continúan pendientes de sus
-gates y aprobaciones.
+Decisión actualizada el 2026-08-26 tras la aclaración del usuario. Las fundaciones de
+los tres repositorios están publicadas según su visibilidad acordada y el contrato
+1.0.0 está aprobado. La composición visual y el corte live continúan pendientes de
+sus gates.
