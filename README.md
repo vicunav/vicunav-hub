@@ -103,6 +103,12 @@ current `vicunav.com` site from Elementor to Gutenberg FSE and serves as a pract
 test bed for refining that migration workflow. It is managed independently and is not
 one of the packages, verticals, or demos governed by this hub.
 
+[`vicunav-web`](https://github.com/vicunav/vicunav-web) is Vicunav's own site: a block
+theme FSE built from scratch, per [ADR 0012](docs/adr/0012-sitio-propio-vicunav-web.md).
+It owns its brand tokens directly in its `theme.json` and does not depend on
+`vicunav-theme-core`. It runs in parallel with `vicunav-gutenberg`, without a
+dependency relationship between the two.
+
 ## Architecture decisions
 
 - [ADR 0001: Separation between theme and plugins](docs/adr/0001-separacion-theme-plugins.md)
@@ -113,6 +119,7 @@ one of the packages, verticals, or demos governed by this hub.
 - [ADR 0006: Restaurant first](docs/adr/0006-restaurante-primero.md)
 - [ADR 0007: Informational demo on the shared foundation](docs/adr/0007-demo-informativo-theme-base.md)
 - [ADR 0008: Claude Code to Gutenberg migration skill](docs/adr/0008-skill-claude-gutenberg.md)
+- [ADR 0012: Vicunav's own site in a new repository](docs/adr/0012-sitio-propio-vicunav-web.md)
 
 ## Governance and roadmap
 
