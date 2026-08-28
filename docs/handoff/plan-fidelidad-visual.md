@@ -93,8 +93,8 @@ El producto integrado no vuelve a estado completo hasta que:
 | B1 | DESIGN-REST-02 | `vicunav-demo-restaurante` | Congelar baseline visual completo del commit aprobado: nueve rutas o estados equivalentes, cinco viewports, estados interactivos, fuentes, datos y mapa componente-propietario | HUB-VIS-02 | Completo: issue 9, PR 10, `6789edd745887468afca7831fa158b53c78448f0` |
 | B2 | DEMO-REST-02A | `vicunav-demo-restaurante` | Resolver inventario de assets 1:1: recuperar originales disponibles y bloquear video/mapas faltantes hasta recibir originales o sustitución humana aprobada | DESIGN-REST-02 | Completo: issue 11, PR 12, `488f21521abf1d723ab3f4eebd1d90c83bcb3af8` |
 | B3 | THEME-REST-04 | `vicunav-theme-core` | Completar y probar la variación Bonasera: colores, tipografía, tamaños, alturas, espaciado, anchos, radios, sombras, estilos de elementos y coherencia frontend-editor | DESIGN-REST-02 | Completo: issue 45, PR 46, `8628097f024ccb9214d82caf8d87c5ece9de162f` |
-| B4 | THEME-REST-05 | `vicunav-theme-core` | Reproducir 1:1 el chrome y los patterns realmente reutilizables, incluidos hero, categorías, historia, ubicación, testimonios, FAQ, contacto y CTA | THEME-REST-04 | Siguiente |
-| B5 | REST-02S | `vicunav-restaurante` | Definir y aplicar el contrato visual neutral de los siete bloques: markup, composiciones intrínsecas y estados funcionales consumen presets públicos del theme sin literales Bonasera | DESIGN-REST-02, THEME-REST-04 | Pendiente |
+| B4 | THEME-REST-05 | `vicunav-theme-core` | Reproducir 1:1 el chrome y los patterns realmente reutilizables, incluidos hero, categorías, historia, ubicación, testimonios, FAQ, contacto y CTA | THEME-REST-04 | Completo: issue 47, PR 48, `7c30b2ce250bb85572dae4a4cd51841921c4e98a` |
+| B5 | REST-02S | `vicunav-restaurante` | Definir y aplicar el contrato visual neutral de los siete bloques: markup, composiciones intrínsecas y estados funcionales consumen presets públicos del theme sin literales Bonasera | DESIGN-REST-02, THEME-REST-04 | Siguiente |
 | B6 | DEMO-REST-02B | `vicunav-demo-restaurante` | Corregir la selección idempotente de Global Styles y probar la paleta y fuentes efectivas en frontend y Site Editor, no solo el post persistido | THEME-REST-04 | Pendiente |
 | B7 | DEMO-REST-02C | `vicunav-demo-restaurante` | Recomponer portada y páginas sección por sección con patterns, bloques core, assets y contenido 1:1, sin lógica reutilizable propia | DEMO-REST-02A, THEME-REST-05, DEMO-REST-02B | Pendiente |
 | B8 | DEMO-REST-02D | `vicunav-demo-restaurante` | Integrar los siete flujos reales con la composición y los estados visuales aprobados; devolver cualquier defecto reusable a theme o vertical mediante issue separado | REST-02S, DEMO-REST-02C | Pendiente |
@@ -196,9 +196,9 @@ documentación y configuración; no implementan superficies visuales ni evitan e
 
 ## Siguiente unidad ejecutable
 
-DESIGN-REST-02, DEMO-REST-02A y THEME-REST-04 están completos. La siguiente unidad es
-THEME-REST-05 en `vicunav-theme-core`: reproducir el chrome y los patterns reusables
-contra el baseline 1:1. El resto del funnel permanece pendiente. Hotel y demo
+DESIGN-REST-02, DEMO-REST-02A, THEME-REST-04 y THEME-REST-05 están completos. La
+siguiente unidad es REST-02S en `vicunav-restaurante`: aplicar el contrato visual
+neutral de los siete bloques. El resto del funnel permanece pendiente. Hotel y demo
 informativo continúan fuera de alcance.
 Las superficies visuales Yoga permanecen bloqueadas por HUB-VIS-03; Bhoga depende
 además de su gate previo de cliente.
