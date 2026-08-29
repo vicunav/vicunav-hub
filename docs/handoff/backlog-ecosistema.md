@@ -38,7 +38,7 @@ Las antiguas tareas para diferenciar `vicunav-secondary` y corregir el CPT de
 | ---: | --- | --- | --- | --- | --- |
 | 1 | HUB-VIS-01 | `vicunav-hub` | Registrar decisión, funnel y reapertura del checkpoint visual | Auditoría posterior a DEMO-REST-01D | Documentado mediante issue 87 y PR 88 |
 | 2 | STANDARDS-VIS-01 a HUB-VIS-02 | Varios | Endurecer estándar, skill, tooling, plantilla y adopción canónica antes de otra migración | HUB-VIS-01 | Completo; commits fijados en el plan visual |
-| 3 | DESIGN-REST-02 a HUB-VIS-03 | Varios | Recuperar Bonasera 1:1 en theme, vertical y demo, y cerrar el gate con aprobación humana | HUB-VIS-02 | DESIGN-REST-02, DEMO-REST-02A, THEME-REST-04 y THEME-REST-05 completos; siguiente: REST-02S |
+| 3 | DESIGN-REST-02 a HUB-VIS-03 | Varios | Recuperar Bonasera 1:1 en theme, vertical y demo, y cerrar el gate con aprobación humana | HUB-VIS-02 | DESIGN-REST-02, DEMO-REST-02A, THEME-REST-04, THEME-REST-05 y REST-02S completos; siguiente: DEMO-REST-02B |
 | 4 | YOGA-03 a DEMO-YOGA-05 y BHO-09 | `vicunav-yoga`, `vicunav-bhoga-yoga`, `vicunav-demo-yoga` y `vicunav-theme-core` | Implementar el contrato Yoga aprobado, migrar Bhoga 1:1 y construir una demo pública saneada sobre los paquetes compartidos | HUB-VIS-03, gate del cliente y aprobaciones de corte | Contrato aprobado; dominio y superficies visuales bloqueados |
 | 5 | HOTEL-01 | `vicunav-hotel` | Escribir spec del vertical hotelero | HUB-VIS-03 | Bloqueado; no autorizado en ejecución |
 | 6 | DEMO-HOTEL-01 | `vicunav-demo-hotel` | Crear la demo del vertical hotelero | HOTEL-01 | Diferido |
