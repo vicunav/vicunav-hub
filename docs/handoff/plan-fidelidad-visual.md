@@ -95,8 +95,8 @@ El producto integrado no vuelve a estado completo hasta que:
 | B3 | THEME-REST-04 | `vicunav-theme-core` | Completar y probar la variación Bonasera: colores, tipografía, tamaños, alturas, espaciado, anchos, radios, sombras, estilos de elementos y coherencia frontend-editor | DESIGN-REST-02 | Completo: issue 45, PR 46, `8628097f024ccb9214d82caf8d87c5ece9de162f` |
 | B4 | THEME-REST-05 | `vicunav-theme-core` | Reproducir 1:1 el chrome y los patterns realmente reutilizables, incluidos hero, categorías, historia, ubicación, testimonios, FAQ, contacto y CTA | THEME-REST-04 | Completo: issue 47, PR 48, `7c30b2ce250bb85572dae4a4cd51841921c4e98a` |
 | B5 | REST-02S | `vicunav-restaurante` | Definir y aplicar el contrato visual neutral de los siete bloques: markup, composiciones intrínsecas y estados funcionales consumen presets públicos del theme sin literales Bonasera | DESIGN-REST-02, THEME-REST-04 | Completo: issue 41, PR 42, `a46d1d746e0b880dca949a875d2dceb4b9207c61` |
-| B6 | DEMO-REST-02B | `vicunav-demo-restaurante` | Corregir la selección idempotente de Global Styles y probar la paleta y fuentes efectivas en frontend y Site Editor, no solo el post persistido | THEME-REST-04 | Siguiente |
-| B7 | DEMO-REST-02C | `vicunav-demo-restaurante` | Recomponer portada y páginas sección por sección con patterns, bloques core, assets y contenido 1:1, sin lógica reutilizable propia | DEMO-REST-02A, THEME-REST-05, DEMO-REST-02B | Pendiente |
+| B6 | DEMO-REST-02B | `vicunav-demo-restaurante` | Corregir la selección idempotente de Global Styles y probar la paleta y fuentes efectivas en frontend y Site Editor, no solo el post persistido | THEME-REST-04 | Completo: issue 13, PR 14, `4119640ed0b80ecfb212b275c5df6fec0ab831c3` |
+| B7 | DEMO-REST-02C | `vicunav-demo-restaurante` | Recomponer portada y páginas sección por sección con patterns, bloques core, assets y contenido 1:1, sin lógica reutilizable propia | DEMO-REST-02A, THEME-REST-05, DEMO-REST-02B | Siguiente |
 | B8 | DEMO-REST-02D | `vicunav-demo-restaurante` | Integrar los siete flujos reales con la composición y los estados visuales aprobados; devolver cualquier defecto reusable a theme o vertical mediante issue separado | REST-02S, DEMO-REST-02C | Pendiente |
 | B9 | DEMO-REST-02E | `vicunav-demo-restaurante` | Ejecutar gate final con lado a lado, overlays, Site Editor, accesibilidad, responsive, rendimiento y regresión funcional; registrar diferencias y obtener aprobación humana | TOOL-VIS-02, DEMO-REST-02D | Pendiente |
 | B10 | HUB-VIS-03 | `vicunav-hub` | Registrar commits, evidencia y aprobación; cerrar el checkpoint visual solo si todos los gates pasan | DEMO-REST-02E | Pendiente |
@@ -125,9 +125,9 @@ THEME-REST-04 cerró el
 `8628097f024ccb9214d82caf8d87c5ece9de162f` y CI verde. La variación Bonasera ahora
 publica y prueba tokens, fuentes locales, estilos globales y estados con contraste AA,
 sin sustituir los defaults neutrales. WordPress compiló el contrato declarativo y el
-Site Editor previsualizó la variación sin guardar la selección persistida. Esa
-selección y su comprobación efectiva en el frontend siguen perteneciendo a
-DEMO-REST-02B.
+Site Editor previsualizó la variación. DEMO-REST-02B guardó la selección persistida
+con el marcador de seguridad de Global Styles, la asociación al theme y una
+comprobación efectiva en el frontend.
 
 El gate final bloquea correctamente las 35 diferencias y seis grupos de assets: video
 hero, mapas de Zulia y Maracaibo, historia, avatares testimoniales y dolci original.
@@ -196,10 +196,10 @@ documentación y configuración; no implementan superficies visuales ni evitan e
 
 ## Siguiente unidad ejecutable
 
-DESIGN-REST-02, DEMO-REST-02A, THEME-REST-04, THEME-REST-05 y REST-02S están
-completos. La siguiente unidad es DEMO-REST-02B en `vicunav-demo-restaurante`:
-corregir la selección idempotente de Global Styles y comprobar la paleta y las fuentes
-efectivas en frontend y Site Editor. El resto del funnel permanece pendiente. Hotel y
-demo informativo continúan fuera de alcance.
+DESIGN-REST-02, DEMO-REST-02A, THEME-REST-04, THEME-REST-05, REST-02S y
+DEMO-REST-02B están completos. La siguiente unidad es DEMO-REST-02C en
+`vicunav-demo-restaurante`: recomponer portada y páginas sección por sección con
+patterns, bloques core, assets y contenido 1:1. El resto del funnel permanece
+pendiente. Hotel y demo informativo continúan fuera de alcance.
 Las superficies visuales Yoga permanecen bloqueadas por HUB-VIS-03; Bhoga depende
 además de su gate previo de cliente.
