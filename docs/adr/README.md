@@ -19,6 +19,7 @@ trabajo pendiente se mantienen en `docs/handoff/`.
 | [0009](0009-restaurante-sin-woocommerce.md) | Implementar comercio de restaurante sin WooCommerce |
 | [0010](0010-fidelidad-visual-bloqueante.md) | Bloquear migraciones hasta demostrar fidelidad visual 1:1 |
 | [0011](0011-bhoga-yoga-cliente-privado.md) | Separar vertical Yoga, implementación Bhoga y demo saneada |
+| [0013](0013-theme-core-dinamico-agnostico.md) | Compartir un theme-core dinámico, agnóstico y sin child themes por defecto |
 
 ## Cuándo crear otro ADR
 

@@ -96,10 +96,10 @@ El producto integrado no vuelve a estado completo hasta que:
 | B4 | THEME-REST-05 | `vicunav-theme-core` | Reproducir 1:1 el chrome y los patterns realmente reutilizables, incluidos hero, categorías, historia, ubicación, testimonios, FAQ, contacto y CTA | THEME-REST-04 | Completo: issue 47, PR 48, `7c30b2ce250bb85572dae4a4cd51841921c4e98a` |
 | B5 | REST-02S | `vicunav-restaurante` | Definir y aplicar el contrato visual neutral de los siete bloques: markup, composiciones intrínsecas y estados funcionales consumen presets públicos del theme sin literales Bonasera | DESIGN-REST-02, THEME-REST-04 | Completo: issue 41, PR 42, `a46d1d746e0b880dca949a875d2dceb4b9207c61` |
 | B6 | DEMO-REST-02B | `vicunav-demo-restaurante` | Corregir la selección idempotente de Global Styles y probar la paleta y fuentes efectivas en frontend y Site Editor, no solo el post persistido | THEME-REST-04 | Completo: issue 13, PR 14, `4119640ed0b80ecfb212b275c5df6fec0ab831c3` |
-| B7 | DEMO-REST-02C | `vicunav-demo-restaurante` | Recomponer portada y páginas sección por sección con patterns, bloques core, assets y contenido 1:1, sin lógica reutilizable propia | DEMO-REST-02A, THEME-REST-05, DEMO-REST-02B | Completo: issue 15, PR 16, `18c7c86c144bb49460941419c8d3fadfa41fdac1` |
-| B8 | DEMO-REST-02D | `vicunav-demo-restaurante` | Integrar los siete flujos reales con la composición y los estados visuales aprobados; devolver cualquier defecto reusable a theme o vertical mediante issue separado | REST-02S, DEMO-REST-02C | Completo: issue 17, PR 18, `7b43e4508a13616ec976060dc33b4a1a4d01a1ac` |
-| B9 | DEMO-REST-02E | `vicunav-demo-restaurante` | Ejecutar gate final con lado a lado, overlays, Site Editor, accesibilidad, responsive, rendimiento y regresión funcional; registrar diferencias y obtener aprobación humana | TOOL-VIS-02, DEMO-REST-02D | Completo: issue 19, PR 20, `9a5776837cf36c6707bd44199bc77b3eeb930851` |
-| B10 | HUB-VIS-03 | `vicunav-hub` | Registrar commits, evidencia y aprobación; cerrar el checkpoint visual solo si todos los gates pasan | DEMO-REST-02E | Completo: issue 109, PR 110 |
+| B7 | DEMO-REST-02C | `vicunav-demo-restaurante` | Recomponer portada y páginas sección por sección con patterns, bloques core, assets y contenido 1:1, sin lógica reutilizable propia | DEMO-REST-02A, THEME-REST-05, DEMO-REST-02B | Fusionado (issue 15, PR 16, `18c7c86c144bb49460941419c8d3fadfa41fdac1`), pero no cumplió 1:1: sustituyó geometría, densidad, headers, tarjetas, footer y estados por composiciones genéricas. Reabierto, ver corrección abajo |
+| B8 | DEMO-REST-02D | `vicunav-demo-restaurante` | Integrar los siete flujos reales con la composición y los estados visuales aprobados; devolver cualquier defecto reusable a theme o vertical mediante issue separado | REST-02S, DEMO-REST-02C | Fusionado (issue 17, PR 18, `7b43e4508a13616ec976060dc33b4a1a4d01a1ac`); depende de una composición reabierta, ver corrección abajo |
+| B9 | DEMO-REST-02E | `vicunav-demo-restaurante` | Ejecutar gate final con lado a lado, overlays, Site Editor, accesibilidad, responsive, rendimiento y regresión funcional; registrar diferencias y obtener aprobación humana | TOOL-VIS-02, DEMO-REST-02D | Revertido: el gate (issue 19, PR 20, `9a5776837cf36c6707bd44199bc77b3eeb930851`) etiquetó 35 diferencias como aprobadas sin aprobación humana real. Reabierto y transferido a Claude |
+| B10 | HUB-VIS-03 | `vicunav-hub` | Registrar commits, evidencia y aprobación; cerrar el checkpoint visual solo si todos los gates pasan | DEMO-REST-02E | Revertido: el cierre (issue 109, PR 110) se basó en el gate inválido de B9. El checkpoint queda reabierto |
 
 ### Baseline publicado de DESIGN-REST-02
 
@@ -131,10 +131,18 @@ comprobación efectiva en el frontend.
 
 DEMO-REST-02C recompuso portada y páginas en bloques editables; DEMO-REST-02D fijó
 firmas runtime para los siete flujos reales. DEMO-REST-02E regeneró 35 comparaciones
-en cinco viewports y cerró el gate con cero diferencias sin resolver y 35 diferencias
-revisadas y aprobadas. No declara coincidencia píxel a píxel: conserva la dirección
-visual y funcional con diferencias explícitas de densidad transaccional, iconografía
-y activos sustitutos.
+en cinco viewports y cerró el gate declarando cero diferencias sin resolver y 35
+diferencias revisadas y aprobadas.
+
+**Corrección del 2026-08-29:** esa aprobación se revisó y se revirtió el mismo día.
+Las 35 comparaciones no tuvieron aprobación humana página por página; las capturas
+mostraban diferencias perceptuales visibles, con un promedio de 47,86 % a 64,45 % por
+superficie y picos superiores al 94 %. La recomposición de DEMO-REST-02C sustituyó
+geometría, densidad, headers, acciones, tarjetas, footer y estados del diseño por
+composiciones genéricas; la página de pizzas omitió incluso el catálogo previo al
+constructor. El checkpoint (B9, B10) queda reabierto y el rework se transfiere a
+Claude, que debe verificar cada resultado directamente contra el commit fuente
+congelado. Ver [`restaurante-handoff-claude.md`](restaurante-handoff-claude.md).
 
 ### Aceptación por propietario
 
@@ -217,7 +225,11 @@ documentación y configuración; no implementan superficies visuales ni evitan e
 
 ## Cierre del funnel restaurante
 
-DESIGN-REST-02 a DEMO-REST-02E están completos. HUB-VIS-03 es la última unidad y
-registra este resultado sin abrir trabajo de hotel, demo informativo, Yoga ni Bhoga
-Yoga. No queda otra unidad de implementación pendiente dentro de la migración
-Bonasera acordada.
+DESIGN-REST-02 a REST-02S (B1-B6) están completos y vigentes. DEMO-REST-02C a
+HUB-VIS-03 (B7-B10) se fusionaron pero no demostraron paridad 1:1 real; su
+aprobación se revirtió el 2026-08-29 y el checkpoint queda reabierto. El rework se
+transfiere a Claude, que continúa desde el
+[handoff específico](restaurante-handoff-claude.md) sin reutilizar el intento local
+retirado, siguiendo los issues atómicos ya creados (ver el backlog). Hotel y demo
+informativo continúan fuera de alcance. Las superficies visuales Yoga permanecen
+bloqueadas por HUB-VIS-03; Bhoga depende además de su gate previo de cliente.

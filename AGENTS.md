@@ -18,5 +18,4 @@ de los documentos modificados.
 
 El flujo para decidir y propagar cambios está en
 [`docs/gobernanza.md`](docs/gobernanza.md). El estado operativo y el backlog canónicos
-están en [`docs/handoff/`](docs/handoff/). La política de modelos, tokens y delegación
-local está en [`docs/ia/modelos-tokens-qwen.md`](docs/ia/modelos-tokens-qwen.md).
+están en [`docs/handoff/`](docs/handoff/).

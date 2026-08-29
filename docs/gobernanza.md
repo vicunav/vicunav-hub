@@ -91,5 +91,3 @@ el cambio.
   y hechos vigentes.
 - [`docs/handoff/backlog-ecosistema.md`](handoff/backlog-ecosistema.md): trabajo
   pendiente, orden y dependencias.
-- [`docs/ia/modelos-tokens-qwen.md`](ia/modelos-tokens-qwen.md): política operativa de
-  modelos y herramientas auxiliares.
