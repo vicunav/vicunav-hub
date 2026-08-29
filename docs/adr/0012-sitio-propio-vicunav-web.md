@@ -39,14 +39,22 @@ Alcance del repositorio:
 
 - theme, templates, template parts, patterns y tokens visuales del sitio;
 - composición de las quince plantillas del diseño aprobado;
-- assets propios servidos localmente.
+- assets propios servidos localmente;
+- plugin propio de `vicunav-web` para registrar `vicu_vertical` y
+  `vicu_project`, sin depender de `vicunav-plugin-core` ni de ningún otro
+  paquete compartido del ecosistema modular.
 
 Fuera de alcance:
 
-- lógica de negocio, que vive en plugins según ADR 0001;
-- registro de `vicu_vertical` y `vicu_project`, que se hace mediante la clase
-  abstracta de `vicunav-plugin-core`;
-- pagos, reservas y pedidos, que pertenecen a sus verticales.
+- pagos, reservas y pedidos: `vicunav-web` no es un vertical transaccional y
+  no los necesita.
+
+**Corrección del 2026-08-29:** la versión original de este ADR asignaba el
+registro de `vicu_vertical` y `vicu_project` a la clase abstracta de
+`vicunav-plugin-core`. Mario corrigió esto el mismo día: `vicunav-web` es una
+instalación fresca e independiente y no depende de nada del ecosistema
+modular, ni siquiera de sus plugins compartidos. Ambos CPT se registran en un
+plugin propio de `vicunav-web`, igual que su theme.
 
 La transformación del diseño se ejecuta con el skill
 `transform-claude-to-gutenberg` bajo contrato `paridad-1-1`, con los gates
@@ -109,9 +117,8 @@ para sustituirlo, con su propia evidencia visual.
 
 ## Repositorios afectados
 
-`vicunav-web` nuevo, `vicunav-standards` por el registro de CPTs,
-`vicunav-plugin-core` por el registro de los post types, `vicunav-hub` por el
-ADR y el estado del ecosistema.
+`vicunav-web` nuevo (theme y plugin propios), `vicunav-standards` por el
+registro de CPTs, `vicunav-hub` por el ADR y el estado del ecosistema.
 
 ## Estado
 
