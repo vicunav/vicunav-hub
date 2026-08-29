@@ -13,6 +13,9 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
 - Autoridad final de producto y acciones irreversibles: usuario.
 - Fuente del estado de ejecución: issues y pull requests de GitHub.
 - Fuente de arquitectura y prioridades: este hub.
+- Excepción vigente: el rework del vertical restaurante y su demo fue transferido a
+  Claude el 2026-08-29. El diagnóstico, la limpieza y el contrato de relevo están en
+  [`restaurante-handoff-claude.md`](restaurante-handoff-claude.md).
 
 ## Resumen actual
 
@@ -35,9 +38,12 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
 - La base funcional de `vicunav-theme-core` y THEME-REST-01 a THEME-REST-05 están
   fusionados. La variación Bonasera tiene contrato, compilación real en WordPress,
   chrome y patterns editables en `7c30b2ce250bb85572dae4a4cd51841921c4e98a`.
-- El checkpoint Bonasera quedó aprobado con diferencias explícitas. El demo conserva
-  35 comparaciones en cinco viewports, cero diferencias sin resolver y placeholders
-  autorizados. No se declara coincidencia píxel a píxel.
+- El checkpoint Bonasera se había registrado como aprobado con 35 diferencias
+  explícitas, pero esa aprobación se revirtió el 2026-08-29: no fue humana página por
+  página, y las capturas muestran diferencias perceptuales promedio de 47,86 % a
+  64,45 % por superficie, con picos superiores al 94 %. El checkpoint queda reabierto
+  y el rework se transfiere a Claude (ver
+  [`restaurante-handoff-claude.md`](restaurante-handoff-claude.md)).
 - La fase fundacional CORE-01 a CORE-09 de `vicunav-plugin-core` está terminada. El
   plugin 0.1.0 implementa el contrato público 1.0.0, tiene publicada la release
   `v0.1.0` y no tiene issues ni pull requests abiertos.
@@ -185,7 +191,9 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
 
 1. **Foundation:** `vicunav-theme-core` aporta presentación compartida y
    `vicunav-plugin-core` aporta contenido estructurado, ajustes, seguridad y REST. La
-   lógica de negocio no vive en el theme.
+   lógica de negocio no vive en el theme. Todos los sitios usan el mismo theme-core;
+   su identidad y composición variable se administran dinámicamente mediante un
+   contrato neutral, sin introducir trazas de demos o verticales en sus archivos.
 2. **Pagos:** `vicunav-pagos` es un motor opcional, independiente de reservas y
    pedidos. Su ciclo de vida transaccional y el proveedor manual v1 están
    implementados detrás de servicios y eventos públicos.
@@ -212,14 +220,14 @@ y contratos públicos.
 | --- | --- | --- | --- |
 | `vicunav-standards` | Completo | Ocho normas, incluida fidelidad visual bloqueante | Mantener las normas cuando una decisión transversal cambie |
 | `vicunav-repo-template` | Completo | Plantilla, AGENTS, contribución, issue atómico, clasificación visual, checklist de PR, CI y submódulo | Usarlo para crear los repositorios restantes |
-| `vicunav-hub` | Activo | Once ADRs, spec durable de restaurante, arquitectura, gobierno, estado y backlog; checkpoint Bonasera cerrado | Mantener decisiones y backlog sincronizados por fase |
+| `vicunav-hub` | Activo | Trece ADRs, spec durable de restaurante, arquitectura, gobierno, estado y backlog | Mantener sincronizados el funnel visual y la iniciativa dinámica del ADR 0013 |
 | `vicunav-transform-claude-to-gutenberg` | Base 0.1.0 y gate visual publicados | Skill, auditoría, manifiesto, captura reproducible, comparación, reportes y validadores | Consumirlo en cada unidad visual; no es dependencia runtime |
 | `vicunav-theme-core` | Base 0.1.0; capa Bonasera recuperada | Tokens, fuentes, templates, parts, chrome, patterns, acordeón y contrato de integración probados sin cambiar defaults neutrales | Mantener el contrato reusable |
 | `vicunav-plugin-core` | Base 0.1.0 publicada | Release `v0.1.0`, contrato 1.0.0, CPT compartidos, ajustes, administración, seguridad, REST y pruebas | Añadir en el futuro una matriz runtime para WordPress 6.6 y PHP 8.1 |
 | `vicunav-pagos` | Motor 0.3.1 completo | Contrato 0.3.0, CPT y REST protegidos, persistencia InnoDB versionada, servicios idempotentes, proveedor manual v1 con lectura persistida corregida, máquina de estados atómica, expiración y hooks con payload 1.0.0 | Mantener su contrato; integrar consumidores mediante servicios y eventos públicos |
 | `vicunav-restaurante` | Candidata 1.0.0; REST-02A a REST-02S completos | Dominio backend, siete bloques con contrato visual neutral, privacidad nativa, matriz WordPress/PHP y prerelease `v1.0.0-rc.1`, sin WooCommerce ni contenido Bonasera | Mantener el contrato y evaluar publicación estable solo mediante una unidad futura explícita |
 | `vicunav-hotel` | Diferido | Reservas y disponibilidad | Mantener diferido hasta completar restaurante, según ADR 0006 |
-| `vicunav-demo-restaurante` | Migración Bonasera aprobada con diferencias | Global Styles efectivo, nueve páginas FSE, siete flujos, 35 comparaciones aprobadas, media local y placeholders autorizados | Sustituir placeholders desde WordPress cuando existan originales; no queda una unidad de migración pendiente |
+| `vicunav-demo-restaurante` | Rework local retirado; transferido a Claude el 2026-08-29 | Nueve páginas FSE y siete flujos existen, pero el gate de 35 comparaciones se revirtió: no hubo aprobación humana página por página y las capturas muestran diferencias perceptuales promedio de 47,86 % a 64,45 % | Continuar desde [`restaurante-handoff-claude.md`](restaurante-handoff-claude.md), verificando cada resultado contra el commit fuente congelado |
 | `vicunav-demo-hotel` | No existe | Demostración del vertical hotelero | Esperar la implementación de hotel |
 | `vicunav-demo-informativo` | Referencia privada en LocalWP | Sitio profesional no transaccional sobre `vicunav-theme-core`; contenido y estrategia de Dra. Fortul | Recibir el HTML aprobado, auditarlo y clasificar trabajo por repositorio |
 | [`vicunav-yoga`](https://github.com/vicunav/vicunav-yoga) | Público, bootstrap 0.1.0; contrato 1.0.0 aprobado | Plugin neutral, hook de carga, contrato, prompts, CI y validación | Implementar YOGA-03; mantener YOGA-04 detrás de `HUB-VIS-03` |
@@ -428,11 +436,11 @@ El contrato vigente está en
   visual: ADR 0010.
 - Yoga se separa en plugin vertical reusable, implementación privada Bhoga y demo
   pública saneada sobre el theme core: ADR 0011.
+- Todos los sitios comparten un `vicunav-theme-core` dinámico y agnóstico; cada demo
+  consume el plugin de su vertical y ningún child theme es el mecanismo normal de
+  personalización: ADR 0013.
 - Los README y superficies públicas se escriben en inglés; la documentación interna y
   los comentarios de código se escriben en español.
-- Qwen es una herramienta global y opcional para trabajo mecánico verificable. No es
-  una dependencia ni un agente propietario de ningún repositorio.
-
 ## Entorno local
 
 - Raíz de repositorios: `~/Documents/Codex/vicunav/`.
@@ -462,8 +470,10 @@ El contrato vigente está en
 
 ## Qué falta
 
-1. Sustituir desde WordPress los placeholders Bonasera cuando el usuario disponga de
-   los originales; no bloquea ni reabre la migración aprobada.
+1. Completar el rework del vertical restaurante transferido a Claude el 2026-08-29
+   (ver [`restaurante-handoff-claude.md`](restaurante-handoff-claude.md)); sustituir
+   luego desde WordPress los placeholders Bonasera cuando el usuario disponga de los
+   originales.
 2. Ejecutar YOGA-03 y preparar YOGA-04 con el contrato 1.0.0 aprobado; las superficies
    visuales continúan detrás de `HUB-VIS-03`.
 3. Resolver para Bhoga Yoga WhatsApp, integraciones, hosting y destino privado del
@@ -479,8 +489,9 @@ El contrato vigente está en
 7. Capturar aprendizajes verificables de Bhoga en `vicunav-transform-claude-to-gutenberg`
    para mejorar prompts, validadores y consumo de contexto sin degradar el gate visual.
 
-El camino funcional de restaurante terminó en REST-02S y el producto integrado cerró
-su checkpoint mediante HUB-VIS-03. No queda una unidad de implementación Bonasera
-pendiente. La pista Yoga y Bhoga está en su
+El camino funcional de restaurante terminó en REST-02S, pero el producto integrado
+no está aprobado: el checkpoint visual que se había cerrado se reabrió el 2026-08-29
+por falta de aprobación humana real, y el rework continúa con Claude. La pista Yoga
+y Bhoga está en su
 [plan específico](plan-bhoga-yoga.md) y la secuencia global en el
 [`backlog`](backlog-ecosistema.md).

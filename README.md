@@ -126,7 +126,6 @@ dependency relationship between the two.
 - [Decision and propagation workflow](docs/gobernanza.md)
 - [Canonical ecosystem state](docs/handoff/estado-ecosistema.md)
 - [Multi-repository backlog](docs/handoff/backlog-ecosistema.md)
-- [Model, token, and Qwen policy](docs/ia/modelos-tokens-qwen.md)
 
 ## License
 
