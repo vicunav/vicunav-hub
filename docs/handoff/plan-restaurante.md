@@ -360,8 +360,15 @@ media, menú, pizza, carrito, checkout manual y reservas. El gate aisló y fusio
 correctivos de menú y checkout en `vicunav-restaurante`, y el estado inicial de FAQ
 en `vicunav-theme-core`, sin incorporar lógica reutilizable al demo.
 
-Checkpoint corregido: REST-02A a REST-02R están funcionalmente completos. Los issues y
-PRs históricos de THEME-REST-01 a 03 y DEMO-REST-01A a 01D siguen fusionados, pero no
-acreditan fidelidad visual 1:1. El producto integrado permanece abierto hasta cerrar
-HUB-VIS-03. Hotel, demo informativo y las superficies visuales Yoga continúan fuera
-de implementación y bloqueados por ese gate.
+Checkpoint final: REST-02A a REST-02S están funcionalmente completos. La recuperación
+visual DESIGN-REST-02 a DEMO-REST-02E cerró Global Styles, chrome, patterns,
+composición, contratos visuales, siete flujos y una matriz de 35 comparaciones. El
+usuario aprobó las diferencias y placeholders declarados; el resultado no se presenta
+como coincidencia píxel a píxel.
+
+HUB-VIS-03 cerró la migración Bonasera. No queda una unidad de implementación del
+restaurante pendiente. La secuencia obligatoria aprendida para futuras migraciones
+Claude Code a Gutenberg está registrada en el
+[plan de fidelidad visual](plan-fidelidad-visual.md): baseline antes de implementar,
+corte vertical temprano, propiedad por repositorio, comparación continua y assets
+ausentes tratados como placeholders editables con aprobación explícita.
