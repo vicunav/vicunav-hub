@@ -99,7 +99,7 @@ El producto integrado no vuelve a estado completo hasta que:
 | B7 | DEMO-REST-02C | `vicunav-demo-restaurante` | Recomponer portada y páginas sección por sección con patterns, bloques core, assets y contenido 1:1, sin lógica reutilizable propia | DEMO-REST-02A, THEME-REST-05, DEMO-REST-02B | Completo: issue 15, PR 16, `18c7c86c144bb49460941419c8d3fadfa41fdac1` |
 | B8 | DEMO-REST-02D | `vicunav-demo-restaurante` | Integrar los siete flujos reales con la composición y los estados visuales aprobados; devolver cualquier defecto reusable a theme o vertical mediante issue separado | REST-02S, DEMO-REST-02C | Completo: issue 17, PR 18, `7b43e4508a13616ec976060dc33b4a1a4d01a1ac` |
 | B9 | DEMO-REST-02E | `vicunav-demo-restaurante` | Ejecutar gate final con lado a lado, overlays, Site Editor, accesibilidad, responsive, rendimiento y regresión funcional; registrar diferencias y obtener aprobación humana | TOOL-VIS-02, DEMO-REST-02D | Completo: issue 19, PR 20, `9a5776837cf36c6707bd44199bc77b3eeb930851` |
-| B10 | HUB-VIS-03 | `vicunav-hub` | Registrar commits, evidencia y aprobación; cerrar el checkpoint visual solo si todos los gates pasan | DEMO-REST-02E | En curso: issue 109 |
+| B10 | HUB-VIS-03 | `vicunav-hub` | Registrar commits, evidencia y aprobación; cerrar el checkpoint visual solo si todos los gates pasan | DEMO-REST-02E | Completo: issue 109, PR 110 |
 
 ### Baseline publicado de DESIGN-REST-02
 
