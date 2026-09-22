@@ -1,5 +1,8 @@
 # ADR 0007: Demo informativo sobre el theme base
 
+> **Superado por [ADR 0014](0014-retirar-fortul-demo-informativo.md)** el
+> 2026-09-22. Se conserva sin editar como registro histórico.
+
 ## Contexto
 
 El ecosistema necesita validar `vicunav-theme-core` en un sitio profesional que no

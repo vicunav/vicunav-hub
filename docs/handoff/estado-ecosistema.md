@@ -24,9 +24,6 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
   `vicunav-transform-claude-to-gutenberg`, `vicunav-theme-core`,
   `vicunav-plugin-core`, `vicunav-pagos`, `vicunav-restaurante`,
   `vicunav-demo-restaurante`, `vicunav-yoga` y `vicunav-demo-yoga`.
-- El repositorio privado de Dra. Fortul funciona como implementación de referencia
-  local del futuro `vicunav-demo-informativo`; todavía no pertenece a la organización
-  ni debe publicarse sin una decisión separada.
 - `vicunav-bhoga-yoga` es un repositorio Git privado para migrar el sitio real Bhoga
   Yoga desde Elementor a Gutenberg. Su fundación documental, inventario preliminar,
   prompts y contrato de rollback están publicados; no se ha implementado ni enlazado
@@ -229,7 +226,7 @@ y contratos públicos.
 | `vicunav-hotel` | Diferido | Reservas y disponibilidad | Mantener diferido hasta completar restaurante, según ADR 0006 |
 | `vicunav-demo-restaurante` | Rework local retirado; transferido a Claude el 2026-08-29 | Nueve páginas FSE y siete flujos existen, pero el gate de 35 comparaciones se revirtió: no hubo aprobación humana página por página y las capturas muestran diferencias perceptuales promedio de 47,86 % a 64,45 % | Continuar desde [`restaurante-handoff-claude.md`](restaurante-handoff-claude.md), verificando cada resultado contra el commit fuente congelado |
 | `vicunav-demo-hotel` | No existe | Demostración del vertical hotelero | Esperar la implementación de hotel |
-| `vicunav-demo-informativo` | Referencia privada en LocalWP | Sitio profesional no transaccional sobre `vicunav-theme-core`; contenido y estrategia de Dra. Fortul | Recibir el HTML aprobado, auditarlo y clasificar trabajo por repositorio |
+| `vicunav-demo-informativo` | Sin implementación de referencia (ADR 0014) | Sitio profesional no transaccional sobre `vicunav-theme-core` | Sin propietario asignado; requiere una decisión nueva antes de retomarse |
 | [`vicunav-yoga`](https://github.com/vicunav/vicunav-yoga) | Público, bootstrap 0.1.0; contrato 1.0.0 aprobado | Plugin neutral, hook de carga, contrato, prompts, CI y validación | Implementar YOGA-03; mantener YOGA-04 detrás de `HUB-VIS-03` |
 | [`vicunav-bhoga-yoga`](https://github.com/vicunav/vicunav-bhoga-yoga) | Privado; implementación bloqueada | Consumidor de theme core y plugin Yoga; brief, inventario, prompts, QA y rollback del cliente | Resolver gate operativo y esperar `HUB-VIS-03` antes de BHO-02 |
 | [`vicunav-demo-yoga`](https://github.com/vicunav/vicunav-demo-yoga) | Público; composición bloqueada | Website demo saneado que consumirá theme core, plugin core y vertical Yoga | Crear LocalWP separado y contenido ficticio |
@@ -455,10 +452,6 @@ El contrato vigente está en
 - `vicunav-demo-restaurante.local` ejecuta WordPress 7.1/PHP 8.2.29 con los cuatro
   paquetes enlazados. El gate final confirmó nueve rutas 200, un H1 por ruta, cero
   hotlinks y las firmas públicas de siete flujos mediante WP-CLI de solo lectura.
-- LocalWP: `drafortul.local`, referencia privada del demo informativo. Consume
-  `vicunav-theme-core` mediante symlink y quedó sin contenido de ejemplo ni theme
-  propio el 2026-08-06.
-- Proyecto local de referencia: `~/Documents/Codex/drafortul/`.
 - LocalWP: `devbhogayoga.local`, destino limpio de la migración privada Bhoga Yoga.
   El 2026-08-26 respondió con WordPress 7.1, Twenty Twenty-Five, ningún plugin y la
   página de ejemplo. No se modificó contenido, configuración ni filesystem de
@@ -481,12 +474,10 @@ El contrato vigente está en
    `lang="es"` ya están confirmados.
 4. Crear un LocalWP separado para `vicunav-demo-yoga`, recomendado como
    `vicunav-demo-yoga.local`.
-5. Decidir si el proyecto privado de Dra. Fortul se sanea, renombra y transfiere para
-   convertirse en el repositorio público `vicunav-demo-informativo`.
-6. Añadir una matriz runtime específica para WordPress 6.6 y PHP 8.1 a
+5. Añadir una matriz runtime específica para WordPress 6.6 y PHP 8.1 a
    `vicunav-plugin-core`; la cobertura actual usa versiones más recientes y no bloquea
    `REST-01`.
-7. Capturar aprendizajes verificables de Bhoga en `vicunav-transform-claude-to-gutenberg`
+6. Capturar aprendizajes verificables de Bhoga en `vicunav-transform-claude-to-gutenberg`
    para mejorar prompts, validadores y consumo de contexto sin degradar el gate visual.
 
 El camino funcional de restaurante terminó en REST-02S, pero el producto integrado

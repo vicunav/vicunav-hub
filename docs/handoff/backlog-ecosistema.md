@@ -23,7 +23,6 @@ issue.
 | `vicunav-restaurante` | REST-02A a REST-02S completos; plugin y contrato 1.0.0, siete bloques públicos con contrato visual neutral, privacidad nativa, matriz WordPress/PHP y prerelease `v1.0.0-rc.1`; REST-02S cerró en `a46d1d746e0b880dca949a875d2dceb4b9207c61` |
 | `vicunav-demo-restaurante` | Migración Bonasera integrada y aprobada con diferencias explícitas en `9a5776837cf36c6707bd44199bc77b3eeb930851`: nueve rutas FSE, siete flujos, Global Styles efectivo, 35 comparaciones revisadas y placeholders autorizados |
 | Referencia de diseño Bonasera | DESIGN-REST-01 auditó el commit `1e1f62787e088c0ca9701500e764802499d1b253`, sus siete pantallas, reglas, contratos propuestos, tokens y defectos; REST-01 incorporó el resultado sin aceptar su mapeo legacy a WooCommerce |
-| Referencia privada de `vicunav-demo-informativo` | Dra. Fortul conserva estrategia y contenido; WordPress local quedó limpio y consume `vicunav-theme-core` |
 | `vicunav-yoga` | YOGA-00 a YOGA-02 publicaron el plugin neutral 0.1.0, el contrato público 1.0.0, prompts, CI y validación |
 | `vicunav-bhoga-yoga` | BHO-00 y BHO-01 publicaron la implementación privada, brief, inventario preliminar, prompts, QA y contrato de rollback; WordPress y producción no se modificaron |
 | `vicunav-demo-yoga` | DEMO-YOGA-01 publicó la fundación del website demo público saneado, su configuración, prompts, CI y validación; todavía no tiene LocalWP ni contenido |
@@ -85,10 +84,12 @@ en una dependencia de los repositorios resultantes.
 
 | ID | Repositorio | Trabajo | Depende de | Estado |
 | --- | --- | --- | --- | --- |
-| INFO-01 | `vicunav-demo-informativo` | Auditar el HTML aprobado de Dra. Fortul y clasificar tokens, patterns, capacidades compartidas, composición y requisitos médicos | HUB-VIS-03 y handoff aprobado | Bloqueado por recuperación visual |
-| INFO-02 | `vicunav-demo-informativo` | Decidir saneamiento, nombre, privacidad y transferencia del repositorio de referencia | INFO-01 | Requiere decisión humana |
-| INFO-03 | Varios | Crear Issues atómicos en cada repositorio propietario e implementar el demo informativo | INFO-01 | Por descomponer |
 | DESIGN-HOTEL-01 | Varios | Auditar el diseño aprobado de hotel y separar presentación, plugin core, pagos, dominio y composición | HUB-VIS-03 y handoff aprobado | Bloqueado por recuperación visual |
+
+INFO-01 a INFO-03 se retiraron el 2026-09-22: Dra. Fortul dejó de ser la
+referencia de `vicunav-demo-informativo` (ver [ADR 0014](../adr/0014-retirar-fortul-demo-informativo.md)).
+`vicunav-demo-informativo` sigue en el mapa del ecosistema sin implementación
+de referencia asignada.
 
 ## Pendientes y riesgos
 
@@ -116,7 +117,7 @@ en una dependencia de los repositorios resultantes.
   de deuda, no un gate visual aprobado.
 - La paleta global final de Vicunav sigue pendiente, pero no bloquea `plugin-core`,
   pagos ni la variación Bonasera aislada.
-- Los diseños de restaurante, hotel y Dra. Fortul pueden descubrir funcionalidades,
+- Los diseños de restaurante y hotel pueden descubrir funcionalidades,
   pero un elemento visual no define por sí solo un contrato de backend. Antes de crear
   lógica se deben precisar estado, datos, permisos, errores y repositorio propietario.
 - Bhoga Yoga contiene identidad, fotografías y testimonios de personas reales. Los

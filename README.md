@@ -80,7 +80,7 @@ the ecosystem's development, but are not part of its execution layers.
 | `vicunav-hotel` | Hotel vertical logic and its bookings. | Deferred by ADR 0006 |
 | `vicunav-demo-restaurante` | Public demo of the restaurant vertical. | Pending |
 | `vicunav-demo-hotel` | Public demo of the hotel vertical. | Pending |
-| `vicunav-demo-informativo` | Professional, non-transactional reference demo built on the shared theme. | Planned; Dra. Fortul is the private reference implementation |
+| `vicunav-demo-informativo` | Professional, non-transactional reference demo built on the shared theme. | Planned; no reference implementation assigned (see ADR 0014) |
 
 The next executable step is to implement the payment state machine, expiration,
 idempotency, and public lifecycle events in `vicunav-pagos`. The
@@ -120,6 +120,7 @@ dependency relationship between the two.
 - [ADR 0007: Informational demo on the shared foundation](docs/adr/0007-demo-informativo-theme-base.md)
 - [ADR 0008: Claude Code to Gutenberg migration skill](docs/adr/0008-skill-claude-gutenberg.md)
 - [ADR 0012: Vicunav's own site in a new repository](docs/adr/0012-sitio-propio-vicunav-web.md)
+- [ADR 0014: Retiring Dra. Fortul as the informational demo reference](docs/adr/0014-retirar-fortul-demo-informativo.md)
 
 ## Governance and roadmap
 
