@@ -9,12 +9,12 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
 [`backlog`](backlog-ecosistema.md) y las reglas compartidas viven en
 [`vicunav-standards`](../standards/).
 
-- Responsable operativo: Codex.
+- Responsable operativo: Claude.
 - Autoridad final de producto y acciones irreversibles: usuario.
 - Fuente del estado de ejecución: issues y pull requests de GitHub.
 - Fuente de arquitectura y prioridades: este hub.
-- Excepción vigente: el rework del vertical restaurante y su demo fue transferido a
-  Claude el 2026-08-29. El diagnóstico, la limpieza y el contrato de relevo están en
+- El rework del vertical restaurante y su demo fue transferido a Claude el
+  2026-08-29. El diagnóstico, la limpieza y el contrato de relevo están en
   [`restaurante-handoff-claude.md`](restaurante-handoff-claude.md).
 
 ## Resumen actual
