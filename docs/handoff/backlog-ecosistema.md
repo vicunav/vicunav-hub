@@ -87,9 +87,10 @@ en una dependencia de los repositorios resultantes.
 | DESIGN-HOTEL-01 | Varios | Auditar el diseño aprobado de hotel y separar presentación, plugin core, pagos, dominio y composición | HUB-VIS-03 y handoff aprobado | Bloqueado por recuperación visual |
 
 INFO-01 a INFO-03 se retiraron el 2026-09-22: Dra. Fortul dejó de ser la
-referencia de `vicunav-demo-informativo` (ver [ADR 0014](../adr/0014-retirar-fortul-demo-informativo.md)).
-`vicunav-demo-informativo` sigue en el mapa del ecosistema sin implementación
-de referencia asignada.
+referencia de `vicunav-demo-informativo` y el concepto se retiró por completo
+del mapa del ecosistema (ver [ADR 0014](../adr/0014-retirar-fortul-demo-informativo.md)).
+El usuario lo recreará más adelante, desde cero, con otro naming y otro
+contexto — no como continuación de este.
 
 ## Pendientes y riesgos
 

@@ -27,7 +27,6 @@ flowchart TB
     end
 
     subgraph demos["4. Demos"]
-        demo_info["vicunav-demo-informativo"]
         demo_hotel["vicunav-demo-hotel"]
         demo_restaurant["vicunav-demo-restaurante"]
     end
@@ -41,8 +40,6 @@ flowchart TB
     payment -->|public hooks| restaurant
     theme --> demo_hotel
     theme --> demo_restaurant
-    theme --> demo_info
-    plugin -.->|optional shared capabilities| demo_info
     hotel --> demo_hotel
     restaurant --> demo_restaurant
 ```
@@ -57,10 +54,9 @@ The layers separate concrete responsibilities:
    public hooks. A project without transactions can omit it.
 3. **Verticals:** `vicunav-hotel` and `vicunav-restaurante` encapsulate bookings and
    orders respectively, without reading another plugin's internal data.
-4. **Demos:** `vicunav-demo-informativo` validates the foundation in a
-   non-transactional professional site. `vicunav-demo-hotel` and
-   `vicunav-demo-restaurante` integrate the foundation with their corresponding
-   verticals. A demo composes only the layers it needs.
+4. **Demos:** `vicunav-demo-hotel` and `vicunav-demo-restaurante` integrate the
+   foundation with their corresponding verticals. A demo composes only the layers it
+   needs.
 
 The standards, template, documentation, and migration-tooling repositories support
 the ecosystem's development, but are not part of its execution layers.
@@ -80,7 +76,6 @@ the ecosystem's development, but are not part of its execution layers.
 | `vicunav-hotel` | Hotel vertical logic and its bookings. | Deferred by ADR 0006 |
 | `vicunav-demo-restaurante` | Public demo of the restaurant vertical. | Pending |
 | `vicunav-demo-hotel` | Public demo of the hotel vertical. | Pending |
-| `vicunav-demo-informativo` | Professional, non-transactional reference demo built on the shared theme. | Planned; no reference implementation assigned (see ADR 0014) |
 
 The next executable step is to implement the payment state machine, expiration,
 idempotency, and public lifecycle events in `vicunav-pagos`. The

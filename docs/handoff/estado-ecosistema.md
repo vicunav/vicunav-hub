@@ -150,8 +150,8 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
   el [issue 19](https://github.com/vicunav/vicunav-demo-restaurante/issues/19) y el
   [PR 20](https://github.com/vicunav/vicunav-demo-restaurante/pull/20), en
   `9a5776837cf36c6707bd44199bc77b3eeb930851`.
-- `vicunav-hotel`, `vicunav-demo-hotel` y `vicunav-demo-informativo` todavía no
-  existen como repositorios públicos canónicos en la organización.
+- `vicunav-hotel` y `vicunav-demo-hotel` todavía no existen como repositorios
+  públicos canónicos en la organización.
 - `vicunav-gutenberg` pertenece a la organización Vicunav, pero es una migración
   independiente de `vicunav.com` y no forma parte de este ecosistema modular.
 - `vicunav-transform-claude-to-gutenberg` publica el skill y los validadores que
@@ -199,10 +199,9 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
    `external_type = vicu_order`, sin WooCommerce. `vicunav-hotel` será propietario de
    su dominio cuando llegue su etapa. `vicunav-yoga` será propietario de las
    entidades, servicios y bloques reusables del dominio Yoga según su contrato v1.
-4. **Demos:** `vicunav-demo-informativo` validará la base sin capas transaccionales;
-   `vicunav-demo-restaurante`, `vicunav-demo-hotel` y `vicunav-demo-yoga` compondrán
-   sus verticales. Los demos conservan contenido y composición, pero no introducen
-   lógica reutilizable propia.
+4. **Demos:** `vicunav-demo-restaurante`, `vicunav-demo-hotel` y `vicunav-demo-yoga`
+   compondrán sus verticales. Los demos conservan contenido y composición, pero no
+   introducen lógica reutilizable propia.
 5. **Implementaciones cliente:** `vicunav-bhoga-yoga` conserva en privado contenido,
    composición, evidencia y operación de un sitio real. Consume `vicunav-theme-core`
    y `vicunav-yoga`; no es el propietario del runtime reusable ni una demo pública.
@@ -226,7 +225,6 @@ y contratos públicos.
 | `vicunav-hotel` | Diferido | Reservas y disponibilidad | Mantener diferido hasta completar restaurante, según ADR 0006 |
 | `vicunav-demo-restaurante` | Rework local retirado; transferido a Claude el 2026-08-29 | Nueve páginas FSE y siete flujos existen, pero el gate de 35 comparaciones se revirtió: no hubo aprobación humana página por página y las capturas muestran diferencias perceptuales promedio de 47,86 % a 64,45 % | Continuar desde [`restaurante-handoff-claude.md`](restaurante-handoff-claude.md), verificando cada resultado contra el commit fuente congelado |
 | `vicunav-demo-hotel` | No existe | Demostración del vertical hotelero | Esperar la implementación de hotel |
-| `vicunav-demo-informativo` | Sin implementación de referencia (ADR 0014) | Sitio profesional no transaccional sobre `vicunav-theme-core` | Sin propietario asignado; requiere una decisión nueva antes de retomarse |
 | [`vicunav-yoga`](https://github.com/vicunav/vicunav-yoga) | Público, bootstrap 0.1.0; contrato 1.0.0 aprobado | Plugin neutral, hook de carga, contrato, prompts, CI y validación | Implementar YOGA-03; mantener YOGA-04 detrás de `HUB-VIS-03` |
 | [`vicunav-bhoga-yoga`](https://github.com/vicunav/vicunav-bhoga-yoga) | Privado; implementación bloqueada | Consumidor de theme core y plugin Yoga; brief, inventario, prompts, QA y rollback del cliente | Resolver gate operativo y esperar `HUB-VIS-03` antes de BHO-02 |
 | [`vicunav-demo-yoga`](https://github.com/vicunav/vicunav-demo-yoga) | Público; composición bloqueada | Website demo saneado que consumirá theme core, plugin core y vertical Yoga | Crear LocalWP separado y contenido ficticio |
