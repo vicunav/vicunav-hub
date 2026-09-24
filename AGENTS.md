@@ -1,6 +1,6 @@
 # vicunav-hub
 
-Propósito: Documentación de arquitectura y decisiones del ecosistema Vicunav.
+Propósito: decisiones de arquitectura, estado y backlog de los proyectos Vicunav.
 
 ## Reglas aplicables
 
@@ -14,8 +14,9 @@ Este repositorio contiene únicamente documentación y no tiene pruebas automati
 Antes de entregar un cambio, revisa manualmente la estructura, los enlaces y el formato
 de los documentos modificados.
 
-## Gobierno y continuidad multirrepositorio
+## Decisiones, estado y backlog
 
-El flujo para decidir y propagar cambios está en
-[`docs/gobernanza.md`](docs/gobernanza.md). El estado operativo y el backlog canónicos
-están en [`docs/handoff/`](docs/handoff/).
+- Decisiones: [`docs/adr/`](docs/adr/).
+- Cómo se decide y se propaga un cambio: [`docs/gobernanza.md`](docs/gobernanza.md).
+- Estado actual: [`docs/estado.md`](docs/estado.md).
+- Pendientes: [`docs/backlog.md`](docs/backlog.md).

@@ -1,20 +1,26 @@
-# ADR 0001: Separación entre theme y plugins
+# ADR 0001: Separación entre theme y plugin dentro de cada proyecto
 
 ## Contexto
 
-Se estableció que un theme debía sobrevivir a un cambio de diseño sin perder lógica de
-negocio y que un plugin debía funcionar sin depender de un theme específico. La
-separación de estas responsabilidades evitaba que la presentación condicionara el
-comportamiento funcional del ecosistema.
+Un sitio debe poder cambiar de diseño sin perder lógica de negocio, y su lógica no debe
+depender de la presentación. Cada proyecto Vicunav es un repositorio autocontenido con
+su propio theme de bloques y su propio plugin.
 
 ## Decisión
 
-Se decidió que `theme-core` contendría únicamente elementos de presentación: patrones,
-tokens y templates. Toda la lógica de negocio residiría en plugins.
+Dentro de cada proyecto:
+
+- `theme/` contiene únicamente presentación: `theme.json`, tokens, templates, template
+  parts, patterns y estilos. No tiene theme padre.
+- `plugin/` contiene la lógica de negocio: tipos de contenido, reglas, datos
+  transaccionales, REST y bloques dinámicos.
+
+No se comparte código entre proyectos por dependencia. Un proyecto nuevo crea su theme y
+su plugin desde cero.
 
 ## Consecuencias
 
-Se consideró una violación de esta decisión cualquier CPT, regla de negocio o dato
-transaccional que apareciera en el theme. Los cambios de diseño podrían reemplazar el
-theme sin afectar la lógica de negocio, y los plugins podrían funcionar sin depender de
-un theme específico.
+- Un CPT, una regla de negocio o un dato transaccional en el theme viola esta decisión.
+- El theme puede reemplazarse sin afectar la lógica; el plugin no consulta el theme.
+- Un bloque de dominio consume presets y propiedades públicas del theme con fallbacks
+  neutrales, sin literales de marca.

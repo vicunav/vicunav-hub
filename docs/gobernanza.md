@@ -1,93 +1,61 @@
-# Gobierno de decisiones del ecosistema
+# Gobernanza de decisiones
 
-Este documento define cómo se razonan, registran y propagan decisiones que afectan a
-uno o varios repositorios Vicunav. El hub coordina la decisión, pero no reemplaza la
-fuente de verdad técnica de cada paquete.
+Este documento define cómo se decide y se propaga un cambio que afecta a uno o varios
+repositorios Vicunav. El hub registra la decisión; cada repositorio es dueño de su
+código, pruebas y documentación específica.
 
-## Autoridad y alcance
+## Autoridad
 
 - El usuario conserva la decisión final de producto y de cualquier acción destructiva,
   irreversible o con impacto externo.
-- El hub registra arquitectura, prioridades, dependencias y decisiones transversales.
-- Cada repositorio es dueño de su código, contratos públicos, pruebas y documentación
-  específica.
-- `vicunav-standards` es la única fuente normativa para reglas compartidas.
-- `vicunav-gutenberg` es un proyecto relacionado pero independiente y no participa en
-  el backlog de este ecosistema.
+- `vicunav-standards` es la única fuente normativa de las reglas técnicas compartidas.
+- Cada repositorio es la fuente de verdad de su comportamiento ejecutable.
 
-## Flujo de una decisión
+## Cómo se decide y se propaga un cambio
 
-1. **Explorar:** describir el problema, las restricciones, las alternativas y sus
-   consecuencias. Esta etapa no modifica archivos por sí sola.
-2. **Decidir:** registrar la elección en un ADR cuando afecte arquitectura, límites o
-   contratos; usar el estado o el backlog cuando sea una prioridad operativa.
-3. **Asignar fuente de verdad:** determinar qué repositorio posee el valor, contrato o
-   comportamiento resultante.
-4. **Propagar:** crear un issue y un pull request atómicos en cada repositorio que deba
-   cambiar. No mezclar varios repositorios en un mismo commit.
-5. **Verificar:** comprobar el resultado en cada consumidor y actualizar el estado y el
-   backlog del hub cuando todos los cambios requeridos estén cerrados.
+1. **Decidir:** una decisión de arquitectura o de límites se registra en un ADR
+   ([`docs/adr/`](adr/)). Una prioridad operativa se registra en el
+   [backlog](backlog.md) y el [estado](estado.md).
+2. **Propagar:** cada repositorio afectado recibe un issue atómico, una rama, un pull
+   request y un squash-merge. No se mezclan varios repositorios en un mismo commit.
+3. **Verificar:** se comprueba el resultado en cada repositorio afectado y, cuando todos
+   están cerrados, se actualizan el estado y el backlog del hub.
 
-Los estados recomendados son `borrador`, `decidida`, `planificada`, `aplicada` y
-`verificada`. Una decisión no se considera propagada mientras algún consumidor
-obligatorio siga pendiente.
+## Estándares y submódulo
 
-## Cambios derivados de un diseño aprobado
+Las reglas transversales viven en `vicunav-standards` y cada repositorio las consume como
+submódulo en `docs/standards/`. Para actualizarlo:
 
-Cuando un producto parte de un baseline visual, los estados funcional y visual se
-registran por separado. Una implementación puede tener runtime verificado y continuar
-pendiente como producto integrado.
+1. Publicar el cambio en `vicunav-standards` mediante su propio issue y PR.
+2. En cada repositorio, en un issue propio, avanzar el submódulo al nuevo commit:
 
-La verificación visual exige:
+   ```bash
+   git submodule update --remote docs/standards
+   git add docs/standards
+   ```
 
-- fuente y commit inmutables;
-- inventario de páginas, componentes, estados, viewports, fuentes y assets;
-- mapa de propiedad entre theme, plugin vertical y demo;
-- comparación del render fuente y WordPress con entorno equivalente;
-- evidencia lado a lado y overlay por página, estado y viewport;
-- diferencias deliberadas registradas y aprobación humana del checkpoint.
+3. Confirmar con `git submodule status` que todos apuntan al commit vigente de
+   `vicunav-standards`.
 
-No se acepta como sustituto la presencia de copy, bloques válidos, rutas 200, ausencia
-de overflow, Lighthouse ni una auditoría de accesibilidad. Todas esas pruebas siguen
-siendo obligatorias, pero verifican dimensiones diferentes del producto.
+No se copia el mismo Markdown entre repositorios: se enlaza o se usa el submódulo.
 
-La presencia de configuración en archivos o base de datos tampoco acredita su efecto.
-El consumidor debe demostrar la configuración aplicada en el CSS y el render finales.
-El [ADR 0010](adr/0010-fidelidad-visual-bloqueante.md) contiene el contrato completo.
+## Qué es fuente de verdad
 
-## Fuente de verdad por tipo de cambio
+| Cambio | Fuente de verdad |
+| --- | --- |
+| Arquitectura o límite entre theme y plugin | ADR del hub |
+| Convención técnica transversal | `vicunav-standards` |
+| Comportamiento, API pública o pruebas de un proyecto | Repositorio del proyecto |
+| Estado y prioridades | Hub (`estado.md`, `backlog.md`) |
 
-| Cambio | Fuente de verdad | Registro coordinador |
-| --- | --- | --- |
-| Arquitectura o límite entre paquetes | ADR del hub | Estado y backlog del hub |
-| Prioridad, nuevo producto o demo | Hub | Backlog del hub |
-| Convención transversal | `vicunav-standards` | ADR si cambia arquitectura |
-| Contrato público de un paquete | Repositorio propietario | ADR y enlaces desde el hub |
-| Token visual, color o tipografía | `vicunav-theme-core` | Issue del theme y consumidores |
-| Markup y estado funcional de un bloque de dominio | Plugin vertical propietario | Issue del vertical y demo consumidor |
-| Lógica de negocio | Plugin o vertical propietario | Issue y pruebas del repositorio |
-| Composición de una demo | Repositorio de la demo | Backlog del hub |
+## Fidelidad visual
 
-No se copia el mismo Markdown entre repositorios para simular propagación. Se prefieren
-enlaces, submódulos, dependencias versionadas y contratos públicos. Cuando un archivo
-local sea obligatorio, cada consumidor actualiza explícitamente su referencia y valida
-el cambio.
+Estado funcional y estado visual se registran por separado. Una migración de diseño solo
+se cierra con paridad 1:1 demostrada y aprobada por una persona, según el
+[ADR 0005](adr/0005-fidelidad-visual-bloqueante.md) y
+`docs/standards/docs/visual-fidelity.md`.
 
-## Contenido mínimo de una decisión
+## Contenido mínimo de un ADR
 
-- Contexto y problema observable.
-- Alternativas consideradas.
-- Decisión y responsable final.
-- Consecuencias y riesgos.
-- Fuente de verdad.
-- Repositorios afectados.
-- Plan de propagación y validación.
-- Decisión anterior que reemplaza, cuando corresponda.
-
-## Uso de los documentos canónicos
-
-- [`docs/adr/`](adr/): decisiones arquitectónicas aceptadas y su historia.
-- [`docs/handoff/estado-ecosistema.md`](handoff/estado-ecosistema.md): fotografía actual
-  y hechos vigentes.
-- [`docs/handoff/backlog-ecosistema.md`](handoff/backlog-ecosistema.md): trabajo
-  pendiente, orden y dependencias.
+Contexto, decisión, consecuencias, fuente de verdad y repositorios afectados. Se
+numera de forma consecutiva y describe siempre la decisión vigente.
