@@ -17,7 +17,8 @@ trabajo pendiente se mantienen en `docs/handoff/`.
 | [0009](0009-restaurante-sin-woocommerce.md) | Implementar comercio de restaurante sin WooCommerce |
 | [0010](0010-fidelidad-visual-bloqueante.md) | Bloquear migraciones hasta demostrar fidelidad visual 1:1 |
 | [0011](0011-bhoga-yoga-cliente-privado.md) | Mantener Bhoga Yoga como implementación privada de cliente |
-| [0013](0013-theme-core-dinamico-agnostico.md) | Compartir un theme-core dinámico, agnóstico y sin child themes por defecto |
+| [0013](0013-theme-core-dinamico-agnostico.md) | Compartir un theme-core dinámico, agnóstico y sin child themes por defecto (sustituido por 0015) |
+| [0015](0015-un-theme-y-un-plugin-por-proyecto.md) | Un theme y un plugin propios por proyecto; sin theme, pagos ni core compartidos |
 
 Los números 0007, 0008, 0012 y 0014 no se reutilizan.
 

@@ -101,12 +101,14 @@ and its own child theme; it is not a reusable package of the ecosystem
 - [ADR 0009: Restaurant commerce without WooCommerce](docs/adr/0009-restaurante-sin-woocommerce.md)
 - [ADR 0010: Blocking 1:1 visual fidelity for Gutenberg migrations](docs/adr/0010-fidelidad-visual-bloqueante.md)
 - [ADR 0011: Bhoga Yoga as a private client implementation](docs/adr/0011-bhoga-yoga-cliente-privado.md)
-- [ADR 0013: Dynamic, agnostic, shared theme-core](docs/adr/0013-theme-core-dinamico-agnostico.md)
+- [ADR 0013: Dynamic, agnostic, shared theme-core](docs/adr/0013-theme-core-dinamico-agnostico.md) (superseded by 0015)
+- [ADR 0015: One theme and one plugin per project](docs/adr/0015-un-theme-y-un-plugin-por-proyecto.md)
 
 ADR numbers 0007, 0008, 0012, and 0014 are not reused.
 
 ## Governance and roadmap
 
+- [Plan: one theme and one plugin per project](docs/handoff/plan-un-theme-y-plugin-por-proyecto.md) ([ADR 0015](docs/adr/0015-un-theme-y-un-plugin-por-proyecto.md))
 - [Decision and propagation workflow](docs/gobernanza.md)
 - [Canonical ecosystem state](docs/handoff/estado-ecosistema.md)
 - [Multi-repository backlog](docs/handoff/backlog-ecosistema.md)

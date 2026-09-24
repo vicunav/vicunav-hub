@@ -27,6 +27,14 @@ Las antiguas tareas para diferenciar `vicunav-secondary` y corregir el CPT de
 `plantillas-verticales.md` ya están resueltas en los issues 27 y 29 de
 `vicunav-theme-core`.
 
+## Dirección vigente
+
+La arquitectura evoluciona hacia un theme y un plugin propios por proyecto, sin
+`vicunav-theme-core` ni `vicunav-pagos` compartidos
+([ADR 0015](../adr/0015-un-theme-y-un-plugin-por-proyecto.md)). El trabajo está
+planificado en [`plan-un-theme-y-plugin-por-proyecto.md`](plan-un-theme-y-plugin-por-proyecto.md)
+y todavía no se ejecuta.
+
 ## Orden de ejecución
 
 | Orden | ID | Repositorio | Trabajo | Depende de | Estado |

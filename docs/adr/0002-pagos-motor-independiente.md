@@ -1,5 +1,8 @@
 # ADR 0002: Pagos como motor independiente
 
+Estado: la parte de motor compartido entre verticales está sustituida por el [ADR 0015](0015-un-theme-y-un-plugin-por-proyecto.md) (2026-09-24).
+
+
 ## Contexto
 
 Se observó que no todos los proyectos Vicunav necesitaban cobrar; por ejemplo, un sitio

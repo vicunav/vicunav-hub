@@ -1,5 +1,8 @@
 # ADR 0013: Theme-core dinámico, agnóstico y compartido
 
+Estado: sustituido por el [ADR 0015](0015-un-theme-y-un-plugin-por-proyecto.md) el 2026-09-24.
+
+
 ## Contexto
 
 El ecosistema necesita reproducir demos, verticales e implementaciones de cliente con

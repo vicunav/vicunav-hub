@@ -17,6 +17,14 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
   2026-08-29. El diagnóstico, la limpieza y el contrato de relevo están en
   [`restaurante-handoff-claude.md`](restaurante-handoff-claude.md).
 
+## Dirección vigente
+
+El usuario decidió el 2026-09-24 dejar de compartir theme, pagos y core entre proyectos:
+cada proyecto tendrá su propio theme y su propio plugin
+([ADR 0015](../adr/0015-un-theme-y-un-plugin-por-proyecto.md)). Mientras el plan
+[`plan-un-theme-y-plugin-por-proyecto.md`](plan-un-theme-y-plugin-por-proyecto.md) no se
+ejecute, el estado descrito abajo sigue siendo el real.
+
 ## Resumen actual
 
 - Los repositorios existentes del ecosistema son `vicunav-hub`, `vicunav-standards`,
