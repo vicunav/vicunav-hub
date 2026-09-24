@@ -13,7 +13,7 @@ páginas, sección por sección, con paridad visual y funcional verificable.
 ## Fuente inmutable
 
 - Repositorio fuente:
-  `/Users/vicunav/Documents/Codex/vicunav/vicunav-design-to-claude-demo-restaurante`
+  `<raíz-de-repositorios>/vicunav-design-to-claude-demo-restaurante`
 - Branch: `main`
 - Commit aprobado: `1e1f62787e088c0ca9701500e764802499d1b253`
 - Instalación: `npm ci`
@@ -28,17 +28,15 @@ como autoridad.
 ## Repositorios y responsabilidades
 
 - Demo y composición Bonasera:
-  `/Users/vicunav/Documents/Codex/vicunav/vicunav-demo-restaurante`
+  `<raíz-de-repositorios>/vicunav-demo-restaurante`
 - Dominio y bloques dinámicos:
-  `/Users/vicunav/Documents/Codex/vicunav/vicunav-restaurante`
+  `<raíz-de-repositorios>/vicunav-restaurante`
 - Theme base neutral:
-  `/Users/vicunav/Documents/Codex/vicunav/vicunav-theme-core`
-- Core de plugins:
-  `/Users/vicunav/Documents/Codex/vicunav/vicunav-plugin-core`
-- Pagos:
-  `/Users/vicunav/Documents/Codex/vicunav/vicunav-pagos`
+  `<raíz-de-repositorios>/vicunav-theme-core`
+- Pagos (incluye las capacidades base `Vicu\Core` en su carpeta `core/`):
+  `<raíz-de-repositorios>/vicunav-pagos`
 - Gobierno, ADR, especificaciones y handoff:
-  `/Users/vicunav/Documents/Codex/vicunav/vicunav-hub`
+  `<raíz-de-repositorios>/vicunav-hub`
 
 Lee primero los `AGENTS.md` aplicables, los estándares del hub, ADR 0009, ADR 0010,
 la especificación durable restaurante v1 y

@@ -16,9 +16,9 @@ posterior.
 ## Consecuencias
 
 El `spec` interno de `vicunav-hotel` se escribiría cuando llegara su turno, no antes.
-Evitar trabajo especulativo mantuvo una regla que ya se aplicaba desde
-`vicunav-plugin-core`.
+Evitar trabajo especulativo mantuvo una regla que ya se aplicaba en el resto del
+ecosistema.
 
 Se dejó explícito que la decisión era revisitable sin costo. No comprometía los
-contratos frontera de `vicunav-theme-core`, `vicunav-plugin-core` ni `vicunav-pagos`,
+contratos frontera de `vicunav-theme-core` ni `vicunav-pagos`,
 que eran agnósticos al orden de los verticales.

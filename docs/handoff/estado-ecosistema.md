@@ -1,6 +1,6 @@
 # Estado canónico del ecosistema Vicunav
 
-Actualizado: 2026-08-29.
+Actualizado: 2026-09-24.
 
 ## Cómo usar este documento
 
@@ -19,19 +19,21 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
 
 ## Resumen actual
 
-- Los once repositorios públicos existentes del ecosistema están disponibles:
-  `vicunav-hub`, `vicunav-standards`, `vicunav-repo-template`,
-  `vicunav-transform-claude-to-gutenberg`, `vicunav-theme-core`,
-  `vicunav-plugin-core`, `vicunav-pagos`, `vicunav-restaurante`,
-  `vicunav-demo-restaurante`, `vicunav-yoga` y `vicunav-demo-yoga`.
+- Los repositorios existentes del ecosistema son `vicunav-hub`, `vicunav-standards`,
+  `vicunav-repo-template`, `vicunav-theme-core`, `vicunav-pagos`, `vicunav-restaurante`,
+  `vicunav-demo-restaurante` y `vicunav-github-profile`, además del repositorio privado
+  `vicunav-bhoga-yoga`.
+- Las capacidades base compartidas `Vicu\Core` (`PostType`, `Rest`, `Security`,
+  `Settings` y los CPT `Faq` y `Testimonial`; contrato 1.0.0, hook `vicu_core_loaded`,
+  opción `vicu_core_settings`) se distribuyen dentro del plugin `vicunav-pagos`, en su
+  carpeta `core/`, con el mismo namespace y contrato. `vicunav-restaurante` declara
+  únicamente `vicunav-pagos` en `Requires Plugins`; `vicunav-theme-core` sigue leyendo
+  `Vicu\Core\Settings::get()` de forma opcional.
 - `vicunav-bhoga-yoga` es un repositorio Git privado para migrar el sitio real Bhoga
-  Yoga desde Elementor a Gutenberg. Su fundación documental, inventario preliminar,
-  prompts y contrato de rollback están publicados; no se ha implementado ni enlazado
-  código al LocalWP y producción permanece intacta.
-- `vicunav-yoga` es el plugin vertical público con bootstrap 0.1.0 y contrato público
-  1.0.0 aprobado. `vicunav-demo-yoga` es el website demo público, publicado con su
-  arquitectura de composición saneada. Ninguno tiene todavía contenido de dominio
-  implementado ni LocalWP de demo.
+  Yoga desde Elementor a Gutenberg. Se construye con `vicunav-theme-core`, las
+  capacidades base de `vicunav-pagos` y su propio child theme. Su fundación documental,
+  inventario preliminar, prompts y contrato de rollback están publicados; no se ha
+  implementado ni enlazado código al LocalWP y producción permanece intacta.
 - La base funcional de `vicunav-theme-core` y THEME-REST-01 a THEME-REST-05 están
   fusionados. La variación Bonasera tiene contrato, compilación real en WordPress,
   chrome y patterns editables en `7c30b2ce250bb85572dae4a4cd51841921c4e98a`.
@@ -41,15 +43,13 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
   64,45 % por superficie, con picos superiores al 94 %. El checkpoint queda reabierto
   y el rework se transfiere a Claude (ver
   [`restaurante-handoff-claude.md`](restaurante-handoff-claude.md)).
-- La fase fundacional CORE-01 a CORE-09 de `vicunav-plugin-core` está terminada. El
-  plugin 0.1.0 implementa el contrato público 1.0.0, tiene publicada la release
-  `v0.1.0` y no tiene issues ni pull requests abiertos.
-- PAGOS-01 a PAGOS-03 están terminados. `vicunav-pagos` 0.3.1 aporta contrato público
+- PAGOS-01 a PAGOS-03 están terminados. `vicunav-pagos` 0.4.0 aporta contrato público
   0.3.0, persistencia transaccional, creación y entregas manuales idempotentes,
   estados, concurrencia, expiración y eventos versionados, además del CPT y REST
   administrativos protegidos. El parche 0.3.1 normaliza el booleano persistido del
   proveedor manual después de cruzar el límite de caché de `wp_options`; el contrato
-  0.3.0 no cambió.
+  0.3.0 no cambió. La versión 0.4.0 incorpora dentro del plugin las capacidades base
+  `Vicu\Core` (contrato 1.0.0 sin cambios) y elimina la dependencia de un plugin externo.
 - DESIGN-REST-01 auditó el prototipo Bonasera en el commit
   `1e1f62787e088c0ca9701500e764802499d1b253`. REST-01 incorporó esa evidencia en un
   spec durable, decidió comercio propio sin WooCommerce y descompuso runtime, theme y
@@ -150,17 +150,12 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
   el [issue 19](https://github.com/vicunav/vicunav-demo-restaurante/issues/19) y el
   [PR 20](https://github.com/vicunav/vicunav-demo-restaurante/pull/20), en
   `9a5776837cf36c6707bd44199bc77b3eeb930851`.
-- `vicunav-hotel` y `vicunav-demo-hotel` todavía no existen como repositorios
-  públicos canónicos en la organización.
+- `vicunav-hotel` y `vicunav-demo-hotel` son un vertical diferido y todavía no existen
+  como repositorios canónicos en la organización.
 - `vicunav-gutenberg` pertenece a la organización Vicunav, pero es una migración
   independiente de `vicunav.com` y no forma parte de este ecosistema modular.
-- `vicunav-transform-claude-to-gutenberg` publica el skill y los validadores que
-  traducen prototipos aprobados a block themes FSE. Es tooling de desarrollo y no una
-  dependencia de runtime.
 - El funnel preventivo HUB-VIS-01 a HUB-VIS-02 está completo. El estándar visual quedó
-  en `5c5af785ae7d157af876da8367c2d30f992f0319`; el skill añadió manifiesto en
-  `3e35e14796006ac2d3868bbee7147610f96d6633` y automatización de evidencia en
-  `a55cfe447f8ba72098cf940c75605482236d2b35`; el template adoptó los campos visuales
+  en `5c5af785ae7d157af876da8367c2d30f992f0319`; el template adoptó los campos visuales
   en `34179579367d89c6b6c7d1510fd24163c25b4ca2`. Estas entregas habilitaron el gate,
   pero no lo sustituyeron.
 - DESIGN-REST-02 cerró el
@@ -186,25 +181,26 @@ arquitectura viven en [`docs/adr/`](../adr/), el trabajo pendiente vive en el
 
 ## Arquitectura vigente
 
-1. **Foundation:** `vicunav-theme-core` aporta presentación compartida y
-   `vicunav-plugin-core` aporta contenido estructurado, ajustes, seguridad y REST. La
-   lógica de negocio no vive en el theme. Todos los sitios usan el mismo theme-core;
-   su identidad y composición variable se administran dinámicamente mediante un
-   contrato neutral, sin introducir trazas de demos o verticales en sus archivos.
-2. **Pagos:** `vicunav-pagos` es un motor opcional, independiente de reservas y
-   pedidos. Su ciclo de vida transaccional y el proveedor manual v1 están
-   implementados detrás de servicios y eventos públicos.
+1. **Foundation:** `vicunav-theme-core` aporta presentación compartida y las
+   capacidades base `Vicu\Core` (contenido estructurado, ajustes, seguridad y REST)
+   llegan incluidas en `vicunav-pagos`. La lógica de negocio no vive en el theme. Todos
+   los sitios usan el mismo theme-core; su identidad y composición variable se
+   administran dinámicamente mediante un contrato neutral, sin introducir trazas de
+   demos o verticales en sus archivos.
+2. **Pagos:** `vicunav-pagos` es un motor independiente de reservas y pedidos. Su ciclo
+   de vida transaccional y el proveedor manual v1 están implementados detrás de
+   servicios y eventos públicos, y distribuye además las capacidades base de la
+   capa Foundation.
 3. **Verticales:** `vicunav-restaurante` es propietario de menú, carrito, pedidos,
    totales, delivery, pizzas y reservas. Consume el contrato público de pagos con
    `external_type = vicu_order`, sin WooCommerce. `vicunav-hotel` será propietario de
-   su dominio cuando llegue su etapa. `vicunav-yoga` será propietario de las
-   entidades, servicios y bloques reusables del dominio Yoga según su contrato v1.
-4. **Demos:** `vicunav-demo-restaurante`, `vicunav-demo-hotel` y `vicunav-demo-yoga`
-   compondrán sus verticales. Los demos conservan contenido y composición, pero no
-   introducen lógica reutilizable propia.
+   su dominio cuando llegue su etapa.
+4. **Demos:** `vicunav-demo-restaurante` y `vicunav-demo-hotel` componen sus verticales.
+   Los demos conservan contenido y composición, pero no introducen lógica reutilizable
+   propia.
 5. **Implementaciones cliente:** `vicunav-bhoga-yoga` conserva en privado contenido,
-   composición, evidencia y operación de un sitio real. Consume `vicunav-theme-core`
-   y `vicunav-yoga`; no es el propietario del runtime reusable ni una demo pública.
+   composición, evidencia y operación de un sitio real. Consume `vicunav-theme-core` y
+   las capacidades base de `vicunav-pagos`; no es una demo pública.
 
 Los paquetes no leen directamente la base de datos interna de otro paquete. Cada repo
 mantiene versión e historial propios. Las relaciones se expresan mediante dependencias
@@ -216,18 +212,14 @@ y contratos públicos.
 | --- | --- | --- | --- |
 | `vicunav-standards` | Completo | Ocho normas, incluida fidelidad visual bloqueante | Mantener las normas cuando una decisión transversal cambie |
 | `vicunav-repo-template` | Completo | Plantilla, AGENTS, contribución, issue atómico, clasificación visual, checklist de PR, CI y submódulo | Usarlo para crear los repositorios restantes |
-| `vicunav-hub` | Activo | Trece ADRs, spec durable de restaurante, arquitectura, gobierno, estado y backlog | Mantener sincronizados el funnel visual y la iniciativa dinámica del ADR 0013 |
-| `vicunav-transform-claude-to-gutenberg` | Base 0.1.0 y gate visual publicados | Skill, auditoría, manifiesto, captura reproducible, comparación, reportes y validadores | Consumirlo en cada unidad visual; no es dependencia runtime |
+| `vicunav-hub` | Activo | Diez ADRs vigentes, spec durable de restaurante, arquitectura, gobierno, estado y backlog | Mantener sincronizados el funnel visual y la iniciativa dinámica del ADR 0013 |
 | `vicunav-theme-core` | Base 0.1.0; capa Bonasera recuperada | Tokens, fuentes, templates, parts, chrome, patterns, acordeón y contrato de integración probados sin cambiar defaults neutrales | Mantener el contrato reusable |
-| `vicunav-plugin-core` | Base 0.1.0 publicada | Release `v0.1.0`, contrato 1.0.0, CPT compartidos, ajustes, administración, seguridad, REST y pruebas | Añadir en el futuro una matriz runtime para WordPress 6.6 y PHP 8.1 |
-| `vicunav-pagos` | Motor 0.3.1 completo | Contrato 0.3.0, CPT y REST protegidos, persistencia InnoDB versionada, servicios idempotentes, proveedor manual v1 con lectura persistida corregida, máquina de estados atómica, expiración y hooks con payload 1.0.0 | Mantener su contrato; integrar consumidores mediante servicios y eventos públicos |
+| `vicunav-pagos` | Motor 0.4.0 completo | Capacidades base `Vicu\Core` 1.0.0 en `core/`, contrato 0.3.0, CPT y REST protegidos, persistencia InnoDB versionada, servicios idempotentes, proveedor manual v1 con lectura persistida corregida, máquina de estados atómica, expiración y hooks con payload 1.0.0 | Mantener su contrato; integrar consumidores mediante servicios y eventos públicos |
 | `vicunav-restaurante` | Candidata 1.0.0; REST-02A a REST-02S completos | Dominio backend, siete bloques con contrato visual neutral, privacidad nativa, matriz WordPress/PHP y prerelease `v1.0.0-rc.1`, sin WooCommerce ni contenido Bonasera | Mantener el contrato y evaluar publicación estable solo mediante una unidad futura explícita |
 | `vicunav-hotel` | Diferido | Reservas y disponibilidad | Mantener diferido hasta completar restaurante, según ADR 0006 |
 | `vicunav-demo-restaurante` | Rework local retirado; transferido a Claude el 2026-08-29 | Nueve páginas FSE y siete flujos existen, pero el gate de 35 comparaciones se revirtió: no hubo aprobación humana página por página y las capturas muestran diferencias perceptuales promedio de 47,86 % a 64,45 % | Continuar desde [`restaurante-handoff-claude.md`](restaurante-handoff-claude.md), verificando cada resultado contra el commit fuente congelado |
-| `vicunav-demo-hotel` | No existe | Demostración del vertical hotelero | Esperar la implementación de hotel |
-| [`vicunav-yoga`](https://github.com/vicunav/vicunav-yoga) | Público, bootstrap 0.1.0; contrato 1.0.0 aprobado | Plugin neutral, hook de carga, contrato, prompts, CI y validación | Implementar YOGA-03; mantener YOGA-04 detrás de `HUB-VIS-03` |
-| [`vicunav-bhoga-yoga`](https://github.com/vicunav/vicunav-bhoga-yoga) | Privado; implementación bloqueada | Consumidor de theme core y plugin Yoga; brief, inventario, prompts, QA y rollback del cliente | Resolver gate operativo y esperar `HUB-VIS-03` antes de BHO-02 |
-| [`vicunav-demo-yoga`](https://github.com/vicunav/vicunav-demo-yoga) | Público; composición bloqueada | Website demo saneado que consumirá theme core, plugin core y vertical Yoga | Crear LocalWP separado y contenido ficticio |
+| `vicunav-demo-hotel` | No existe; diferido | Demostración del vertical hotelero | Esperar la implementación de hotel |
+| [`vicunav-bhoga-yoga`](https://github.com/vicunav/vicunav-bhoga-yoga) | Privado; gate del cliente cerrado, BHO-02 listo para empezar | Consumidor de theme-core y las capacidades base de pagos; brief, inventario, prompts, QA y rollback del cliente | Ejecutar BHO-02 (baseline visual), desacoplado de `HUB-VIS-03` desde el 2026-09-22 |
 
 ## Lo que ya existe en `vicunav-theme-core`
 
@@ -241,7 +233,7 @@ y contratos públicos.
 - Patrones `hero-centered`, `hero-split-image`, `cta-simple`,
   `testimonials-grid`, `faq-accordion`, `contact-info`, `editorial-story` y
   `linked-cards-grid`.
-- Integración opcional con `Vicu\Core\Settings::get()` mediante las claves `phone`,
+- Integración opcional con `Vicu\Core\Settings::get()` (distribuido en `vicunav-pagos`) mediante las claves `phone`,
   `address` y `business_hours`.
 - Consultas preparadas para los CPT compartidos `vicu_faq` y `vicu_testimonial`.
 - Documentación para que un vertical registre plantillas con
@@ -373,23 +365,15 @@ La definición coordinadora está en la
 vigente está en
 [`vicunav-restaurante`](https://github.com/vicunav/vicunav-restaurante/blob/main/docs/contrato-publico.md).
 
-### `vicunav-plugin-core`
-
-- Contrato público 1.0.0 y plugin 0.1.0.
-- Bootstrap instalable, autoload de `Vicu\Core` y action `vicu_core_loaded`.
-- Clase abstracta `Vicu\Core\PostType`.
-- CPT públicos y REST `vicu_faq` y `vicu_testimonial`.
-- Servicio `Vicu\Core\Settings` con `get()` y `register_tab()`.
-- Menú administrativo "Vicunav" y ajustes `phone`, `address` y `business_hours`.
-- Clase `Vicu\Core\Security` para texto, email, nonces y capabilities.
-- Clase `Vicu\Core\Rest` y namespace REST `vicu/v1`.
-
-El contrato vigente está en
-[`docs/contrato-publico.md`](https://github.com/vicunav/vicunav-plugin-core/blob/main/docs/contrato-publico.md).
-
 ### `vicunav-pagos`
 
-- Contrato público 0.3.0 y plugin 0.3.1.
+- Contrato público 0.3.0 y plugin 0.4.0.
+- Capa base `Vicu\Core` en `core/`, contrato 1.0.0: bootstrap con autoload y action
+  `vicu_core_loaded`, clase abstracta `Vicu\Core\PostType`, CPT públicos y REST `vicu_faq`
+  y `vicu_testimonial`, servicio `Vicu\Core\Settings` con `get()` y `register_tab()`,
+  menú administrativo "Vicunav" con ajustes `phone`, `address` y `business_hours`
+  (opción `vicu_core_settings`), `Vicu\Core\Security` y `Vicu\Core\Rest` con namespace
+  REST `vicu/v1`.
 - CPT privado `vicu_payment_req` con capabilities dedicadas.
 - Referencia externa polimórfica mediante tipo e identificador opaco.
 - Monto entero en unidad menor y moneda ISO 4217.
@@ -421,42 +405,35 @@ El contrato vigente está en
 - Cada paquete vive en un repositorio independiente: ADR 0004.
 - Solo se usa ACF genuino y gratuito para campos editoriales: ADR 0005.
 - Restaurante se construye antes que hotel: ADR 0006.
-- Dra. Fortul valida `vicunav-theme-core` como referencia del demo informativo: ADR
-  0007.
-- El skill de Claude Code a Gutenberg vive en un repositorio de tooling separado y no
-  forma parte del runtime: ADR 0008.
 - El comercio de restaurante pertenece al vertical y no usa WooCommerce en v1: ADR
   0009.
 - La fidelidad visual 1:1 es un gate bloqueante y separa estado funcional de estado
   visual: ADR 0010.
-- Yoga se separa en plugin vertical reusable, implementación privada Bhoga y demo
-  pública saneada sobre el theme core: ADR 0011.
+- Bhoga Yoga es una implementación privada de cliente sobre theme-core y las
+  capacidades base de pagos, sin plugin vertical: ADR 0011.
 - Todos los sitios comparten un `vicunav-theme-core` dinámico y agnóstico; cada demo
   consume el plugin de su vertical y ningún child theme es el mecanismo normal de
   personalización: ADR 0013.
 - Los README y superficies públicas se escriben en inglés; la documentación interna y
   los comentarios de código se escriben en español.
+
 ## Entorno local
 
-- Raíz de repositorios: `~/Documents/Codex/vicunav/`.
-- `vicunav-transform-claude-to-gutenberg` es la fuente local canónica del skill y su
-  directorio se enlaza al inventario personal de Codex mediante symlink.
+- Raíz de repositorios: el directorio local que contiene todos los repositorios
+  `vicunav-*`.
 - LocalWP: `vicunav-demo-restaurante.local`, usado para verificar el theme y los
-  paquetes futuros.
-- `vicunav-theme-core`, `vicunav-plugin-core`, `vicunav-pagos` y
-  `vicunav-restaurante` están enlazados y activos en
-  `vicunav-demo-restaurante.local`. DEMO-REST-01A verificó dos ejecuciones sin
-  reactivaciones, schema 9 del vertical y sus siete bloques registrados.
-- `vicunav-demo-restaurante.local` ejecuta WordPress 7.1/PHP 8.2.29 con los cuatro
-  paquetes enlazados. El gate final confirmó nueve rutas 200, un H1 por ruta, cero
-  hotlinks y las firmas públicas de siete flujos mediante WP-CLI de solo lectura.
+  paquetes.
+- `vicunav-theme-core`, `vicunav-pagos` y `vicunav-restaurante` están enlazados y
+  activos en `vicunav-demo-restaurante.local`. DEMO-REST-01A verificó dos ejecuciones
+  sin reactivaciones, schema 9 del vertical y sus siete bloques registrados.
+- `vicunav-demo-restaurante.local` ejecuta WordPress 7.1/PHP 8.2.29 con los paquetes
+  enlazados. El gate final confirmó nueve rutas 200, un H1 por ruta, cero hotlinks y las
+  firmas públicas de siete flujos mediante WP-CLI de solo lectura.
 - LocalWP: `devbhogayoga.local`, destino limpio de la migración privada Bhoga Yoga.
   El 2026-08-26 respondió con WordPress 7.1, Twenty Twenty-Five, ningún plugin y la
   página de ejemplo. No se modificó contenido, configuración ni filesystem de
   WordPress durante el alta.
-- Proyecto local privado: `~/Documents/Codex/vicunav/vicunav-bhoga-yoga/`.
-- Plugin vertical local: `~/Documents/Codex/vicunav/vicunav-yoga/`.
-- Demo local sin LocalWP asignado: `~/Documents/Codex/vicunav/vicunav-demo-yoga/`.
+- Proyecto local privado: `vicunav-bhoga-yoga/`, dentro de la raíz de repositorios.
 - Los estándares compartidos se consumen como submódulo en `docs/standards/`.
 
 ## Qué falta
@@ -465,22 +442,16 @@ El contrato vigente está en
    (ver [`restaurante-handoff-claude.md`](restaurante-handoff-claude.md)); sustituir
    luego desde WordPress los placeholders Bonasera cuando el usuario disponga de los
    originales.
-2. Ejecutar YOGA-03 y preparar YOGA-04 con el contrato 1.0.0 aprobado; las superficies
-   visuales continúan detrás de `HUB-VIS-03`.
-3. Resolver para Bhoga Yoga WhatsApp, integraciones, hosting y destino privado del
-   respaldo Elementor antes de BHO-02; derechos de contenido, testimonios, media y
-   `lang="es"` ya están confirmados.
-4. Crear un LocalWP separado para `vicunav-demo-yoga`, recomendado como
-   `vicunav-demo-yoga.local`.
-5. Añadir una matriz runtime específica para WordPress 6.6 y PHP 8.1 a
-   `vicunav-plugin-core`; la cobertura actual usa versiones más recientes y no bloquea
-   `REST-01`.
-6. Capturar aprendizajes verificables de Bhoga en `vicunav-transform-claude-to-gutenberg`
-   para mejorar prompts, validadores y consumo de contexto sin degradar el gate visual.
+2. Ejecutar BHO-02 (baseline visual) para Bhoga Yoga: el gate del cliente cerró el
+   2026-09-22 (WhatsApp, integraciones, hosting y destino del respaldo Elementor) y
+   BHO-02 quedó desacoplado de `HUB-VIS-03`; derechos de contenido, testimonios,
+   media y `lang="es"` ya estaban confirmados.
+3. Añadir una matriz runtime específica para WordPress 6.6 y PHP 8.1 a la capa
+   `Vicu\Core` de `vicunav-pagos`; la cobertura actual usa versiones más recientes y no
+   bloquea ninguna unidad vigente.
 
 El camino funcional de restaurante terminó en REST-02S, pero el producto integrado
 no está aprobado: el checkpoint visual que se había cerrado se reabrió el 2026-08-29
-por falta de aprobación humana real, y el rework continúa con Claude. La pista Yoga
-y Bhoga está en su
-[plan específico](plan-bhoga-yoga.md) y la secuencia global en el
+por falta de aprobación humana real, y el rework continúa con Claude. La pista Bhoga
+está en su [plan específico](plan-bhoga-yoga.md) y la secuencia global en el
 [`backlog`](backlog-ecosistema.md).

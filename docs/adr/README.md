@@ -14,13 +14,12 @@ trabajo pendiente se mantienen en `docs/handoff/`.
 | [0004](0004-estructura-de-repos.md) | Mantener repositorios y prefijos independientes |
 | [0005](0005-acf-genuino-solo-campos.md) | Usar ACF genuino únicamente para campos editoriales |
 | [0006](0006-restaurante-primero.md) | Construir restaurante antes que hotel |
-| ~~[0007](0007-demo-informativo-theme-base.md)~~ | Validar el theme base con un demo informativo — superado por 0014 |
-| [0008](0008-skill-claude-gutenberg.md) | Mantener el skill de migración fuera del runtime |
 | [0009](0009-restaurante-sin-woocommerce.md) | Implementar comercio de restaurante sin WooCommerce |
 | [0010](0010-fidelidad-visual-bloqueante.md) | Bloquear migraciones hasta demostrar fidelidad visual 1:1 |
-| [0011](0011-bhoga-yoga-cliente-privado.md) | Separar vertical Yoga, implementación Bhoga y demo saneada |
+| [0011](0011-bhoga-yoga-cliente-privado.md) | Mantener Bhoga Yoga como implementación privada de cliente |
 | [0013](0013-theme-core-dinamico-agnostico.md) | Compartir un theme-core dinámico, agnóstico y sin child themes por defecto |
-| [0014](0014-retirar-fortul-demo-informativo.md) | Retirar a Dra. Fortul como referencia del demo informativo |
+
+Los números 0007, 0008, 0012 y 0014 no se reutilizan.
 
 ## Cuándo crear otro ADR
 

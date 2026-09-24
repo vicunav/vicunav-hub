@@ -1,18 +1,18 @@
 # Plan atómico de fidelidad visual
 
-Actualizado: 2026-08-29.
+Actualizado: 2026-09-24.
 
 ## Propósito
 
 Este documento convierte el incidente visual de Bonasera en dos funnels verificables:
-uno endurece el proceso reutilizable y otro recupera la paridad 1:1 del restaurante.
+uno endurece el proceso y otro recupera la paridad 1:1 del restaurante.
 Los IDs son referencias de planificación hasta crear el issue correspondiente. Cada
 fila produce un issue, una rama, un PR, validaciones y un squash-merge en el repositorio
 propietario.
 
 La decisión normativa está en el
 [ADR 0010](../adr/0010-fidelidad-visual-bloqueante.md). Este plan no autoriza
-implementación de hotel, demo informativo ni otro vertical.
+implementación de hotel ni de otro vertical.
 
 ## Diagnóstico preservado
 
@@ -47,10 +47,8 @@ El producto integrado no vuelve a estado completo hasta que:
 | ---: | --- | --- | --- | --- | --- |
 | A1 | HUB-VIS-01 | `vicunav-hub` | Registrar el ADR 0010, este funnel y la reapertura del checkpoint visual sin implementar runtime | Auditoría posterior a DEMO-REST-01D | Completo: issue 87, PR 88, `56cf70a00e52f43bc7fdc96e0289f20bde385b5c` |
 | A2 | STANDARDS-VIS-01 | `vicunav-standards` | Publicar un estándar transversal de fidelidad visual con clasificación de impacto, baseline, evidencia mínima, gates de PR y criterio de bloqueo | HUB-VIS-01 | Completo: issue 11, PR 12, `5c5af785ae7d157af876da8367c2d30f992f0319` |
-| A3 | TOOL-VIS-01 | `vicunav-transform-claude-to-gutenberg` | Endurecer el skill con un manifiesto obligatorio de migración, inventario por página y estado, mapa de propiedad y un índice de evidencia validable | STANDARDS-VIS-01 | Completo: issue 1, PR 2, `3e35e14796006ac2d3868bbee7147610f96d6633` |
-| A4 | TOOL-VIS-02 | `vicunav-transform-claude-to-gutenberg` | Añadir comandos y pruebas para capturar fuente y WordPress con entorno equivalente, generar lado a lado, overlay y reporte de diferencias, y fallar si falta evidencia | TOOL-VIS-01 | Completo: issue 3, PR 4, `a55cfe447f8ba72098cf940c75605482236d2b35` |
-| A5 | TEMPLATE-VIS-01 | `vicunav-repo-template` | Añadir a issues y PRs la clasificación de impacto visual, enlaces al baseline, viewports, estados, diferencias y aprobación requerida | STANDARDS-VIS-01 | Completo: issue 18, PR 19, `34179579367d89c6b6c7d1510fd24163c25b4ca2` |
-| A6 | HUB-VIS-02 | `vicunav-hub` | Adoptar las revisiones publicadas de estándar, skill y plantilla; registrar sus commits y habilitar el flujo para futuros proyectos | TOOL-VIS-02, TEMPLATE-VIS-01 | Completo: issue 89 y PR 90 |
+| A3 | TEMPLATE-VIS-01 | `vicunav-repo-template` | Añadir a issues y PRs la clasificación de impacto visual, enlaces al baseline, viewports, estados, diferencias y aprobación requerida | STANDARDS-VIS-01 | Completo: issue 18, PR 19, `34179579367d89c6b6c7d1510fd24163c25b4ca2` |
+| A4 | HUB-VIS-02 | `vicunav-hub` | Adoptar las revisiones publicadas de estándar y plantilla; registrar sus commits y habilitar el flujo para futuros proyectos | STANDARDS-VIS-01, TEMPLATE-VIS-01 | Completo: issue 89 y PR 90 |
 
 ### Resultado publicado del funnel A
 
@@ -58,14 +56,6 @@ El producto integrado no vuelve a estado completo hasta que:
   [issue 11](https://github.com/vicunav/vicunav-standards/issues/11) y el
   [PR 12](https://github.com/vicunav/vicunav-standards/pull/12). El hub fija el squash
   `5c5af785ae7d157af876da8367c2d30f992f0319` como norma transversal vigente.
-- `vicunav-transform-claude-to-gutenberg` publicó el manifiesto mediante el
-  [issue 1](https://github.com/vicunav/vicunav-transform-claude-to-gutenberg/issues/1)
-  y el [PR 2](https://github.com/vicunav/vicunav-transform-claude-to-gutenberg/pull/2)
-  en `3e35e14796006ac2d3868bbee7147610f96d6633`. La captura, comparación, reportes,
-  hashes y gate final se publicaron mediante el
-  [issue 3](https://github.com/vicunav/vicunav-transform-claude-to-gutenberg/issues/3)
-  y el [PR 4](https://github.com/vicunav/vicunav-transform-claude-to-gutenberg/pull/4)
-  en `a55cfe447f8ba72098cf940c75605482236d2b35`.
 - `vicunav-repo-template` exige clasificación visual y evidencia desde el issue y el
   PR mediante el [issue 18](https://github.com/vicunav/vicunav-repo-template/issues/18)
   y el [PR 19](https://github.com/vicunav/vicunav-repo-template/pull/19), con squash
@@ -75,11 +65,11 @@ El producto integrado no vuelve a estado completo hasta que:
 
 ### Aceptación del funnel A
 
-- Un PR con impacto visual no puede declararse listo sin manifiesto y evidencia.
-- El manifiesto enlaza fuente, commit, página, estado, viewport, captura objetivo y
+- Un PR con impacto visual no puede declararse listo sin baseline y evidencia.
+- La evidencia enlaza fuente, commit, página, estado, viewport, captura objetivo y
   resultado; no acepta referencias genéricas a una carpeta de screenshots.
-- La automatización detecta evidencia ausente y configuraciones de Global Styles que
-  no llegan al CSS efectivo.
+- La revisión detecta evidencia ausente y configuraciones de Global Styles que no
+  llegan al CSS efectivo.
 - El criterio manual exige revisar jerarquía, geometría, tipografía, color, media,
   estados y responsive. Métricas de DOM, Lighthouse o accesibilidad no sustituyen ese
   gate.
@@ -98,7 +88,7 @@ El producto integrado no vuelve a estado completo hasta que:
 | B6 | DEMO-REST-02B | `vicunav-demo-restaurante` | Corregir la selección idempotente de Global Styles y probar la paleta y fuentes efectivas en frontend y Site Editor, no solo el post persistido | THEME-REST-04 | Completo: issue 13, PR 14, `4119640ed0b80ecfb212b275c5df6fec0ab831c3` |
 | B7 | DEMO-REST-02C | `vicunav-demo-restaurante` | Recomponer portada y páginas sección por sección con patterns, bloques core, assets y contenido 1:1, sin lógica reutilizable propia | DEMO-REST-02A, THEME-REST-05, DEMO-REST-02B | Fusionado (issue 15, PR 16, `18c7c86c144bb49460941419c8d3fadfa41fdac1`), pero no cumplió 1:1: sustituyó geometría, densidad, headers, tarjetas, footer y estados por composiciones genéricas. Reabierto, ver corrección abajo |
 | B8 | DEMO-REST-02D | `vicunav-demo-restaurante` | Integrar los siete flujos reales con la composición y los estados visuales aprobados; devolver cualquier defecto reusable a theme o vertical mediante issue separado | REST-02S, DEMO-REST-02C | Fusionado (issue 17, PR 18, `7b43e4508a13616ec976060dc33b4a1a4d01a1ac`); depende de una composición reabierta, ver corrección abajo |
-| B9 | DEMO-REST-02E | `vicunav-demo-restaurante` | Ejecutar gate final con lado a lado, overlays, Site Editor, accesibilidad, responsive, rendimiento y regresión funcional; registrar diferencias y obtener aprobación humana | TOOL-VIS-02, DEMO-REST-02D | Revertido: el gate (issue 19, PR 20, `9a5776837cf36c6707bd44199bc77b3eeb930851`) etiquetó 35 diferencias como aprobadas sin aprobación humana real. Reabierto y transferido a Claude |
+| B9 | DEMO-REST-02E | `vicunav-demo-restaurante` | Ejecutar gate final con lado a lado, overlays, Site Editor, accesibilidad, responsive, rendimiento y regresión funcional; registrar diferencias y obtener aprobación humana | HUB-VIS-02, DEMO-REST-02D | Revertido: el gate (issue 19, PR 20, `9a5776837cf36c6707bd44199bc77b3eeb930851`) etiquetó 35 diferencias como aprobadas sin aprobación humana real. Reabierto y transferido a Claude |
 | B10 | HUB-VIS-03 | `vicunav-hub` | Registrar commits, evidencia y aprobación; cerrar el checkpoint visual solo si todos los gates pasan | DEMO-REST-02E | Revertido: el cierre (issue 109, PR 110) se basó en el gate inválido de B9. El checkpoint queda reabierto |
 
 ### Baseline publicado de DESIGN-REST-02
@@ -200,7 +190,6 @@ una composición todavía incorrecta multiplica el retrabajo.
 ```text
 HUB-VIS-01
   -> STANDARDS-VIS-01
-     -> TOOL-VIS-01 -> TOOL-VIS-02
      -> TEMPLATE-VIS-01
         -> HUB-VIS-02
            -> DESIGN-REST-02
@@ -213,15 +202,17 @@ HUB-VIS-01
 
 ## Bloqueo de proyectos posteriores
 
-`HOTEL-01`, `DESIGN-HOTEL-01`, `INFO-01` y cualquier nueva migración visual dependen
-de HUB-VIS-02. Hotel y demo informativo permanecen además fuera del alcance hasta que
-HUB-VIS-03 cierre correctamente el checkpoint restaurante.
+`HOTEL-01`, `DESIGN-HOTEL-01` y cualquier nueva migración visual dependen de
+HUB-VIS-02, y hotel permanece además fuera del alcance hasta que HUB-VIS-03 cierre
+correctamente el checkpoint restaurante.
 
-`BHO-02`, `YOGA-04` y `DEMO-YOGA-04` son las primeras unidades visuales de la pista
-Yoga y, por el [ADR 0011](../adr/0011-bhoga-yoga-cliente-privado.md), dependen
-directamente de HUB-VIS-03. BHO-02 depende además de las decisiones previas del
-cliente. Las fundaciones de los tres repositorios solo preparan gobierno, contratos,
-documentación y configuración; no implementan superficies visuales ni evitan el gate.
+`BHO-02` es la primera unidad visual de la pista Bhoga. El usuario decidió el
+2026-09-22 desacoplarla de HUB-VIS-03: la composición visual de Bhoga puede empezar
+en paralelo al rework del checkpoint de restaurante, sin esperar su cierre
+([ADR 0011](../adr/0011-bhoga-yoga-cliente-privado.md)). Esa excepción no relaja el
+contrato del ADR 0010 para Bhoga: su propio checkpoint (`BHO-07`) exige el mismo
+baseline inmutable, evidencia por página y estado, y aprobación humana explícita que
+exige cualquier otra migración visual.
 
 ## Cierre del funnel restaurante
 
@@ -230,6 +221,6 @@ HUB-VIS-03 (B7-B10) se fusionaron pero no demostraron paridad 1:1 real; su
 aprobación se revirtió el 2026-08-29 y el checkpoint queda reabierto. El rework se
 transfiere a Claude, que continúa desde el
 [handoff específico](restaurante-handoff-claude.md) sin reutilizar el intento local
-retirado, siguiendo los issues atómicos ya creados (ver el backlog). Hotel y demo
-informativo continúan fuera de alcance. Las superficies visuales Yoga permanecen
-bloqueadas por HUB-VIS-03; Bhoga depende además de su gate previo de cliente.
+retirado, siguiendo los issues atómicos ya creados (ver el backlog). Hotel continúa
+fuera de alcance. `BHO-02` quedó desacoplado el 2026-09-22 (ver ADR 0011) y puede
+avanzar en paralelo, con su gate previo de cliente ya cerrado.

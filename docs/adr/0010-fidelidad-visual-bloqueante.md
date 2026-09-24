@@ -4,7 +4,7 @@
 
 Los demos de Vicunav parten de una secuencia explícita: diseño aprobado en Claude
 Design, refinamiento ejecutable en Claude Code y transformación a WordPress Gutenberg
-mediante Codex. El commit aprobado de Claude Code es tanto una especificación
+mediante un agente de implementación. El commit aprobado de Claude Code es tanto una especificación
 funcional como una especificación visual.
 
 El checkpoint de Bonasera cerró `DEMO-REST-01D` después de comprobar rutas, estructura,
@@ -14,10 +14,9 @@ comprobaciones no acreditaban fidelidad visual 1:1. También reveló que la vari
 Bonasera se había escrito en `wp_global_styles` sin el marcador de seguridad requerido
 por WordPress, por lo que el frontend continuaba usando los estilos predeterminados.
 
-El skill `transform-claude-to-gutenberg` ya exigía baseline, comparación lado a lado y
-evidencia visual. El fallo fue de ejecución y de cumplimiento: los issues, pruebas y
-documentos de cierre permitieron sustituir la comparación visual por métricas
-estructurales.
+El proceso ya exigía baseline, comparación lado a lado y evidencia visual. El fallo fue
+de ejecución y de cumplimiento: los issues, pruebas y documentos de cierre permitieron
+sustituir la comparación visual por métricas estructurales.
 
 ## Alternativas consideradas
 
@@ -65,11 +64,11 @@ reemplaza la inspección visual ni convierte una diferencia clara en aceptable.
 | Markup semántico, interacción, estados funcionales y composición intrínseca de un bloque de dominio | Plugin vertical propietario |
 | Valores de marca consumidos por un bloque de dominio | Theme mediante presets y propiedades públicas, nunca literales Bonasera en el plugin |
 | Copy, media, selección de variación y composición específica de una marca | Repositorio del demo |
-| Reglas compartidas, manifiesto de evidencia y herramientas de comparación | `vicunav-standards` y `vicunav-transform-claude-to-gutenberg` |
+| Reglas compartidas de evidencia y fidelidad visual | `vicunav-standards` |
 
 Un plugin puede publicar CSS necesario para que su bloque funcione, incluidos estados
 de loading, error, selección o disponibilidad. Ese CSS consume tokens públicos del
-theme y mantiene fallbacks neutrales; no define la identidad Bonasera. `vicunav-plugin-core`
+theme y mantiene fallbacks neutrales; no define la identidad Bonasera. la capa `Vicu\Core`
 no recibe estilos de un vertical salvo que una reutilización transversal se demuestre
 y se apruebe en una unidad separada.
 
@@ -101,7 +100,7 @@ declara completo como producto integrado hasta aprobar ambos estados.
   `vicunav-restaurante` conserva su estado verificado.
 - El cierre histórico de issues y PRs permanece trazable, pero no constituye
   aprobación visual cuando su evidencia fue insuficiente.
-- Hotel, demo informativo y futuras transformaciones quedan bloqueados hasta adoptar
+- Hotel y futuras transformaciones quedan bloqueados hasta adoptar
   el flujo endurecido y cerrar la recuperación visual de restaurante.
 - La migración requiere más evidencia y revisiones intermedias, pero evita completar
   toda la lógica antes de descubrir una divergencia de diseño generalizada.

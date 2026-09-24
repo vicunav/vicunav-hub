@@ -79,7 +79,7 @@ contrato público y su comportamiento ejecutable.
 2. Publicar allí el contrato v1 antes de exponer endpoints o hooks consumibles.
 3. Implementar los issues atómicos definidos en el
    [plan de ejecución](../handoff/plan-restaurante.md).
-4. Verificar la integración contra las versiones reales de `vicunav-plugin-core` y
-   `vicunav-pagos`, incluida la recuperación por reconciliación.
+4. Verificar la integración contra las versiones reales de `vicunav-pagos` (incluida
+   su capa `Vicu\Core`), incluida la recuperación por reconciliación.
 5. Crear `vicunav-demo-restaurante` solo cuando existan las capacidades que debe
    componer.

@@ -7,14 +7,14 @@ presentarla por separado en un portafolio público.
 
 ## Decisión
 
-Se definieron diez repositorios, uno por paquete, con los propósitos siguientes:
+Se definieron nueve repositorios, uno por paquete, con los propósitos siguientes:
 
 - `vicunav-standards`: Estándares técnicos compartidos del ecosistema.
 - `vicunav-repo-template`: Plantilla base para inicializar repositorios.
 - `vicunav-hub`: Documentación de arquitectura y decisiones del ecosistema.
 - `vicunav-theme-core`: Patrones, tokens y templates de presentación compartidos.
-- `vicunav-plugin-core`: Capacidades base compartidas por los plugins.
-- `vicunav-pagos`: Motor de pagos independiente de los verticales.
+- `vicunav-pagos`: Motor de pagos independiente de los verticales; distribuye además,
+  en su carpeta `core/`, las capacidades base compartidas (`Vicu\Core`).
 - `vicunav-hotel`: Lógica del vertical hotelero y sus reservas.
 - `vicunav-restaurante`: Lógica del vertical de restaurante y sus pedidos.
 - `vicunav-demo-hotel`: Demostración pública del vertical hotelero.
@@ -31,7 +31,3 @@ caracteres de los post types de WordPress.
 Cada repositorio obtuvo su propio historial, versión y README. Esta distribución exigía
 más disciplina de mantenimiento a cambio de una separación y una presentación más
 claras.
-
-La incorporación posterior de `vicunav-demo-informativo` amplía este mapa sin cambiar
-la separación original. Su alcance y relación con la implementación privada de Dra.
-Fortul se definen en el [ADR 0007](0007-demo-informativo-theme-base.md).

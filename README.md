@@ -14,11 +14,10 @@ database directly.
 flowchart TB
     subgraph foundation["1. Foundation"]
         theme["vicunav-theme-core<br/>Shared presentation"]
-        plugin["vicunav-plugin-core<br/>Base capabilities"]
     end
 
-    subgraph payments["2. Payment engine"]
-        payment["vicunav-pagos<br/>Independent payments"]
+    subgraph payments["2. Payment engine and base capabilities"]
+        payment["vicunav-pagos<br/>Independent payments<br/>+ base capabilities (core/)"]
     end
 
     subgraph verticals["3. Verticals"]
@@ -31,13 +30,10 @@ flowchart TB
         demo_restaurant["vicunav-demo-restaurante"]
     end
 
-    plugin --> payment
     theme --> hotel
     theme --> restaurant
-    plugin --> hotel
-    plugin --> restaurant
-    payment -->|public hooks| hotel
-    payment -->|public hooks| restaurant
+    payment -->|public hooks and base capabilities| hotel
+    payment -->|public hooks and base capabilities| restaurant
     theme --> demo_hotel
     theme --> demo_restaurant
     hotel --> demo_hotel
@@ -47,19 +43,20 @@ flowchart TB
 The layers separate concrete responsibilities:
 
 1. **Foundation:** `vicunav-theme-core` provides presentation patterns, tokens, and
-   templates; `vicunav-plugin-core` concentrates shared base capabilities. Business
-   logic does not live in the theme.
+   templates. Business logic does not live in the theme. The shared base capabilities
+   (`Vicu\Core`: content types, settings, security, REST) ship inside `vicunav-pagos`,
+   in its `core/` folder.
 2. **Payment engine:** `vicunav-pagos` processes payments without knowing about
    bookings or orders. Verticals declare it through `Requires Plugins` and react to its
-   public hooks. A project without transactions can omit it.
+   public hooks. It also distributes the base capabilities of the foundation layer.
 3. **Verticals:** `vicunav-hotel` and `vicunav-restaurante` encapsulate bookings and
    orders respectively, without reading another plugin's internal data.
 4. **Demos:** `vicunav-demo-hotel` and `vicunav-demo-restaurante` integrate the
    foundation with their corresponding verticals. A demo composes only the layers it
    needs.
 
-The standards, template, documentation, and migration-tooling repositories support
-the ecosystem's development, but are not part of its execution layers.
+The standards, template, and documentation repositories support the ecosystem's
+development, but are not part of its execution layers.
 
 ## Repositories
 
@@ -68,41 +65,30 @@ the ecosystem's development, but are not part of its execution layers.
 | [`vicunav-standards`](https://github.com/vicunav/vicunav-standards) | Shared technical standards for the ecosystem. | Available |
 | [`vicunav-repo-template`](https://github.com/vicunav/vicunav-repo-template) | Base template to bootstrap new repositories. | Available |
 | [`vicunav-hub`](https://github.com/vicunav/vicunav-hub) | Architecture, decisions, current state, and roadmap. | Active |
-| [`vicunav-transform-claude-to-gutenberg`](https://github.com/vicunav/vicunav-transform-claude-to-gutenberg) | Agent skill for translating approved Claude Code prototypes into native Gutenberg FSE themes. | Available |
 | [`vicunav-theme-core`](https://github.com/vicunav/vicunav-theme-core) | Shared presentation patterns, tokens, and templates. | Foundation complete |
-| [`vicunav-plugin-core`](https://github.com/vicunav/vicunav-plugin-core) | Shared content, settings, security, and REST capabilities. | Foundation complete |
-| [`vicunav-pagos`](https://github.com/vicunav/vicunav-pagos) | Payment engine independent of the verticals. | Initial foundation complete |
-| `vicunav-restaurante` | Restaurant vertical logic and its orders. | Pending |
+| [`vicunav-pagos`](https://github.com/vicunav/vicunav-pagos) | Payment engine independent of the verticals; also ships the shared base capabilities (`Vicu\Core`). | Engine complete |
+| [`vicunav-restaurante`](https://github.com/vicunav/vicunav-restaurante) | Restaurant vertical logic and its orders. | Runtime 1.0.0 candidate |
 | `vicunav-hotel` | Hotel vertical logic and its bookings. | Deferred by ADR 0006 |
-| `vicunav-demo-restaurante` | Public demo of the restaurant vertical. | Pending |
-| `vicunav-demo-hotel` | Public demo of the hotel vertical. | Pending |
+| [`vicunav-demo-restaurante`](https://github.com/vicunav/vicunav-demo-restaurante) | Public demo of the restaurant vertical. | Visual rework in progress |
+| `vicunav-demo-hotel` | Public demo of the hotel vertical. | Deferred |
+| [`vicunav-github-profile`](https://github.com/vicunav/vicunav-github-profile) | Public GitHub organization profile. | Available |
 
-The next executable step is to implement the payment state machine, expiration,
-idempotency, and public lifecycle events in `vicunav-pagos`. The
+The next executable step is to recover the restaurant demo's 1:1 visual fidelity and
+close its checkpoint. The
 [current state](docs/handoff/estado-ecosistema.md) explains what is already implemented,
 while the [ecosystem backlog](docs/handoff/backlog-ecosistema.md) defines the remaining
 order and dependencies.
 
-## Development tooling
-
-[`vicunav-transform-claude-to-gutenberg`](https://github.com/vicunav/vicunav-transform-claude-to-gutenberg)
-provides a reusable Agent Skill and deterministic validators for moving an approved
-React, Next.js, Vite, HTML, or CSS prototype into an editable WordPress block theme.
-It supports the design tracks for the demos without becoming a runtime dependency of
-their themes, plugins, or published sites.
-
 ## Related projects outside the ecosystem
 
 [`vicunav-gutenberg`](https://github.com/vicunav/vicunav-gutenberg) migrates the
-current `vicunav.com` site from Elementor to Gutenberg FSE and serves as a practical
-test bed for refining that migration workflow. It is managed independently and is not
-one of the packages, verticals, or demos governed by this hub.
+current `vicunav.com` site from Elementor to Gutenberg FSE. It is managed
+independently and is not one of the packages, verticals, or demos governed by this hub.
 
-[`vicunav-web`](https://github.com/vicunav/vicunav-web) is Vicunav's own site: a block
-theme FSE built from scratch, per [ADR 0012](docs/adr/0012-sitio-propio-vicunav-web.md).
-It owns its brand tokens directly in its `theme.json` and does not depend on
-`vicunav-theme-core`. It runs in parallel with `vicunav-gutenberg`, without a
-dependency relationship between the two.
+`vicunav-bhoga-yoga` is a private client implementation (the real Bhoga Yoga site). It
+is built with `vicunav-theme-core`, the base capabilities shipped in `vicunav-pagos`,
+and its own child theme; it is not a reusable package of the ecosystem
+([ADR 0011](docs/adr/0011-bhoga-yoga-cliente-privado.md)).
 
 ## Architecture decisions
 
@@ -112,10 +98,12 @@ dependency relationship between the two.
 - [ADR 0004: Repository structure](docs/adr/0004-estructura-de-repos.md)
 - [ADR 0005: Genuine ACF for fields only](docs/adr/0005-acf-genuino-solo-campos.md)
 - [ADR 0006: Restaurant first](docs/adr/0006-restaurante-primero.md)
-- [ADR 0007: Informational demo on the shared foundation](docs/adr/0007-demo-informativo-theme-base.md)
-- [ADR 0008: Claude Code to Gutenberg migration skill](docs/adr/0008-skill-claude-gutenberg.md)
-- [ADR 0012: Vicunav's own site in a new repository](docs/adr/0012-sitio-propio-vicunav-web.md)
-- [ADR 0014: Retiring Dra. Fortul as the informational demo reference](docs/adr/0014-retirar-fortul-demo-informativo.md)
+- [ADR 0009: Restaurant commerce without WooCommerce](docs/adr/0009-restaurante-sin-woocommerce.md)
+- [ADR 0010: Blocking 1:1 visual fidelity for Gutenberg migrations](docs/adr/0010-fidelidad-visual-bloqueante.md)
+- [ADR 0011: Bhoga Yoga as a private client implementation](docs/adr/0011-bhoga-yoga-cliente-privado.md)
+- [ADR 0013: Dynamic, agnostic, shared theme-core](docs/adr/0013-theme-core-dinamico-agnostico.md)
+
+ADR numbers 0007, 0008, 0012, and 0014 are not reused.
 
 ## Governance and roadmap
 

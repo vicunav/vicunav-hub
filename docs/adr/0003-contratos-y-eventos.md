@@ -8,17 +8,17 @@ plugin.
 
 ## Decisión
 
-Se definieron tres contratos frontera: `vicunav-theme-core`, `vicunav-plugin-core` y
-`vicunav-pagos`. Cada contrato debe versionarse en el repositorio propietario antes de
+Se definieron dos contratos frontera: `vicunav-theme-core` y `vicunav-pagos`. Este
+último distribuye también las capacidades base compartidas `Vicu\Core` (contrato
+1.0.0), con su propio contrato versionado. Cada contrato debe versionarse en el repositorio propietario antes de
 escribir el código que dependa de él.
 
 El contrato vigente de theme está en
 [`vicunav-theme-core/docs/contrato-publico.md`](https://github.com/vicunav/vicunav-theme-core/blob/main/docs/contrato-publico.md).
-Mientras `vicunav-plugin-core` y `vicunav-pagos` no existan, sus decisiones confirmadas
-se mantienen en el
-[estado canónico](../handoff/estado-ecosistema.md) y su formalización aparece como paso
-obligatorio en el [backlog](../handoff/backlog-ecosistema.md). Esos resúmenes no
-sustituyen los futuros contratos propietarios.
+El contrato vigente de `vicunav-pagos` y de `Vicu\Core` está en
+[`vicunav-pagos/docs/contrato-publico.md`](https://github.com/vicunav/vicunav-pagos/blob/main/docs/contrato-publico.md);
+el [estado canónico](../handoff/estado-ecosistema.md) resume sus capacidades sin
+sustituir ese contrato propietario.
 
 Se decidió que los verticales reaccionarían a hooks públicos, como
 `vicu_pagos_confirmado`, y nunca leerían directamente la base de datos de otro plugin.

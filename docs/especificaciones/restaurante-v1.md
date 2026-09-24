@@ -23,7 +23,7 @@ requiere coordinación en el hub.
 - Commit inmutable: `1e1f62787e088c0ca9701500e764802499d1b253`.
 - Producto representado: Bonasera. El nombre Guasábara es una etiqueta residual del
   proyecto de diseño y no identifica el producto.
-- Handoff y specs revisados: `CODEX_HANDOFF`, constructor de pizzas, reservas, API,
+- Handoff y specs revisados: el handoff legacy, constructor de pizzas, reservas, API,
   mapeo de datos y mapa de componentes WordPress.
 
 La fuente estaba limpia en el commit indicado. `npm run lint`, `npm test` con 66 de 66
@@ -49,23 +49,21 @@ WordPress.
 - Los cuatro métodos de pago, la carga teatral de comprobantes y el avance manual de
   estados del legacy no son un contrato de producción.
 
-El prototipo es una especificación visual y funcional, no una dependencia de runtime.
-El skill `transform-claude-to-gutenberg` es tooling de desarrollo y tampoco se incluye
-en paquetes desplegados.
+El prototipo es una especificación visual y funcional, no una dependencia de runtime
+ni se incluye en paquetes desplegados.
 
 ## 3. Fronteras de paquetes
 
 | Paquete | Propiedad en v1 | Exclusiones explícitas |
 | --- | --- | --- |
 | `vicunav-theme-core` | Tokens, style variations, templates, template parts y patterns visuales reutilizables | CPT, pricing, carrito, pedidos, pagos, capacidad o reservas |
-| `vicunav-plugin-core` | FAQ, testimonios, settings compartidos, seguridad reutilizable, menú administrativo y base REST `vicu/v1` | Menú de restaurante, ingredientes, pizzas, pedidos, delivery o reservas |
 | `vicunav-restaurante` | Dominio completo descrito por este documento, bloques dinámicos y superficies operativas | Ciclo de vida interno de pagos y composición Bonasera |
-| `vicunav-pagos` | Solicitudes de pago, proveedor manual, estados y eventos públicos | Pedidos, checkout editorial, archivos, cuentas bancarias o reservas |
+| `vicunav-pagos` | Solicitudes de pago, proveedor manual, estados y eventos públicos. Distribuye además en `core/` las capacidades base `Vicu\Core`: FAQ, testimonios, settings compartidos, seguridad reutilizable, menú administrativo y base REST `vicu/v1` | Pedidos, checkout editorial, archivos, cuentas bancarias, reservas, menú de restaurante, ingredientes, pizzas, delivery |
 | `vicunav-demo-restaurante` | Contenido, media licenciada, páginas y composición FSE de Bonasera | Lógica reutilizable, schemas o contratos de negocio |
 
-`vicunav-restaurante` requiere `vicunav-plugin-core` dentro del contrato mayor 1 y
-`vicunav-pagos` dentro del contrato publicado que incluya el proveedor manual 0.3.0.
-No requiere WooCommerce.
+`vicunav-restaurante` requiere únicamente `vicunav-pagos`, dentro del contrato publicado
+que incluya el proveedor manual 0.3.0. `Vicu\Core` (contrato mayor 1) llega
+dentro de ese plugin. No requiere WooCommerce.
 
 ## 4. Modelo de datos y persistencia
 
@@ -220,7 +218,7 @@ Reglas adicionales:
   preselecciona una opción distinta de cero.
 - El tipo `delivery` exige zona activa y dirección. `pickup` no acepta una tarifa de
   entrega.
-- Un tipo de cambio a bolívares, si se muestra, es informativo, fechado y separado del
+- Un tipo de cambio a bolívares, si se muestra, es solo referencial, fechado y separado del
   monto contractual del pedido y de pagos.
 - El pedido congela desglose, tasas, nombres y revisiones usadas. La solicitud de pago
   siempre usa exactamente `Order.total` y `Order.currency`.
@@ -513,7 +511,7 @@ Códigos mínimos:
 | `vicu_restaurante_payment_mismatch` | 409 | Referencia, monto o moneda no coincide |
 | `vicu_restaurante_rate_limited` | 429 | Límite público excedido |
 | `vicu_restaurante_storage_error` | 500 | Escritura atómica falló |
-| `vicu_restaurante_dependency_unavailable` | 503 | Core o pagos no disponible |
+| `vicu_restaurante_dependency_unavailable` | 503 | Pagos o su capa `Vicu\Core` no disponible |
 
 Los errores de campos pueden añadir `fields` sin repetir valores privados. Las
 escrituras no devuelven éxito parcial.
@@ -579,7 +577,7 @@ Registra bloques dinámicos con `block.json`, render de servidor y assets condic
 - carrito;
 - checkout manual;
 - estado de pedido;
-- selector informativo de zonas;
+- selector de zonas de solo lectura;
 - formulario y resultado de reservas;
 - pizzas guardadas.
 
@@ -655,7 +653,7 @@ defectos del baseline.
   pizza, estado, idempotencia y autorización.
 - Pruebas de integración MySQL/InnoDB para compare-and-swap, rollback, migraciones y
   dos procesos compitiendo por cupo, descuento, checkout o transición.
-- Contratos contra `vicunav-plugin-core` mayor 1 y `vicunav-pagos` 0.3.0: creación
+- Contratos contra `Vicu\Core` mayor 1 y `vicunav-pagos` 0.3.0 (ambos distribuidos en `vicunav-pagos`): creación
   repetida, colisión, comprobante repetido, confirmación, rechazo, expiración, evento
   duplicado y reconciliación después de un hook perdido.
 - Pruebas JavaScript del store de Interactivity API sin duplicar reglas de servidor.

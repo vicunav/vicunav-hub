@@ -16,7 +16,7 @@ repositorios públicos publicados con un nombre propio.
 
 ACF se usó solo para campos que el dueño del negocio editaba directamente, como precio,
 fotos u horario. El registro de cada CPT permaneció como código propio mediante la clase
-abstracta de `vicunav-plugin-core`.
+abstracta `Vicu\Core\PostType`, distribuida en `vicunav-pagos`.
 
 Los grupos de campos se versionaron como código en `acf-json/`; nunca quedaron
 configurados únicamente mediante la interfaz visual.

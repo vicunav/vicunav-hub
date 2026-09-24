@@ -2,8 +2,8 @@
 
 Fecha: 2026-08-29.
 
-Estado: el proyecto continúa, pero su rework visual y funcional deja de estar a cargo
-de Codex. Claude debe retomar la migración desde la fuente aprobada de Claude Design,
+Estado: el proyecto continúa y su rework visual y funcional queda a cargo de Claude.
+Claude debe retomar la migración desde la fuente aprobada de Claude Design,
 no desde el intento local retirado.
 
 ## Decisión y alcance de la limpieza
@@ -58,8 +58,8 @@ Claude debe verificar cada resultado directamente contra el commit fuente congel
 - Arquitectura del vertical: ADR 0009 y especificación durable restaurante v1.
 - Reglas visuales: ADR 0010 y el funnel de fidelidad visual del hub.
 - Theme compartido: contratos neutrales publicados por `vicunav-theme-core`.
-- Dominio: contratos públicos de `vicunav-restaurante`, `vicunav-plugin-core` y
-  `vicunav-pagos`.
+- Dominio: contratos públicos de `vicunav-restaurante` y `vicunav-pagos`
+  (esta última incluye las capacidades base `Vicu\Core`).
 - Entorno objetivo: LocalWP en `https://vicunav-demo-restaurante.local`.
 
 El código fuente de Claude Design gobierna la apariencia, la composición responsive

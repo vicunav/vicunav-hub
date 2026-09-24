@@ -34,7 +34,7 @@ documentadas.
 | Orden | ID | Repositorio | Resultado atómico | Depende de |
 | ---: | --- | --- | --- | --- |
 | 1 | REST-02A | `vicunav-restaurante` | Crear el repositorio desde `vicunav-repo-template`, con submódulo de estándares, plugin instalable vacío, toolchain, CI y mínimos WordPress 6.6/PHP 8.1 | REST-01 |
-| 2 | REST-02B | `vicunav-restaurante` | Publicar contrato 1.0.0, bootstrap, versiones, autoload y comprobación de dependencias sobre core mayor 1 y pagos 0.3.0 | REST-02A |
+| 2 | REST-02B | `vicunav-restaurante` | Publicar contrato 1.0.0, bootstrap, versiones, autoload y comprobación de dependencias sobre `Vicu\Core` mayor 1 y pagos 0.3.0 | REST-02A |
 | 3 | REST-02C | `vicunav-restaurante` | Implementar capabilities, mecanismo de migraciones InnoDB versionadas y base idempotente de instalación, sin crear todavía datos de dominio | REST-02B |
 
 Aceptación específica:
@@ -116,7 +116,7 @@ Aceptación común de bloques:
 - Frontend y editor sin bloques inválidos, sin `core/html`, sin runtime del prototipo y
   sin lógica de negocio duplicada en JavaScript.
 - Teclado, foco, mensajes de estado, reduced motion, responsive y errores completos.
-- REST-02R ejecuta los flujos reales contra core, pagos y MySQL, no solo mocks.
+- REST-02R ejecuta los flujos reales contra pagos (con su capa `Vicu\Core`) y MySQL, no solo mocks.
 
 ## Pista visual y demo
 
@@ -177,7 +177,7 @@ y protección de `main`, sin lógica de dominio.
 REST-02B también quedó completado: el
 [issue 3](https://github.com/vicunav/vicunav-restaurante/issues/3) se cerró mediante
 el [PR 4](https://github.com/vicunav/vicunav-restaurante/pull/4), después de validar
-CI y los contratos reales de core 1.0.0 y pagos 0.3.0. El resultado es el plugin 0.2.0,
+CI y los contratos reales de `Vicu\Core` 1.0.0 y pagos 0.3.0. El resultado es el plugin 0.2.0,
 contrato 1.0.0, autoload, comprobación de dependencias y hook de carga, todavía sin
 lógica de dominio.
 
@@ -328,7 +328,7 @@ DEMO-REST-01A quedó completado mediante el
 [issue 1](https://github.com/vicunav/vicunav-demo-restaurante/issues/1) y el
 [PR 2](https://github.com/vicunav/vicunav-demo-restaurante/pull/2). El squash
 `b1942cb3138669bd475e43dab4aceb0828be21ab` crea el repositorio de composición,
-fija revisiones exactas e instala theme, core, pagos y restaurante mediante symlinks
+fija revisiones exactas e instala theme, pagos y restaurante mediante symlinks
 idempotentes en el LocalWP existente. CI y la segunda ejecución real pasaron; el
 sitio todavía no contiene copy, media ni páginas Bonasera.
 
