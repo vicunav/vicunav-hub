@@ -13,7 +13,7 @@ vigentes están en [`docs/adr/`](adr/) y los pendientes en el [backlog](backlog.
 | `vicunav-restaurante` | Proyecto de referencia autocontenido: `plugin/` (plugin único con módulos de dominio restaurante, pagos manuales y capacidades compartidas de FAQ, testimonios, ajustes y REST), `theme/` (`vicunav-bonasera`), `content/`, `assets/`, instalador local y QA. La lógica funcional está implementada y verificada; el checkpoint de fidelidad visual 1:1 de sus nueve rutas está abierto. |
 | `vicunav-standards` | Estándares técnicos compartidos, incluida la norma de fidelidad visual. Es la fuente del submódulo `docs/standards`. |
 | `vicunav-repo-template` | Plantilla con submódulo de estándares, AGENTS, guía de contribución, plantillas de issue y PR, y CI. |
-| `vicunav-hub` | Decisiones (cinco ADR), estado, backlog y gobernanza. |
+| `vicunav-hub` | Decisiones (siete ADR), estado, backlog y gobernanza. |
 | `vicunav-gutenberg` | Proyecto independiente: migración de `vicunav.com` de Elementor a Gutenberg. Se gestiona en su propio repositorio. |
 | `.github` | Perfil público de la organización. |
 

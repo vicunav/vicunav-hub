@@ -26,6 +26,8 @@ written from scratch.
 - [ADR 0003: Genuine ACF for editorial fields only](docs/adr/0003-acf-genuino-solo-campos.md)
 - [ADR 0004: Restaurant commerce without WooCommerce](docs/adr/0004-restaurante-sin-woocommerce.md)
 - [ADR 0005: Blocking 1:1 visual fidelity for Gutenberg migrations](docs/adr/0005-fidelidad-visual-bloqueante.md)
+- [ADR 0006: Styling stack per project (native CSS or Tailwind CSS)](docs/adr/0006-stack-de-estilos-por-proyecto.md)
+- [ADR 0007: Execution model per project (agent-led or owner-led)](docs/adr/0007-modelo-de-ejecucion-por-proyecto.md)
 
 ## State, backlog and governance
 

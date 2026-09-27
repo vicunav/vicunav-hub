@@ -13,6 +13,8 @@ están en [`../estado.md`](../estado.md) y [`../backlog.md`](../backlog.md).
 | [0003](0003-acf-genuino-solo-campos.md) | Usar ACF genuino únicamente para campos editoriales |
 | [0004](0004-restaurante-sin-woocommerce.md) | Implementar comercio de restaurante sin WooCommerce |
 | [0005](0005-fidelidad-visual-bloqueante.md) | Bloquear migraciones hasta demostrar fidelidad visual 1:1 |
+| [0006](0006-stack-de-estilos-por-proyecto.md) | Elegir por proyecto entre CSS nativo o Tailwind CSS |
+| [0007](0007-modelo-de-ejecucion-por-proyecto.md) | Elegir por proyecto entre ejecución del agente o del propietario |
 
 ## Cuándo crear otro ADR
 
