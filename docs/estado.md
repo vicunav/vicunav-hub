@@ -11,7 +11,8 @@ vigentes están en [`docs/adr/`](adr/) y los pendientes en el [backlog](backlog.
 | Repositorio | Estado |
 | --- | --- |
 | `vicunav-restaurante` | Proyecto de referencia autocontenido: `plugin/` (plugin único con módulos de dominio restaurante, pagos manuales y capacidades compartidas de FAQ, testimonios, ajustes y REST), `theme/` (`vicunav-bonasera`), `content/`, `assets/`, instalador local y QA. La lógica funcional está implementada y verificada; el checkpoint de fidelidad visual 1:1 de sus nueve rutas está abierto. |
-| `vicunav-standards` | Estándares técnicos compartidos, incluida la norma de fidelidad visual. Es la fuente del submódulo `docs/standards`. |
+| `vicunav-bhoga-yoga` | Proyecto privado recreado desde cero: solo tiene la base de gobernanza (README, AGENTS, submódulo de estándares, CI). Sin theme, sin plugin, sin migración iniciada. Stack Tailwind CSS y modelo "propietario ejecuta" ([ADR 0006](adr/0006-stack-de-estilos-por-proyecto.md), [ADR 0007](adr/0007-modelo-de-ejecucion-por-proyecto.md)). |
+| `vicunav-standards` | Estándares técnicos compartidos, incluida la norma de fidelidad visual, Tailwind CSS y el modelo de ejecución. Es la fuente del submódulo `docs/standards`. |
 | `vicunav-repo-template` | Plantilla con submódulo de estándares, AGENTS, guía de contribución, plantillas de issue y PR, y CI. |
 | `vicunav-hub` | Decisiones (siete ADR), estado, backlog y gobernanza. |
 | `vicunav-gutenberg` | Proyecto independiente: migración de `vicunav.com` de Elementor a Gutenberg. Se gestiona en su propio repositorio. |
@@ -19,7 +20,7 @@ vigentes están en [`docs/adr/`](adr/) y los pendientes en el [backlog](backlog.
 
 ## Estándares
 
-Los repositorios `vicunav-hub`, `vicunav-restaurante` y
+Los repositorios `vicunav-hub`, `vicunav-restaurante`, `vicunav-bhoga-yoga` y
 `vicunav-repo-template` apuntan a `docs/standards` en el commit vigente de
 `vicunav-standards`. Para verificarlo: `git submodule status` en cada repositorio.
 

@@ -14,6 +14,16 @@ aceptación.
   matriz por página, estado y viewport con capturas lado a lado y overlays, diferencias
   registradas y aprobación humana explícita.
 
+## `vicunav-bhoga-yoga`
+
+- Proyecto recreado desde cero, solo con la base de gobernanza. El propietario decide
+  cuándo arranca la implementación (theme, plugin y migración visual): no es trabajo
+  del agente iniciarla sin que se le pida, según el
+  [ADR 0007](adr/0007-modelo-de-ejecucion-por-proyecto.md).
+- Pendiente de decidir, ver `docs/architecture.md` del propio repositorio: inventario
+  del sitio en vivo, estructura de theme/plugin, entorno local de trabajo, alcance del
+  checkpoint de fidelidad visual y plan de corte a producción.
+
 ## `vicunav-hub`, `vicunav-standards` y `vicunav-repo-template`
 
 - Sincronización de submódulos: cuando `vicunav-standards` publique un cambio, avanzar
