@@ -11,7 +11,7 @@ su propio theme de bloques y su propio plugin.
 Dentro de cada proyecto:
 
 - `theme/` contiene únicamente presentación: `theme.json`, tokens, templates, template
-  parts, patterns y estilos. No tiene theme padre.
+  parts, patterns y estilos.
 - `plugin/` contiene la lógica de negocio: tipos de contenido, reglas, datos
   transaccionales, REST y bloques dinámicos.
 
