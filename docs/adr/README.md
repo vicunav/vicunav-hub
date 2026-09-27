@@ -13,7 +13,6 @@ están en [`../estado.md`](../estado.md) y [`../backlog.md`](../backlog.md).
 | [0003](0003-acf-genuino-solo-campos.md) | Usar ACF genuino únicamente para campos editoriales |
 | [0004](0004-restaurante-sin-woocommerce.md) | Implementar comercio de restaurante sin WooCommerce |
 | [0005](0005-fidelidad-visual-bloqueante.md) | Bloquear migraciones hasta demostrar fidelidad visual 1:1 |
-| [0006](0006-bhoga-yoga-cliente-privado.md) | Mantener Bhoga Yoga como implementación privada de cliente |
 
 ## Cuándo crear otro ADR
 

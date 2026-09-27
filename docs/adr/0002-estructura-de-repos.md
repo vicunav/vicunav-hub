@@ -10,7 +10,6 @@ Un repositorio por proyecto y uno por función de soporte, todos con el prefijo
 `vicunav-`:
 
 - `vicunav-restaurante`: proyecto de referencia de restaurante (público).
-- `vicunav-bhoga-yoga`: implementación privada de un cliente real.
 - `vicunav-standards`: estándares técnicos compartidos, incluidos como submódulo
   `docs/standards` en cada repositorio.
 - `vicunav-repo-template`: plantilla para repositorios nuevos.

@@ -13,19 +13,6 @@ aceptación.
   `/privacidad/`) según el [ADR 0005](adr/0005-fidelidad-visual-bloqueante.md):
   matriz por página, estado y viewport con capturas lado a lado y overlays, diferencias
   registradas y aprobación humana explícita.
-- Resolver los assets ausentes (video hero y dos mapas) con el original o una
-  sustitución aprobada y declarada.
-- Crear `docs/estado.md` en ese repositorio: su README ya lo enlaza y aún no existe.
-
-## `vicunav-bhoga-yoga`
-
-- Seguir `docs/roadmap.md` del repositorio: BHO-02 en adelante. Según ese roadmap,
-  BHO-02 a BHO-07 están completados localmente; quedan como pendientes documentados de
-  BHO-07 la comparación de rendimiento con caché equivalente al hosting real, el
-  criterio `target-size` de WCAG 2.2 y el CSS bloqueante de render, y la verificación
-  del Site Editor sin bloques inválidos (BHO-06).
-- BHO-08 (ensayo en el hosting real) y BHO-09 (corte live) los ejecuta el propietario
-  manualmente, con backup inmutable, rollback ensayado y aprobación humana explícita.
 
 ## `vicunav-hub`, `vicunav-standards` y `vicunav-repo-template`
 
