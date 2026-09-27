@@ -13,6 +13,7 @@ written from scratch.
 | Repository | Role | Visibility |
 | --- | --- | --- |
 | [`vicunav-restaurante`](https://github.com/vicunav/vicunav-restaurante) | Reference restaurant project (the Bonasera trattoria): single plugin, block theme, content, assets, local installer and QA. | Public |
+| `vicunav-bhoga-yoga` | Private client project: migrate the live `bhoga.yoga` site to a local Gutenberg block theme. Tailwind CSS stack, owner-executed (see ADR 0006 and 0007). | Private |
 | [`vicunav-standards`](https://github.com/vicunav/vicunav-standards) | Shared technical standards, included as the `docs/standards` submodule in every repository. | Public |
 | [`vicunav-repo-template`](https://github.com/vicunav/vicunav-repo-template) | Template to bootstrap new repositories. | Public |
 | [`vicunav-hub`](https://github.com/vicunav/vicunav-hub) | Decisions, state and backlog (this repository). | Public |
