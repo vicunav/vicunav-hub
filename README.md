@@ -13,7 +13,6 @@ written from scratch.
 | Repository | Role | Visibility |
 | --- | --- | --- |
 | [`vicunav-restaurante`](https://github.com/vicunav/vicunav-restaurante) | Reference restaurant project (the Bonasera trattoria): single plugin, block theme, content, assets, local installer and QA. | Public |
-| `vicunav-bhoga-yoga` | Client implementation for Bhoga Yoga (Elementor to Gutenberg migration): theme, content plugin, content, docs and gates. | Private |
 | [`vicunav-standards`](https://github.com/vicunav/vicunav-standards) | Shared technical standards, included as the `docs/standards` submodule in every repository. | Public |
 | [`vicunav-repo-template`](https://github.com/vicunav/vicunav-repo-template) | Template to bootstrap new repositories. | Public |
 | [`vicunav-hub`](https://github.com/vicunav/vicunav-hub) | Decisions, state and backlog (this repository). | Public |
@@ -27,7 +26,6 @@ written from scratch.
 - [ADR 0003: Genuine ACF for editorial fields only](docs/adr/0003-acf-genuino-solo-campos.md)
 - [ADR 0004: Restaurant commerce without WooCommerce](docs/adr/0004-restaurante-sin-woocommerce.md)
 - [ADR 0005: Blocking 1:1 visual fidelity for Gutenberg migrations](docs/adr/0005-fidelidad-visual-bloqueante.md)
-- [ADR 0006: Bhoga Yoga as a private client implementation](docs/adr/0006-bhoga-yoga-cliente-privado.md)
 
 ## State, backlog and governance
 
